@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "renascer-app-mobile",
+    "name": "Igreja Renascer",
     "slug": "renascer-app-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1d1f21"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,11 +20,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#1d1f21"
+      },
+      "package": "com.tiagodev002pro.renascerappmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f87f0fa5-cc33-4cc7-adad-a93e7bf0c58a"
+      }
     }
   }
 }
