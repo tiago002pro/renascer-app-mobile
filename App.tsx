@@ -1,13 +1,15 @@
-import { Box, NativeBaseProvider, StatusBar, Text } from 'native-base';
-import { THEME } from './styles/theme';
+import { NativeBaseProvider, StatusBar } from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+
+import Routes from './src/routes';
 
 export default function App() {
   return (
     <NativeBaseProvider>
-        <StatusBar/>
-        <Box flex={1} bg={THEME.colors.backgroud} alignItems={'center'} justifyContent={'center'}>
-          <Text color={'white'} fontSize={20}>Hellow world!</Text>
-        </Box>
+      <NavigationContainer>
+        <StatusBar />
+        <Routes />
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
