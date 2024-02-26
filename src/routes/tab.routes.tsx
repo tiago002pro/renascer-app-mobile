@@ -4,7 +4,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Dashboard } from "../screens/Dashboard";
 import { New } from "../screens/New";
 
-import { THEME } from "../../styles/theme";
+import { THEME } from "../styles/theme";
+import VideosRoutes from "./videos.routes";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -41,10 +42,20 @@ export default function TabRoutes() {
       />
 
       <Screen
+        name="VideosRoutes"
+        component={VideosRoutes}
+        options={{
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="video-library" color={color} size={size} />,
+          tabBarLabel: "Conteúdo",
+          headerShown: false,
+        }}
+      />
+
+      <Screen
         name="New"
         component={New}
         options={{
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="video-library" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="person" color={color} size={size} />,
           tabBarLabel: "Conteúdo",
           headerShown: false,
         }}

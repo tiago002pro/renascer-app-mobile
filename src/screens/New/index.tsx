@@ -1,7 +1,7 @@
 import { Text, View } from "native-base";
 import { StyleSheet } from "react-native";
 
-import { THEME } from "../../../styles/theme";
+import { THEME } from "../../styles/theme";
 
 export function New() {
   return (
