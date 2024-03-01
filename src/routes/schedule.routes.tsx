@@ -18,6 +18,12 @@ export default function ScheduleRoutes() {
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
+			headerTitleStyle: {
+				color: THEME.colors.white,
+				fontFamily: 'Roboto_700Bold',
+				textTransform: 'capitalize',
+				fontSize: THEME.fontSizes.md,
+			},
 		}}>
 			<Screen
 				name="Eventos"

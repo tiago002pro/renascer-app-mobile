@@ -91,17 +91,18 @@ export const styles = StyleSheet.create({
     display: 'flex',
   },
   date: {
-    color:  THEME.colors.yellow[400],
-    fontSize: THEME.fontSizes.lg / 2,
-    lineHeight: THEME.fontSizes.lg / 2,
+    color:  THEME.colors.gray[400],
+    fontSize: THEME.fontSizes.md / 2,
+    lineHeight: THEME.fontSizes.md / 2,
     textTransform: 'uppercase',
-    marginBottom: 10,
+    marginBottom: 5,
+    fontFamily: 'Roboto_400Regular',
   },
   title: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto_700Bold',
   },
   data: {
     width: screenWidth * .65 - THEME.sizes.paddingPage * 3,

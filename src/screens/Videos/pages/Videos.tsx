@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { Box, ScrollView, VStack } from "native-base";
+import { Box, ScrollView, Text, VStack, View } from "native-base";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import VideoService from "../service/VideoService";
 
@@ -10,17 +11,17 @@ import { THEME } from "../../../styles/theme";
 
 
 export function Videos() {
-  const [familyService, setFamilyService] = useState(null);
-  const [celebrationService, setCelebrationService] = useState(null);
+  const [familyService, setFamilyService] = useState(null) as any[];
+  const [celebrationService, setCelebrationService] = useState(null) as any[];
 
   useEffect(() => {
     async function getAllSermon() {
-      const result:any = await VideoService.getAllByCategory('FAMILY')
+      const result:any[] = await VideoService.getAllByCategory('FAMILY')
       setFamilyService(result)
     }
 
     async function getAllMusic() {
-      const result:any = await VideoService.getAllByCategory('CELEBRATION')
+      const result:any[] = await VideoService.getAllByCategory('CELEBRATION')
       setCelebrationService(result)
     }
     
@@ -30,21 +31,33 @@ export function Videos() {
 
 
   return (
-    <VStack style={styles.container} safeArea>
+    <VStack style={styles.container}>
       <ScrollView>
-        <Box style={styles.slide}>
-          <SlideVideoFeatured
-            title={"Culto da família"}
-            data={familyService}
-          />
-        </Box>
-
-        <Box style={styles.slide}>
-          <SlideVideo
-            title={"Culto de celebração"}
-            data={celebrationService}
-          />
-        </Box>
+        {
+          (familyService && familyService.length > 0) && (celebrationService && celebrationService.length > 0) ?
+          <View>
+            <Box style={styles.slide}>
+              <SlideVideoFeatured
+                title={"Em destaque"}
+                data={familyService}
+              />
+            </Box>
+            <Box style={styles.slide}>
+              <SlideVideo
+                title={"Culto de celebração"}
+                data={celebrationService}
+              />
+            </Box>
+          </View>
+          :
+          <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
+            <Box mb={3}>
+              <FontAwesome5 name="video-slash" color={THEME.colors.yellow[400]} size={50}/>
+            </Box>
+            <Text color={'white'} fontSize={"lg"} textAlign={'center'}>Nenhum vídeo</Text>
+            <Text color={'white'} fontSize={"lg"} textAlign={'center'}>foi encontrado</Text>
+          </View>
+        }
       </ScrollView>
     </VStack>
   );

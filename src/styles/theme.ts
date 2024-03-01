@@ -30,6 +30,5 @@ export const THEME = extendTheme({
   },
   sizes: {
     paddingPage: 10,
-    heightHeader: 50,
   }
 });

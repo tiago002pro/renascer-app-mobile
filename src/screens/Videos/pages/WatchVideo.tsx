@@ -37,7 +37,7 @@ export function WatchVideo({ route }:any) {
 
       <Box style={styles.descriptionPlayer}>
         <Text style={styles.title}>{video.title}</Text>
-        <Text style={styles.speaker}>{video.author}</Text>
+        <Text style={styles.speaker}>Preletor {video.author}</Text>
         <Text style={styles.description}>{video.description}</Text>
       </Box>
     </View>
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     height: VIDEO_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: THEME.sizes.paddingPage
   },
   descriptionPlayer: {
     width: width,
@@ -64,20 +65,24 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    fontFamily: 'Roboto_700Bold',
+    marginBottom: 15,
     textTransform: 'uppercase',
   },
   speaker: {
     fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     color: THEME.colors.white,
-    marginBottom: 10,
+    fontFamily: 'Roboto_400Regular',
+    marginBottom: 15,
   },
   description: {
     fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     color: THEME.colors.white,
-    marginBottom: 10,
+    fontFamily: 'Roboto_400Regular',
     textAlign: 'justify'
   }
 });

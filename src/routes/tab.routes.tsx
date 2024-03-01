@@ -20,16 +20,19 @@ export default function TabRoutes() {
       tabBarStyle: {
         backgroundColor: THEME.colors.tabBar,
         borderTopWidth: 0,
-        height: THEME.sizes.heightHeader,
       },
       tabBarActiveTintColor: THEME.colors.white,
       tabBarLabelStyle: {
         marginTop: -5,
         marginBottom: 5,
+        fontFamily: 'Roboto_400Regular'
       },
       headerTitleStyle: {
-        color: THEME.colors.white
-      }
+				color: THEME.colors.white,
+				fontFamily: 'Roboto_700Bold',
+				textTransform: 'capitalize',
+				fontSize: THEME.fontSizes.md,
+      },
     }}>
       <Screen
         name="Dashboard"

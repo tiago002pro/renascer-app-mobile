@@ -18,6 +18,12 @@ export default function VideosRoutes() {
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
+			headerTitleStyle: {
+				color: THEME.colors.white,
+				fontFamily: 'Roboto_500Medium',
+				textTransform: 'capitalize',
+				fontSize: THEME.fontSizes.md,
+			},
 		}}>
 			<Screen
 				name="Palavras"

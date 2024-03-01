@@ -39,25 +39,24 @@ export function SlideVideoFeatured({ title, data }:any) {
                 />
                 <Box style={styles.description}>
                   <Text
-                    fontSize={14}
-                    lineHeight={14}
                     color={THEME.colors.white}
-                    fontWeight={'400'}
+                    textTransform={'capitalize'}
+                    fontSize={THEME.fontSizes.md}
+                    lineHeight={THEME.fontSizes.md}
+                    fontFamily={'Roboto_700Bold'}
                     numberOfLines={1}
-                    textTransform={'uppercase'}
-                    mt={2}
-                    mb={2}
+                    mb={1}
                   >
                     {item.title}
                   </Text>
 
                   <Text
-                    fontSize={10}
-                    lineHeight={10}
-                    letterSpacing={1}
                     color={THEME.colors.gray[200]}
+                    textTransform={'capitalize'}
+                    fontSize={THEME.fontSizes.md - 5}
+                    lineHeight={THEME.fontSizes.md - 5}
+                    fontFamily={'Roboto_400Regular'}
                     numberOfLines={1}
-                    textTransform={'uppercase'}
                   >
                     {item.author}
                   </Text>
@@ -76,9 +75,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
-    fontWeight: 'bold',
+    fontSize: THEME.fontSizes.xl,
+    lineHeight: THEME.fontSizes.xl,
+    fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
   },
   videoContainer: {
@@ -90,10 +89,15 @@ const styles = StyleSheet.create({
   image: {
     width: imageW - 10,
     height: imageH,
-    borderRadius: 2,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
     backgroundColor: THEME.colors.black,
   },
   description: {
     width: imageW - 10,
+    padding: 10,
+    backgroundColor: THEME.colors.header,
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
   }
 });
