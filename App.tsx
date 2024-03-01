@@ -8,6 +8,8 @@ import Routes from './src/routes';
 import Loading from './src/screens/Loading';
 
 import { THEME } from './src/styles/theme';
+import { AuthProvider } from './src/contexts/auth';
+import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -23,9 +25,12 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <StatusBar backgroundColor={THEME.colors.header} barStyle='light-content'/>
-        <Routes />
+        <AuthProvider>
+          <StatusBar backgroundColor={THEME.colors.header} barStyle='light-content'/>
+          <Routes />
+        </AuthProvider>
       </NavigationContainer>
+      <FlashMessage position="top" />
     </NativeBaseProvider>
   );
 }

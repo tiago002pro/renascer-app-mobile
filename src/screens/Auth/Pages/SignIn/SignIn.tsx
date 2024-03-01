@@ -1,0 +1,167 @@
+import { useState } from "react";
+import { Dimensions, StyleSheet } from "react-native";
+import { Box, Button, Image, Text, VStack } from "native-base";
+import { useNavigation } from "@react-navigation/native";
+
+import InputTextIcon from "../../../../components/InputTextIcon";
+import ButtonComponent from "../../../../components/ButtonComponent";
+
+import { useAuth } from "../../../../contexts/auth";
+import { THEME } from "../../../../styles/theme";
+
+const { height } = Dimensions.get('screen');
+
+export default function SignIn() {
+  const navigation:any = useNavigation();
+  const {signIn} = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [signInError, setSignInError] = useState(false);
+  const [disabledBtn, setDisabledBtn] = useState(true);
+
+  function onChangeEmail(email:string) {
+    (email.length > 1) && (password.length > 1) ? setDisabledBtn(false) : setDisabledBtn(true)
+    setEmail(email);
+  }
+
+  function onChangePassword(password:string) {
+    (password.length > 1) && (email.length > 1) ? setDisabledBtn(false) : setDisabledBtn(true)
+    setPassword(password);
+  }
+
+  async function handleSignIn() {
+    const success = await signIn(email, password);
+    
+    if (success) {
+      setSignInError(false)
+      navigation.navigate('TabRoutes', {screen:'DashboardRoutes'});
+    } else {
+      setSignInError(true)
+    }
+  }
+
+  function handleRegister() {
+    navigation.navigate('Register')
+  }
+
+  return (
+    <VStack style={styles.container}>
+      <Box style={styles.containerLogo}>
+        <Image
+          source={require("'./../../../../../assets/images/logo-cor-2.png")}
+          alt="logo"
+          style={styles.logo}
+          resizeMode='contain'
+        />
+      </Box>
+
+      <Box style={styles.containerData}>
+        <Box style={styles.data}>
+          <Text style={styles.label}>Email</Text>
+          <InputTextIcon
+            placeholder={"Email"}
+            icon={"mail"}
+            value={email}
+            onChangeText={onChangeEmail}
+            passWordType={false}
+            error={signInError}
+          />
+        </Box>
+
+        <Box style={styles.data}>
+          <Text style={styles.label}>Senha</Text>
+          <InputTextIcon
+            placeholder={"Senha"}
+            icon={"lock"}
+            value={password}
+            onChangeText={onChangePassword}
+            passWordType={true}
+            error={signInError}
+          />
+        </Box>
+
+        <Box>
+          <Text style={styles.forgotPassword}>
+            Esqueceu a senha?
+          </Text>
+        </Box>
+       
+        <ButtonComponent
+          label={'Entrar'}
+          bntFunction={handleSignIn}
+          isDisabled={disabledBtn}
+        />
+
+        <Box style={styles.footerArea}>
+          <Text style={styles.register}>Não possui conta?</Text>
+          <Button
+            onPress={handleRegister}
+            style={styles.footerBtn}
+            p={0}
+            _text={{
+              color: THEME.colors.primary,
+              fontFamily: 'Roboto_700Bold',
+              fontSize: THEME.fontSizes.sm,
+              lineHeight: THEME.fontSizes.sm,
+            }}
+          >
+            Cadastre-se
+          </Button>
+        </Box>
+      </Box>
+    </VStack>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: height,
+    backgroundColor: THEME.colors.backgroud,
+  },
+  containerLogo: {
+    height: height * .15,
+    alignItems: "center",
+  },
+  logo: {
+    height: (height * .2) / 2,
+  },
+  containerData: {
+    height: height * .85,
+    padding: THEME.sizes.paddingPage,
+  },
+  data: {
+    marginBottom: 20,
+  },
+  forgotPassword: {
+    fontFamily: 'Roboto_500Medium',
+    fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
+    color: THEME.colors.white,
+    marginBottom: 20,
+    textAlign: 'right',
+  },
+  label: {
+    fontFamily: 'Roboto_400Regular',
+    fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
+    color: THEME.colors.white,
+    marginBottom: 5,
+  },
+  footerArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  footerBtn: {
+    backgroundColor: 'transparent',
+    left: 5
+  },
+  register: {
+    fontFamily: 'Roboto_400Regular',
+    fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
+    color: THEME.colors.white,
+  }
+});

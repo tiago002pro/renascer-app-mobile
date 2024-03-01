@@ -4,6 +4,7 @@ import { Videos } from "../screens/Videos/pages/Videos";
 import { WatchVideo } from "../screens/Videos/pages/WatchVideo";
 
 import { THEME } from "../styles/theme";
+import { returnBtn } from "../components/ReturnBtn";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function VideosRoutes() {
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 			},
+			headerLeft: returnBtn
 		}}>
 			<Screen
 				name="Palavras"

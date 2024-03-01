@@ -4,6 +4,7 @@ import { Schedule } from "../screens/Schedule/pages/Schedule";
 import { Ticket } from "../screens/Schedule/pages/Ticket";
 
 import { THEME } from "../styles/theme";
+import { returnBtn } from "../components/ReturnBtn";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function ScheduleRoutes() {
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 			},
+			headerLeft: returnBtn
 		}}>
 			<Screen
 				name="Eventos"

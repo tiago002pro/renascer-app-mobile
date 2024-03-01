@@ -1,0 +1,114 @@
+import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
+
+import { Dashboard } from "../screens/Dashboard";
+import { useAuth } from "../contexts/auth";
+
+import { THEME } from "../styles/theme";
+
+const { Navigator, Screen } = createStackNavigator();
+
+export default function DashboardRoutes() {
+	const navigation:any = useNavigation();
+	const {signed} = useAuth();
+
+	function goSignIn():void {
+		navigation.navigate('SignIn');
+	}
+	
+	function goProfile():void {
+		navigation.navigate('ProfileRoutes', {screen: 'Profile'});
+	}
+	
+	return (
+		<Navigator screenOptions={{
+			headerShown: true,
+			headerStyle: {
+				backgroundColor: THEME.colors.header,
+			},
+			headerTintColor: THEME.colors.white,
+			headerTitleAlign: 'center',
+			headerShadowVisible: false,
+			headerBackTitleVisible: false,
+		}}>
+			<Screen
+				name="Dashboard"
+				component={Dashboard}
+				options={{
+					headerTitle: (
+						() =>
+						<View
+							justifyContent={'space-between'}
+							alignItems={'center'}
+							flexDirection={'row'}
+						>
+							<Image
+								source={require("./../../assets/images/logo.png")}
+								alt="logo"
+								style={{ width: 25, height: 25, marginRight: 7 }}
+							/>
+							<Text
+								color={'#FFF'}
+								textTransform={'uppercase'}
+								fontSize={12}
+							>
+								Igreja Renascer
+							</Text>
+						</View>
+				  	),
+					headerRight: (
+						() =>
+						(!signed ?
+							<Box alignItems="center">
+								<Button
+									onPress={goSignIn}
+									borderRadius={50}
+									height={8}
+									backgroundColor={'transparent'}
+									borderColor={THEME.colors.yellow[400]}
+									borderWidth={1}
+									_pressed={{
+										backgroundColor: THEME.colors.yellow[400],
+										_text: {
+										color: THEME.colors.backgroud,
+										fontWeight: 'bold'
+										}
+									}}
+									_text={{
+										color: THEME.colors.yellow[400],
+										textTransform: 'uppercase',
+										fontSize: 12,
+										lineHeight: 12,
+									}}
+									style={{marginEnd: THEME.sizes.paddingPage * 2}}
+								>
+									Login
+								</Button>
+							</Box>
+						:
+							<Box alignItems="center">
+								<IconButton
+									onPress={goProfile}
+									icon={
+										<Icon as={Ionicons} name="person-circle"/>
+									}
+									borderRadius={'full'}
+									_icon={{
+										color: THEME.colors.white,
+										size: 8
+									}}
+									_pressed={{
+										backgroundColor: 'transparent'
+									}}
+									style={{marginEnd: THEME.sizes.paddingPage}}
+								/>
+							</Box>
+						)
+					)
+				}}
+			/>
+		</Navigator>
+	);
+};

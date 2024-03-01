@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { Dashboard } from "../screens/Dashboard";
-
 import { THEME } from "../styles/theme";
+
 import VideosRoutes from "./videos.routes";
 import ScheduleRoutes from "./schedule.routes";
+import DashboardRoutes from "./dashboard.routes";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -35,8 +35,8 @@ export default function TabRoutes() {
       },
     }}>
       <Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="DashboardRoutes"
+        component={DashboardRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
           tabBarLabel: "Início",
