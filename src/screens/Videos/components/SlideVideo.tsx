@@ -1,6 +1,7 @@
 import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, FlatList, Image, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import { THEME } from "../../../styles/theme";
 
@@ -31,12 +32,15 @@ export function SlideVideo({ title, data }:any) {
           renderItem={({item}:any) => {
             return <TouchableWithoutFeedback onPress={() => goWathVideo(item)}>
               <View style={styles.videoContainer}>
-                <Image
-                  source={{uri: item.coverImage}}
-                  alt={item.coverImage}
-                  style={styles.image}
-                  key={item.id.toString()}
-                />
+                <Box style={styles.imageArea}>
+                  <Image
+                    source={{uri: item.coverImage}}
+                    alt={item.coverImage}
+                    style={styles.image}
+                    key={item.id.toString()}
+                  />
+                  <FontAwesome5 name="play" color={THEME.colors.white} size={40} style={styles.playIcon}/>
+                </Box>
                 <Box style={styles.description}>
                   <Text
                     color={THEME.colors.white}
@@ -85,11 +89,22 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
+  imageArea: {
+    width: imageW - 10,
+    height: imageH,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
     width: imageW - 10,
     height: imageH,
     borderRadius: 10,
     backgroundColor: THEME.colors.black,
+  },
+  playIcon: {
+    position: 'absolute',
+    opacity: .5,
   },
   description: {
     width: imageW - 10,

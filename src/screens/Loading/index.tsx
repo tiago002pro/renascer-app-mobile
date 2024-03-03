@@ -5,7 +5,7 @@ import { THEME } from '../../styles/theme';
 export default function Loading() {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size={"large"} color={THEME.colors.orange[500]} />
+      <ActivityIndicator size={"large"} color={THEME.colors.primary} />
     </View>
   );
 }

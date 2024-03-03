@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Image, ScrollView, Text, View } from "native-base";
+import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
 import VideoService from "../Videos/service/VideoService";
 
@@ -11,6 +13,7 @@ import { THEME } from "../../styles/theme";
 const { width, height } = Dimensions.get('screen');
 
 export function Dashboard() {
+  const navigation:any = useNavigation();
   const [latestVideos, setLatestVideos] = useState(null) as any[];
   const [lastVideos, setLastVideos] = useState(null) as any;
 
@@ -26,17 +29,29 @@ export function Dashboard() {
     getLatest()
   }, [])
 
+  async function goWathVideo(video:any):Promise<void> {
+    navigation.navigate('WatchVideo', {
+      video: video
+    });
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <Box>
-          <Image
-            source={{uri: lastVideos?.coverImage}}
-            alt={'coverImage'}
-            key={lastVideos?.id.toString()}
-            w={width}
-            h={height * .27}
-          />
+          <TouchableWithoutFeedback onPress={() => goWathVideo(lastVideos)}>
+            <Box style={styles.imageArea}>
+              <Image
+                source={{uri: lastVideos?.coverImage}}
+                alt={'coverImage'}
+                key={lastVideos?.id.toString()}
+                w={width}
+                h={height * .27}
+              />
+              <FontAwesome5 name="play" color={THEME.colors.white} size={70} style={styles.playIcon}/>
+            </Box>
+          </TouchableWithoutFeedback>
+
           <Box style={styles.titleVideo}>
             <Text style={styles.text} numberOfLines={1}>
               {lastVideos?.title}
@@ -65,6 +80,17 @@ const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageArea: {
+    width: width,
+    height: height * .27,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  playIcon: {
+    position: 'absolute',
+    opacity: .5,
   },
   titleVideo: {
     width: width - THEME.sizes.paddingPage * 2,
