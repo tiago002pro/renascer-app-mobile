@@ -20,6 +20,16 @@ class VideoService {
       return null
     }
   }
+
+  async getLatest():Promise<any[]> {
+    try {
+      const result = await api.get(`/auth/latest-videos`)
+      return result.data
+    } catch(error) {
+      console.log("error", error);
+      return null
+    }
+  }
 }
 
 export default new VideoService();

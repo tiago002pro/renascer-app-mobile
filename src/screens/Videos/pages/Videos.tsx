@@ -7,17 +7,17 @@ import VideoService from "../service/VideoService";
 
 import { SlideVideoFeatured } from "../components/SlideVideoFeatured";
 import { SlideVideo } from "../components/SlideVideo";
+
 import { THEME } from "../../../styles/theme";
 
-
 export function Videos() {
-  const [familyService, setFamilyService] = useState(null) as any[];
+  const [latestVideos, setLatestVideos] = useState(null) as any[];
   const [celebrationService, setCelebrationService] = useState(null) as any[];
 
   useEffect(() => {
-    async function getAllSermon() {
-      const result:any[] = await VideoService.getAllByCategory('FAMILY')
-      setFamilyService(result)
+    async function getLatest() {
+      const result:any[] = await VideoService.getLatest()
+      setLatestVideos(result)
     }
 
     async function getAllMusic() {
@@ -25,7 +25,7 @@ export function Videos() {
       setCelebrationService(result)
     }
     
-    getAllSermon()
+    getLatest()
     getAllMusic()
   }, [])
 
@@ -34,12 +34,12 @@ export function Videos() {
     <VStack style={styles.container}>
       <ScrollView>
         {
-          (familyService && familyService.length > 0) && (celebrationService && celebrationService.length > 0) ?
+          (latestVideos && latestVideos.length > 0) && (celebrationService && celebrationService.length > 0) ?
           <View>
             <Box style={styles.slide}>
               <SlideVideoFeatured
                 title={"Em destaque"}
-                data={familyService}
+                data={latestVideos}
               />
             </Box>
             <Box style={styles.slide}>

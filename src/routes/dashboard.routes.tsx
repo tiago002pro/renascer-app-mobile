@@ -3,8 +3,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
-import { Dashboard } from "../screens/Dashboard";
 import { useAuth } from "../contexts/auth";
+
+import { Dashboard } from "../screens/Dashboard";
+import { WatchVideo } from "../screens/Videos/pages/WatchVideo";
+
+import { returnBtn } from "../components/ReturnBtn";
 
 import { THEME } from "../styles/theme";
 
@@ -109,6 +113,12 @@ export default function DashboardRoutes() {
 					)
 				}}
 			/>
+
+			<Screen
+				name="WatchVideo"
+				component={WatchVideo}
+				options={({ route }:any) => ({ title: route.params.video.title, headerLeft: returnBtn })}
+			/> 
 		</Navigator>
 	);
 };

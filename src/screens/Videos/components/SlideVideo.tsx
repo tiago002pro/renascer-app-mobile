@@ -37,28 +37,30 @@ export function SlideVideo({ title, data }:any) {
                   style={styles.image}
                   key={item.id.toString()}
                 />
-                <Text
-                  color={THEME.colors.white}
-                  textTransform={'capitalize'}
-                  fontSize={THEME.fontSizes.sm}
-                  lineHeight={THEME.fontSizes.sm}
-                  fontFamily={'Roboto_700Bold'}
-                  numberOfLines={1}
-                  mt={2}
-                >
-                  {item.title}
-                </Text>
-                <Text
-                  color={THEME.colors.gray[200]}
-                  textTransform={'capitalize'}
-                  fontSize={THEME.fontSizes.sm - 5}
-                  lineHeight={THEME.fontSizes.sm - 5}
-                  fontFamily={'Roboto_400Regular'}
-                  numberOfLines={1}
-                  mt={1}
-                >
-                  {item.author}
-                </Text>
+                <Box style={styles.description}>
+                  <Text
+                    color={THEME.colors.white}
+                    textTransform={'capitalize'}
+                    fontSize={THEME.fontSizes.sm}
+                    lineHeight={THEME.fontSizes.sm}
+                    fontFamily={'Roboto_700Bold'}
+                    numberOfLines={1}
+                    mt={2}
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    color={THEME.colors.gray[200]}
+                    textTransform={'capitalize'}
+                    fontSize={THEME.fontSizes.sm - 5}
+                    lineHeight={THEME.fontSizes.sm - 5}
+                    fontFamily={'Roboto_400Regular'}
+                    numberOfLines={1}
+                    mt={1}
+                  >
+                    {item.author}
+                  </Text>
+                </Box>
               </View>
             </TouchableWithoutFeedback>
           }}
@@ -89,4 +91,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: THEME.colors.black,
   },
+  description: {
+    width: imageW - 10,
+  }
 });
