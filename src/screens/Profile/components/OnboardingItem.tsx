@@ -36,9 +36,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontWeight: '800',
+    fontFamily: 'Roboto_700Bold',
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,
+    textTransform: 'capitalize',
   },
 });

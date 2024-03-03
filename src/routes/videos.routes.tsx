@@ -25,7 +25,6 @@ export default function VideosRoutes() {
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 			},
-			headerLeft: returnBtn
 		}}>
 			<Screen
 				name="Palavras"
@@ -35,7 +34,7 @@ export default function VideosRoutes() {
 			<Screen
 				name="WatchVideo"
 				component={WatchVideo}
-				options={({ route }:any) => ({ title: route.params.video.title })}
+				options={({ route }:any) => ({ title: route.params.video.title, headerLeft: returnBtn })}
 			/> 
 		</Navigator>
 	);

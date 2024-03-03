@@ -106,11 +106,6 @@ export const styles = StyleSheet.create({
   inputArea: {
     marginBottom: 10,
   },
-  label: {
-    color: THEME.colors.white,
-    fontSize: THEME.fontSizes.sm,
-    marginBottom: 2,
-  },
   footer: {
     marginBottom: THEME.sizes.paddingPage * 2,
   },

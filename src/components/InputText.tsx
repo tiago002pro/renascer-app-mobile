@@ -30,7 +30,7 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
           borderColor: '#FFF',
         }}
         cursorColor={'#FFF'}
-        theme={{colors: { placeholder: 'white' , text: 'white', primary: 'white', onSurfaceVariant: 'white'}}}
+        theme={{colors: { placeholder: 'white' , text: 'white', primary: 'white', onSurfaceVariant: 'white' }}}
         render={props => 
           <MaskInput
             {...props}
@@ -47,5 +47,6 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.md,
     height: 39,
+    fontFamily: 'Roboto_700Bold',
   },
 })

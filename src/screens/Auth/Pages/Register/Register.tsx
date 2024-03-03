@@ -8,15 +8,58 @@ import InputTextIcon from "../../../../components/InputTextIcon";
 import { THEME } from "../../../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
 import { doRegister } from "../../Service/auth";
+import { showMessage } from "react-native-flash-message";
 
 export default function Register() {
-  const navigation:any = useNavigation()
-  const [name, setName] = useState('')
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
-  const [role] = useState('USER')
+  const navigation:any = useNavigation();
+  const validator = require('validator');
+
+  const [role] = useState('USER');
+  const [name, setName] = useState('');
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [disabledBtn, setDisabledBtn] = useState(true);
+  const [invalidLogin, setInvalidLogin] = useState(false);
+
+  function onChangeName(name:string) {
+    (
+      (name.length > 1)
+        && (login.length > 1)
+        && (password.length > 1)
+    ) ? setDisabledBtn(false) : setDisabledBtn(true)
+
+    setName(name);
+  }
+
+  function onChangeLogin(login:string) {
+    (
+      (name.length > 1)
+        && (login.length > 1)
+        && (password.length > 1)
+    ) ? setDisabledBtn(false) : setDisabledBtn(true)
+
+    setLogin(login);
+    setInvalidLogin(false);
+  }
+
+  function onChangePassword(password:string) {
+    (
+      (name.length > 1)
+        && (login.length > 1)
+        && (password.length > 1)
+    ) ? setDisabledBtn(false) : setDisabledBtn(true)
+
+    setPassword(password);
+  }
 
   async function register() {
+    const valid = validator.isEmail(login);
+    
+    if (!valid) {
+      setInvalidLogin(true);
+      showMessage({ message: "E-mail inválido.", type: "danger" })
+    }
+
     const result = await doRegister({name, login, password, role})
     if (result) {
       navigation.replace('SignIn')
@@ -26,14 +69,15 @@ export default function Register() {
   }
 
   return(
-    <VStack style={styles.container} safeArea>
+    <VStack style={styles.container}>
       <Box style={styles.data}>
         <InputTextIcon
           placeholder={"Nome e sobrenome"}
-          passWordType={false}
+          show={true}
           icon={"user"}
+          autoCapitalize={true}
           value={name}
-          onChangeText={setName}
+          onChangeText={onChangeName}
           error={false}
         />
       </Box>
@@ -41,21 +85,23 @@ export default function Register() {
       <Box style={styles.data}>
         <InputTextIcon
           placeholder={"E-mail"}
-          passWordType={false}
+          show={true}
           icon={"mail"}
+          autoCapitalize={false}
           value={login}
-          onChangeText={setLogin}
-          error={false}
+          onChangeText={onChangeLogin}
+          error={invalidLogin}
         />
       </Box>
 
       <Box style={styles.data}>
         <InputTextIcon
           placeholder={"Senha"}
-          passWordType={true}
+          show={false}
           icon={"lock"}
+          autoCapitalize={false}
           value={password}
-          onChangeText={setPassword}
+          onChangeText={onChangePassword}
           error={false}
         />
       </Box>
@@ -63,6 +109,7 @@ export default function Register() {
       <ButtonComponent
         label={'Cadastrar'}
         bntFunction={register}
+        isDisabled={disabledBtn}
       />
 
       <Box style={styles.footerArea}>

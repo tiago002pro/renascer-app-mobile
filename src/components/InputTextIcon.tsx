@@ -1,29 +1,34 @@
 import { StyleSheet } from "react-native";
-import { Box, Icon, Input } from "native-base";
-import { Feather } from "@expo/vector-icons";
+import { Box, FormControl, Icon, Input, Pressable } from "native-base";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { THEME } from "../styles/theme";
+import { useState } from "react";
 
 interface InputProps {
+  label?:string;
   placeholder?:string;
-  passWordType?:boolean;
+  show?:boolean;
   icon?:any;
+  autoCapitalize?:boolean;
   value?:string;
   onChangeText?: (text: string) => void;
   error?:boolean;
 }
 
-export default function InputTextIcon({ placeholder, passWordType, icon, value, onChangeText, error, ...props }:InputProps):JSX.Element {
+export default function InputTextIcon({ label, placeholder, show, icon, autoCapitalize, value, onChangeText, error }:InputProps):JSX.Element {
+  const [showPassword, setShowPassword] = useState(show);
+
   return (
-    <Box
+    <FormControl
+      isInvalid={error}
       style={styles.container}
-      bg={error ? '#341c1e' : THEME.colors.header}
-      {...props}
     >
+      <FormControl.Label fontFamily={'Roboto_500Medium'}>{label}</FormControl.Label>
       <Input
         onChangeText={onChangeText}
         placeholder={placeholder}
         value={value}
-        secureTextEntry={passWordType}
+        type={showPassword ? 'text' : 'password'}
         style={styles.input}
         InputLeftElement = {
           <Icon
@@ -31,19 +36,33 @@ export default function InputTextIcon({ placeholder, passWordType, icon, value, 
               <Feather
                 name={icon}
                 style={styles.icon}
-                color={error ? THEME.colors.red[500] : THEME.colors.white}
+                color={THEME.colors.gray[400]}
               />
             }
           />
         }
-        color={error ? THEME.colors.red[500] : THEME.colors.white}
-        borderColor={error ? THEME.colors.red[500] : THEME.colors.header}
+        InputRightElement={
+          <Pressable onPress={() => setShowPassword(!showPassword)}>
+            {!show ? <Icon as={<MaterialIcons name={showPassword ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" /> : null}
+          </Pressable>
+        }
+        color={THEME.colors.white}
+        borderColor={THEME.colors.header}
+        bg={THEME.colors.header}
         _focus={{
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
+          backgroundColor: THEME.colors.header,
+          borderColor: THEME.colors.header,
         }}
+        autoCapitalize={autoCapitalize ? "sentences" : "none"}
       />
-    </Box>
+      {
+        error ? 
+          <FormControl.ErrorMessage leftIcon={<MaterialIcons name={"error"} size={15} color={THEME.colors.red[500]} />}>
+            Senha inválida.
+          </FormControl.ErrorMessage>
+        : null
+      }
+    </FormControl>
   )
 }
 

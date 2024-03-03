@@ -57,25 +57,27 @@ export default function SignIn() {
 
       <Box style={styles.containerData}>
         <Box style={styles.data}>
-          <Text style={styles.label}>Email</Text>
           <InputTextIcon
-            placeholder={"Email"}
+            label={"E-mail"}
+            placeholder={"E-mail"}
             icon={"mail"}
+            autoCapitalize={false}
             value={email}
             onChangeText={onChangeEmail}
-            passWordType={false}
-            error={signInError}
+            show={true}
+            error={false}
           />
         </Box>
 
         <Box style={styles.data}>
-          <Text style={styles.label}>Senha</Text>
           <InputTextIcon
+            label={"Senha"}
             placeholder={"Senha"}
             icon={"lock"}
+            autoCapitalize={false}
             value={password}
             onChangeText={onChangePassword}
-            passWordType={true}
+            show={false}
             error={signInError}
           />
         </Box>

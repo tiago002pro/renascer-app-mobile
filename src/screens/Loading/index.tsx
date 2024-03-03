@@ -13,7 +13,7 @@ export default function Loading() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: THEME.colors.backgroud,
     alignItems: 'center',
     justifyContent: 'center',
   },

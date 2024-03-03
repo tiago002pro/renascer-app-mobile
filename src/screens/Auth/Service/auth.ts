@@ -14,8 +14,6 @@ interface Response {
 }
 
 export async function doLogin(login:string, password:string):Promise<Response> {
-  console.log("doLogin", login, password);
-  
   if (!login || !password) return null
   try {
     const result = await api.post('/auth/login', { login, password })

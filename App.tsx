@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import 'moment/locale/pt-br';
 import { NativeBaseProvider, StatusBar } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
-import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
 import Routes from './src/routes';
 import Loading from './src/screens/Loading';
@@ -13,6 +13,7 @@ import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
+    Roboto_300Light,
     Roboto_400Regular,
     Roboto_500Medium,
     Roboto_700Bold,

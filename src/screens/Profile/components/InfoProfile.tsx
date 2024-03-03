@@ -15,7 +15,7 @@ export default function InfoProfile({ section, person }:Props) {
     if (address && address?.zipCode) {
       return address?.publicPlace + ', ' + address?.number + ' - ' + address?.city + '/' + address?.state;
     }
-    return ''
+    return '-'
   }
 
   function getGender() {
@@ -24,6 +24,8 @@ export default function InfoProfile({ section, person }:Props) {
         return 'Feminino'
       case 'MALE':
         return 'Masculino'
+      default:
+        return '-'
     }
   }
 
@@ -41,6 +43,8 @@ export default function InfoProfile({ section, person }:Props) {
         return 'Viúvo(a)'
       case 'DIVORCED':
         return 'Divorciado(a)'
+      default:
+        return '-'
     }
   }
 
@@ -50,7 +54,7 @@ export default function InfoProfile({ section, person }:Props) {
         <View style={styles.container}>
           <Box style={styles.item}>
             <Text style={styles.label}>Nome completo:</Text>
-            <Text style={styles.value}>{person?.name}</Text>
+            <Text style={styles.value}>{person?.name ? person?.name : "-"}</Text>
           </Box>
           <Box style={styles.item}>
             <Text style={styles.label}>Sexo:</Text>
@@ -58,7 +62,7 @@ export default function InfoProfile({ section, person }:Props) {
           </Box>
           <Box style={styles.item}>
             <Text style={styles.label}>Data de nascimento:</Text>
-            <Text style={styles.value}>{person?.dateBirth}</Text>
+            <Text style={styles.value}>{person?.dateBirth ? person?.dateBirth : "-"}</Text>
           </Box>
           <Box style={styles.item}>
             <Text style={styles.label}>Estado civil:</Text>
@@ -71,15 +75,15 @@ export default function InfoProfile({ section, person }:Props) {
         <View style={styles.container}>
           <Box style={styles.item}>
             <Text style={styles.label}>E-mail:</Text>
-            <Text style={styles.value}>{person?.email}</Text>
+            <Text style={styles.value}>{person?.email ? person?.email : "-"}</Text>
           </Box>
           <Box style={styles.item}>
             <Text style={styles.label}>Celular:</Text>
-            <Text style={styles.value}>{person?.cellPhone}</Text>
+            <Text style={styles.value}>{person?.cellPhone ? person?.cellPhone : "-"}</Text>
           </Box>
           <Box style={styles.item}>
             <Text style={styles.label}>Telefone:</Text>
-            <Text style={styles.value}>{person?.phone}</Text>
+            <Text style={styles.value}>{person?.phone ? person?.phone : "-"}</Text>
           </Box>
         </View>
       ) : null}
@@ -101,15 +105,19 @@ export const styles = StyleSheet.create({
   },
   item: {
     display: 'flex',
-    marginBottom: 10
+    marginBottom: 20
   },
   label: {
     fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.yellow[400],
-    fontWeight: 'bold',
+    fontFamily: 'Roboto_500Medium',
+    marginBottom: 5,
   },
   value: {
-    fontSize: THEME.fontSizes.sm,
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     color: '#FFF',
+    fontFamily: 'Roboto_400Regular',
   }
 })

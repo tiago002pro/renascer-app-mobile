@@ -18,6 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 export function Settings() {
   const navigation:any = useNavigation();
   const {signOut, user} = useAuth() as any;
+
   const [person, setPerson] = useState(null);
   const [load, setLoad] = useState(false);
 
@@ -26,6 +27,7 @@ export function Settings() {
       navigation.addListener('focus', () => setLoad(!load))
       getUser()
     }
+
     onInit()
   }, [load, navigation])
 
@@ -134,6 +136,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     fontWeight: '500',
     color: THEME.colors.white,
+    fontFamily: 'Roboto_500Medium',
   },
   profile: {
     display: 'flex',
@@ -146,7 +149,7 @@ export const styles = StyleSheet.create({
   },
   name: {
     color: '#FFF',
-    fontWeight:'500',
+    fontFamily: 'Roboto_500Medium',
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
   },

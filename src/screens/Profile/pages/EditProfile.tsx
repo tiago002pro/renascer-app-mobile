@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Animated, StyleSheet, useWindowDimensions } from "react-native";
 import { FlatList, View } from "native-base";
 import { showMessage } from "react-native-flash-message";
+import { ActivityIndicator } from "react-native-paper";
 
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
@@ -22,11 +23,12 @@ const data = [
 export function EditProfile() {
   const navigation:any = useNavigation();
   const { user } = useAuth() as any;
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const [person, setPerson] = useState(null) as any;
   const [address, setAddress] = useState(null);
   const [currentIdex, setCurrentIdex] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const scrollx:any = useRef(new Animated.Value(0)).current;
   const slidesRef:any = useRef(null);
@@ -66,6 +68,9 @@ export function EditProfile() {
   useEffect(() => {
     async function onInit() {
       getUser()
+
+      setLoading(true)
+      setTimeout(() => { setLoading(false) }, 1000);
     }
     
     onInit()
@@ -73,8 +78,12 @@ export function EditProfile() {
 
   return (
     <View style={[styles.container, { width }]}>
+      <View style={[styles.loading, { width, height }]} flex={1} position={'absolute'} opacity={loading ? 1 : 0}>
+        <ActivityIndicator size={"large"} color={THEME.colors.primary} />
+      </View>
+
       <Paginator data={data} scrollx={scrollx} />
-      <View style={styles.body}>
+      <View style={styles.body} opacity={loading ? 0 : 1}>
         <FlatList
           data={data}
           renderItem={
@@ -111,6 +120,10 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: THEME.colors.backgroud,
+  },
+  loading: {
+    alignContent: 'center',
+    paddingTop: '70%'
   },
   body: {
     flex: 3,

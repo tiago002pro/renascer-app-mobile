@@ -25,7 +25,6 @@ export default function ScheduleRoutes() {
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 			},
-			headerLeft: returnBtn
 		}}>
 			<Screen
 				name="Eventos"
@@ -35,7 +34,7 @@ export default function ScheduleRoutes() {
 			<Screen
 				name="Ticket"
 				component={Ticket}
-				options={({ route }:any) => ({ title: route.params.ticket.title })}
+				options={({ route }:any) => ({ title: route.params.ticket.title, headerLeft: returnBtn })}
 			/> 
 		</Navigator>
 	);

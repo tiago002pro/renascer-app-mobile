@@ -52,7 +52,8 @@ export function Profile() {
                 <Ionicons
                   name="person-circle"
                   size={130}
-                  color={THEME.colors.primary}
+                  style={styles.icon}
+                  color={THEME.colors.white}
                 />
               }
             </Box>
@@ -125,7 +126,7 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
   },
   containerProfile: {
-    height: height * .3,
+    
   },
   containerData: {
     height: height * .7,
@@ -140,23 +141,27 @@ export const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: THEME.colors.backgroud,
     borderRadius: 5,
+    marginTop: 30,
+    marginBottom: 30,
   },
   imageArea: {
+    width: 125,
+    height: 125,
+    borderRadius: 125,
+    marginBottom: 20,
+    backgroundColor: THEME.colors.gray[500],
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
     width: 130,
     height: 130,
-    borderRadius: 130,
-    marginBottom: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   image: {
     width: 130,
     height: 130,
     borderRadius: 130,
-  },
-  iconImage: {
   },
   textArea: {
     display: 'flex',
@@ -168,10 +173,10 @@ export const styles = StyleSheet.create({
     fontWeight:'500',
     fontSize: THEME.fontSizes.lg + 10,
     lineHeight: THEME.fontSizes.lg + 10,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   email: {
-    color: THEME.colors.yellow[200],
+    color: THEME.colors.gray[400],
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     fontWeight: '500'
@@ -204,8 +209,9 @@ export const styles = StyleSheet.create({
   infoArea: {
   },
   title: {
-    fontSize: THEME.fontSizes.md,
-    fontWeight: '500',
+    fontSize: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg,
+    fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
   },
   arrowArea: {
