@@ -13,9 +13,10 @@ interface InputProps {
   value?:string;
   onChangeText?: (text: string) => void;
   error?:boolean;
+  errorMessage?:string;
 }
 
-export default function InputTextIcon({ label, placeholder, show, icon, autoCapitalize, value, onChangeText, error }:InputProps):JSX.Element {
+export default function InputTextIcon({ label, placeholder, show, icon, autoCapitalize, value, onChangeText, error, errorMessage }:InputProps):JSX.Element {
   const [showPassword, setShowPassword] = useState(show);
 
   return (
@@ -58,7 +59,7 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
       {
         error ? 
           <FormControl.ErrorMessage leftIcon={<MaterialIcons name={"error"} size={15} color={THEME.colors.red[500]} />}>
-            Senha inválida.
+            {errorMessage}
           </FormControl.ErrorMessage>
         : null
       }

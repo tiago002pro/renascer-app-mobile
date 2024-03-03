@@ -61,7 +61,7 @@ export function Settings() {
       icon: 'delete-outline',
       colorIcon: THEME.colors.red[500],
       label: 'Excluir conta',
-      action: () => {},
+      action: goDeleteAccount,
     },
   ]
 
@@ -73,6 +73,10 @@ export function Settings() {
 
   function goEditProfile():void {
 		navigation.navigate('EditProfile');
+  }
+
+  function goDeleteAccount():void {
+		navigation.navigate('DeleteProdile');
   }
 
   return (
@@ -134,7 +138,6 @@ export const styles = StyleSheet.create({
   },
   label: {
     fontSize: THEME.fontSizes.md,
-    fontWeight: '500',
     color: THEME.colors.white,
     fontFamily: 'Roboto_500Medium',
   },

@@ -79,6 +79,7 @@ export default function SignIn() {
             onChangeText={onChangePassword}
             show={false}
             error={signInError}
+            errorMessage={"Senha inválida"}
           />
         </Box>
 

@@ -57,14 +57,13 @@ export default function Register() {
     
     if (!valid) {
       setInvalidLogin(true);
-      showMessage({ message: "E-mail inválido.", type: "danger" })
-    }
-
-    const result = await doRegister({name, login, password, role})
-    if (result) {
-      navigation.replace('SignIn')
     } else {
-      console.log("Erro");
+      const result = await doRegister({name, login, password, role})
+      if (result) {
+        navigation.replace('SignIn')
+      } else {
+        console.log("Erro");
+      }
     }
   }
 
@@ -91,6 +90,7 @@ export default function Register() {
           value={login}
           onChangeText={onChangeLogin}
           error={invalidLogin}
+          errorMessage={"E-mail inválido"}
         />
       </Box>
 

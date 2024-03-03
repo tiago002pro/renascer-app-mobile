@@ -54,7 +54,7 @@ export function EditProfile() {
       showMessage({ message: "Salvo com sucesso", type: "success"})
       navigation.navigate('Settings')
     }).catch(() => {
-      showMessage({ message: "Algo deu errado", type: "warning" })
+      showMessage({ message: "Algo deu errado", type: "danger" })
     })
   }
 

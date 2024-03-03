@@ -10,6 +10,16 @@ class UserService {
       return null
     }
   }
+
+  public async delete(id:number):Promise<any> {
+    try {
+      const result = await api.delete(`/api/user/${id}`)
+      return result.data
+    } catch(error) {
+      console.log("error", error);
+      return null
+    }
+  }
 }
 
 export default new UserService();

@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Profile } from "../screens/Profile/pages/Profile";
 import { Settings } from "../screens/Profile/pages/Settings";
 import { EditProfile } from "../screens/Profile/pages/EditProfile";
+import { DeleteProdile } from "../screens/Profile/pages/DeleteProfile";
 
 import { returnBtn } from "../components/ReturnBtn";
 import { CloseBtn } from "../components/CloseBtn";
@@ -72,6 +73,15 @@ export default function ProfileRoutes() {
 					headerTitle: 'Editar perfil',
 					headerLeft: returnBtn,
 					headerRight: CloseBtn,
+				}}
+			/>
+
+			<Screen
+				name="DeleteProdile"
+				component={DeleteProdile}
+				options={{
+					headerTitle: 'Confirmar exclusão',
+					headerLeft: returnBtn,
 				}}
 			/>
 		</Navigator>
