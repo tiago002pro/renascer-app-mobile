@@ -9,6 +9,7 @@ export const returnBtn = () => {
     return (
       <Box>
         <IconButton
+          m={0} p={0} left={0}
           onPress={() => navigation.goBack()}
           icon={
             <Icon as={MaterialIcons} name="arrow-back-ios"/>

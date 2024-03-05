@@ -67,6 +67,7 @@ export default function DashboardRoutes() {
 						(!signed ?
 							<Box alignItems="center">
 								<Button
+									right={0}
 									onPress={goSignIn}
 									borderRadius={50}
 									height={8}
@@ -86,7 +87,7 @@ export default function DashboardRoutes() {
 										fontSize: 12,
 										lineHeight: 12,
 									}}
-									style={{marginEnd: THEME.sizes.paddingPage * 2}}
+									style={{marginEnd: THEME.sizes.paddingPage}}
 								>
 									Login
 								</Button>
@@ -94,6 +95,7 @@ export default function DashboardRoutes() {
 						:
 							<Box alignItems="center">
 								<IconButton
+									m={0} p={0} right={0}
 									onPress={goProfile}
 									icon={
 										<Icon as={Ionicons} name="person-circle"/>

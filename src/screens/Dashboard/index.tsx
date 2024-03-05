@@ -70,7 +70,7 @@ export function Dashboard() {
           </Box>
 
           <Box style={styles.themeYear}>
-            <Text style={styles.title}>Destaque</Text>
+            <Text style={styles.title}>Destaques</Text>
             <Image
               source={require('../../../assets/images/TEMA_ANO.png')}
               alt={"Tema do ano"}
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: THEME.colors.black,
   },
   playIcon: {
     position: 'absolute',
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     paddingRight: THEME.sizes.paddingPage,
   },
   latestVideos: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
   themeYear: {
     marginBottom: 20,
@@ -141,12 +142,11 @@ const styles = StyleSheet.create({
     width: width - THEME.sizes.paddingPage * 2,
     height: height * .24,
     borderRadius: 5,
-    backgroundColor: THEME.colors.gray[500]
-    
+    backgroundColor: THEME.colors.black,
   },
   title: {
-    fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
+    fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title,
     fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
     marginBottom: 10,

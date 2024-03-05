@@ -36,11 +36,12 @@ export default function ProfileRoutes() {
 				options={{
 					headerTitle: 'Meu Perfil',
 					headerRight: () => 
-					<Box alignItems="center">
+					<Box>
 						<IconButton
+							m={0} p={0} right={0}
 							onPress={() => navigation.navigate('Settings')}
 							icon={
-								<Icon as={Ionicons} name="settings-sharp"/>
+								<Icon as={Ionicons} name="settings-sharp" />
 							}
 							borderRadius={'full'}
 							_icon={{

@@ -44,23 +44,14 @@ export function SlideVideoFeatured({ title, data }:any) {
                 </Box>
                 <Box style={styles.description}>
                   <Text
-                    color={THEME.colors.white}
-                    textTransform={'capitalize'}
-                    fontSize={THEME.fontSizes.md}
-                    lineHeight={THEME.fontSizes.md}
-                    fontFamily={'Roboto_700Bold'}
+                    style={styles.titleVideo}
                     numberOfLines={1}
-                    mb={1}
                   >
                     {item.title}
                   </Text>
 
                   <Text
-                    color={THEME.colors.gray[200]}
-                    textTransform={'capitalize'}
-                    fontSize={THEME.fontSizes.md - 5}
-                    lineHeight={THEME.fontSizes.md - 5}
-                    fontFamily={'Roboto_400Regular'}
+                    style={styles.authorVideo}
                     numberOfLines={1}
                   >
                     {item.author}
@@ -80,8 +71,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    fontSize: THEME.fontSizes.xl,
-    lineHeight: THEME.fontSizes.xl,
+    fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title,
     fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
   },
@@ -115,5 +106,20 @@ const styles = StyleSheet.create({
     backgroundColor: THEME.colors.header,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
+  },
+  titleVideo: {
+    fontSize: THEME.fontSizes.text,
+    lineHeight: THEME.fontSizes.text,
+    fontFamily: 'Roboto_700Bold',
+    color: THEME.colors.white,
+    textTransform: 'capitalize',
+    marginBottom: 5,
+  },
+  authorVideo: {
+    fontSize: THEME.fontSizes.subText,
+    lineHeight: THEME.fontSizes.subText,
+    fontFamily: 'Roboto_400Regular',
+    color: THEME.colors.gray[200],
+    textTransform: 'capitalize',
   }
 });

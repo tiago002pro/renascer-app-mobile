@@ -43,24 +43,14 @@ export function SlideVideo({ title, data }:any) {
                 </Box>
                 <Box style={styles.description}>
                   <Text
-                    color={THEME.colors.white}
-                    textTransform={'capitalize'}
-                    fontSize={THEME.fontSizes.sm}
-                    lineHeight={THEME.fontSizes.sm}
-                    fontFamily={'Roboto_700Bold'}
+                  style={styles.titleVideo}
                     numberOfLines={1}
-                    mt={2}
                   >
                     {item.title}
                   </Text>
                   <Text
-                    color={THEME.colors.gray[200]}
-                    textTransform={'capitalize'}
-                    fontSize={THEME.fontSizes.sm - 5}
-                    lineHeight={THEME.fontSizes.sm - 5}
-                    fontFamily={'Roboto_400Regular'}
+                  style={styles.authorVideo}
                     numberOfLines={1}
-                    mt={1}
                   >
                     {item.author}
                   </Text>
@@ -79,7 +69,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   title: {
-    fontSize: THEME.fontSizes.sm,
+    fontSize: THEME.fontSizes.subTitle,
+    lineHeight: THEME.fontSizes.subTitle,
     fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
   },
@@ -95,6 +86,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   image: {
     width: imageW - 10,
@@ -108,5 +100,20 @@ const styles = StyleSheet.create({
   },
   description: {
     width: imageW - 10,
+  },
+  titleVideo: {
+    fontSize: THEME.fontSizes.text,
+    lineHeight: THEME.fontSizes.text,
+    fontFamily: 'Roboto_700Bold',
+    color: THEME.colors.white,
+    textTransform: 'capitalize',
+    marginBottom: 5,
+  },
+  authorVideo: {
+    fontSize: THEME.fontSizes.subText,
+    lineHeight: THEME.fontSizes.subText,
+    fontFamily: 'Roboto_400Regular',
+    color: THEME.colors.gray[200],
+    textTransform: 'capitalize',
   }
 });

@@ -51,8 +51,8 @@ export function Schedule() {
           <Box mb={3}>
             <FontAwesome5 name="calendar-times" color={THEME.colors.yellow[400]} size={50}/>
           </Box>
-          <Text color={'white'} fontSize={"lg"} textAlign={'center'}>Nenhum evento</Text>
-          <Text color={'white'} fontSize={"lg"} textAlign={'center'}>foi encontrado</Text>
+          <Text style={styles.title} textAlign={'center'}>Nenhum evento</Text>
+          <Text style={styles.title} textAlign={'center'}>foi encontrado</Text>
         </View>
       }
     </VStack>
@@ -68,9 +68,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 10 + THEME.sizes.paddingPage,
   },
   title: {
-    fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
-    fontWeight: 'bold',
+    fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title,
+    fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
     paddingBottom: 10,
   }

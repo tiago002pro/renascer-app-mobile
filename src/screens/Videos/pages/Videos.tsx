@@ -54,8 +54,8 @@ export function Videos() {
             <Box mb={3}>
               <FontAwesome5 name="video-slash" color={THEME.colors.yellow[400]} size={50}/>
             </Box>
-            <Text color={'white'} fontSize={"lg"} textAlign={'center'}>Nenhum vídeo</Text>
-            <Text color={'white'} fontSize={"lg"} textAlign={'center'}>foi encontrado</Text>
+            <Text style={styles.title} textAlign={'center'}>Nenhum vídeo</Text>
+            <Text style={styles.title} textAlign={'center'}>foi encontrado</Text>
           </View>
         }
       </ScrollView>
@@ -71,5 +71,12 @@ const styles = StyleSheet.create({
   },
   slide: {
     marginBottom: 30
+  },
+  title: {
+    fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title,
+    fontFamily: 'Roboto_700Bold',
+    color: THEME.colors.white,
+    paddingBottom: 10,
   }
 });
