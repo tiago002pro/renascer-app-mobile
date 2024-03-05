@@ -1,6 +1,7 @@
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { THEME } from '../../styles/theme';
+import { ActivityIndicator } from "react-native-paper";
 
 export default function Loading() {
   return (
