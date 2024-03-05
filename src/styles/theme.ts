@@ -29,6 +29,6 @@ export const THEME = extendTheme({
     xl: 24,
   },
   sizes: {
-    paddingPage: 10,
+    paddingPage: 12,
   }
 });

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Button, Image, Text, VStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
@@ -44,6 +44,10 @@ export default function SignIn() {
     navigation.navigate('Register')
   }
 
+  function goToRecoverPassword() {
+    navigation.navigate('RecoverPassword')
+  }
+
   return (
     <VStack style={styles.container}>
       <Box style={styles.containerLogo}>
@@ -83,11 +87,11 @@ export default function SignIn() {
           />
         </Box>
 
-        <Box>
+        <TouchableWithoutFeedback onPress={goToRecoverPassword}>
           <Text style={styles.forgotPassword}>
-            Esqueceu a senha?
+            Esqueci a senha
           </Text>
-        </Box>
+        </TouchableWithoutFeedback>
        
         <ButtonComponent
           label={'Entrar'}

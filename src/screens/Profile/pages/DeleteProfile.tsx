@@ -26,15 +26,13 @@ export function DeleteProdile() {
       })
       
     } else {
-      console.log("iiiiiiiiii");
-      
+      showMessage({ message: "Esse e-mail não pertence a sua conta", type: "danger" })
     }
 
     function out():void {
       signOut()
       navigation.navigate('DashboardRoutes', {screen: 'Dashboard'});
     }
-    
   }
 
   return (

@@ -63,9 +63,18 @@ export function Dashboard() {
         </Box>
 
         <View style={styles.view}>
-          <Box>
+          <Box style={styles.latestVideos}>
             <SlideVideo
               data={latestVideos}
+            />
+          </Box>
+
+          <Box style={styles.themeYear}>
+            <Text style={styles.title}>Destaque</Text>
+            <Image
+              source={require('../../../assets/images/TEMA_ANO.png')}
+              alt={"Tema do ano"}
+              style={styles.image}
             />
           </Box>
         </View>
@@ -121,5 +130,25 @@ const styles = StyleSheet.create({
   view: {
     paddingLeft: THEME.sizes.paddingPage,
     paddingRight: THEME.sizes.paddingPage,
+  },
+  latestVideos: {
+    marginBottom: 20,
+  },
+  themeYear: {
+    marginBottom: 20,
+  },
+  image: {
+    width: width - THEME.sizes.paddingPage * 2,
+    height: height * .24,
+    borderRadius: 5,
+    backgroundColor: THEME.colors.gray[500]
+    
+  },
+  title: {
+    fontSize: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg,
+    fontFamily: 'Roboto_700Bold',
+    color: THEME.colors.white,
+    marginBottom: 10,
   },
 });

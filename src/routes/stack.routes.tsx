@@ -4,6 +4,7 @@ import TabRoutes from "./tab.routes";
 import SignIn from "../screens/Auth/Pages/SignIn/SignIn";
 import Register from "../screens/Auth/Pages/Register/Register";
 import ProfileRoutes from "./profile.routes";
+import { RecoverPassword } from "../screens/Profile/pages/RecoverPassword";
 
 import { returnBtn } from "../components/ReturnBtn";
 
@@ -63,6 +64,15 @@ export default function StackRoutes() {
         options={{ headerShown: false }}
 				name="ProfileRoutes"
 				component={ProfileRoutes}
+			/>
+
+      <Screen
+				name="RecoverPassword"
+				component={RecoverPassword}
+				options={{
+					headerTitle: 'Recuperar senha',
+					headerLeft: returnBtn,
+				}}
 			/>
     </Navigator>
   )
