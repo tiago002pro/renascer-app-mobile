@@ -35,7 +35,8 @@
     "react-native-svg": "14.1.0",
     "react-native-webview": "13.6.4",
     "react-native-youtube-iframe": "^2.3.0",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
+    "expo-network": "~5.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
