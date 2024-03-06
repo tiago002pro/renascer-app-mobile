@@ -3,33 +3,31 @@ import { StyleSheet } from "react-native";
 import { Box, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { showMessage } from "react-native-flash-message";
+import { ActivityIndicator } from "react-native-paper";
 
-import UserService from "../service/UserService";
-import { useAuth } from "../../../contexts/auth";
+import UserService from "../../Profile/service/UserService";
 
 import InputTextComponent from "../../../components/InputText";
 import ButtonComponent from "../../../components/ButtonComponent";
 
 import { THEME } from "../../../styles/theme";
 
-export function RecoverPassword() {
+export default function RecoverPassword() {
   const navigation:any = useNavigation();
-  const {signOut, user} = useAuth() as any;
-  const [email, setEamil] = useState('');
+  const [email, setEmail] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // async function recoverPassword() {
-  //   if (user.email == email) {
-  //     UserService.newwwwwww(user.id).then(() => {
-  //       showMessage({ message: "Confirme seu e-mail para recuperar sua senha", type: "success" })
-  //       navigation.navigate('DashboardRoutes', {screen: 'Dashboard'});
-  //     }).catch(() => {
-  //       showMessage({ message: "Algo deu errado", type: "danger" })
-  //     })
-      
-  //   } else {
-  //     showMessage({ message: "Esse e-mail não pertence a sua conta", type: "danger" })
-  //   }    
-  // }
+  async function recoverPassword() {
+    setLoading(true);
+    UserService.recoverPassword(email).then(() => {
+      showMessage({ message: "Confirme seu e-mail para recuperar sua senha", type: "success" })
+      setLoading(false);
+      navigation.navigate('SignIn');
+    }).catch(() => {
+      showMessage({ message: "Algo deu errado", type: "danger" })
+      setLoading(false);
+    })
+  }
 
   return (
     <View style={styles.container}>
@@ -39,15 +37,23 @@ export function RecoverPassword() {
         <InputTextComponent
           label={'E-mail'}
           valiable={email}
-          setValiable={setEamil}
+          setValiable={setEmail}
         />
       </Box>
 
       <ButtonComponent
         label={'Enviar'}
-        bntFunction={() => {}}
+        bntFunction={recoverPassword}
         isDisabled={false}
       />
+
+      {
+        loading ?
+          <View style={styles.loading}>
+            <ActivityIndicator size={"large"} color={THEME.colors.primary} />
+          </View>
+        : null
+      }
     </View>
   );
 }
@@ -67,5 +73,8 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.md,
     fontFamily: 'Roboto_400Regular',
     marginBottom: 10,
-  }
+  },
+  loading: {
+    marginTop: '50%'
+  },
 })

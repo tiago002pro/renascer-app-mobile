@@ -4,7 +4,7 @@ import TabRoutes from "./tab.routes";
 import SignIn from "../screens/Auth/Pages/SignIn/SignIn";
 import Register from "../screens/Auth/Pages/Register/Register";
 import ProfileRoutes from "./profile.routes";
-import { RecoverPassword } from "../screens/Profile/pages/RecoverPassword";
+import RecoverPassword from "../screens/Auth/Pages/RecoverPassword";
 
 import { returnBtn } from "../components/ReturnBtn";
 

@@ -116,16 +116,16 @@ const styles = StyleSheet.create({
   text: {
     color: THEME.colors.white,
     fontFamily: 'Roboto_700Bold',
-    fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
+    fontSize: THEME.fontSizes.subTitle,
+    lineHeight: THEME.fontSizes.subTitle,
     textTransform: 'uppercase',
     marginBottom: 10,
   },
   author: {
     color: THEME.colors.white,
     fontFamily: 'Roboto_400Regular',
-    fontSize: THEME.fontSizes.xs,
-    lineHeight: THEME.fontSizes.xs,
+    fontSize: THEME.fontSizes.subText,
+    lineHeight: THEME.fontSizes.subText,
     textTransform: 'capitalize',
   },
   view: {
