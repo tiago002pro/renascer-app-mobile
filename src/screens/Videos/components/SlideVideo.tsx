@@ -34,8 +34,8 @@ export function SlideVideo({ title, data }:any) {
               <View style={styles.videoContainer}>
                 <Box style={styles.imageArea}>
                   <Image
-                    source={{uri: item.coverImage}}
-                    alt={item.coverImage}
+                    source={{uri: `https://img.youtube.com/vi/${item.videoId}/0.jpg`}}
+                    alt={item.title}
                     style={styles.image}
                     key={item.id.toString()}
                   />
@@ -89,10 +89,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    width: imageW - 10,
+    width: imageW,
     height: imageH,
     borderRadius: 10,
     backgroundColor: THEME.colors.black,
+    objectFit: 'cover',
   },
   playIcon: {
     position: 'absolute',

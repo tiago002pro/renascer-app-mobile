@@ -9,13 +9,16 @@ import VideoService from "../Videos/service/VideoService";
 import { SlideVideo } from "../Videos/components/SlideVideo";
 
 import { THEME } from "../../styles/theme";
+import { ActivityIndicator } from "react-native-paper";
 
 const { width, height } = Dimensions.get('screen');
+const heightBannerImg = width * .56;
 
 export function Dashboard() {
   const navigation:any = useNavigation();
-  const [latestVideos, setLatestVideos] = useState(null) as any[];
-  const [lastVideos, setLastVideos] = useState(null) as any;
+  const [latestVideos, setLatestVideos] = useState(null) as any;
+  const [lastVideo, setLastVideo] = useState(null) as any;
+  const [loadingVideos, setLoadingVideos] = useState(false);
 
   useEffect(() => {
     async function getLatest() {
@@ -23,7 +26,8 @@ export function Dashboard() {
       if (result && result.length > 0) {
         result.shift()
         setLatestVideos(result)
-        setLastVideos(result[0])
+        setLastVideo(result[0])
+        setLoadingVideos(true)
       }
     }
     getLatest()
@@ -38,37 +42,47 @@ export function Dashboard() {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Box>
-          <TouchableWithoutFeedback onPress={() => goWathVideo(lastVideos)}>
-            <Box style={styles.imageArea}>
-              <Image
-                source={{uri: lastVideos?.coverImage}}
-                alt={'coverImage'}
-                key={lastVideos?.id.toString()}
-                w={width}
-                h={height * .27}
-              />
-              <FontAwesome5 name="play" color={THEME.colors.white} size={70} style={styles.playIcon}/>
-            </Box>
-          </TouchableWithoutFeedback>
+        {
+          loadingVideos ? 
+          <View style={styles.areaVideos}>
+            <Box style={styles.videoBanner}>
+              <TouchableWithoutFeedback onPress={() => goWathVideo(lastVideo)}>
+                <Box style={styles.imageArea}>
+                  <Image
+                    source={{uri: `https://img.youtube.com/vi/${lastVideo?.videoId}/0.jpg`}}
+                    alt={lastVideo?.title}
+                    key={lastVideo?.id.toString()}
+                    w={width}
+                    h={'full'}
+                    style={{objectFit: 'cover'}}
+                  />
+                  <FontAwesome5 name="play" color={THEME.colors.white} size={70} style={styles.playIcon}/>
+                </Box>
+              </TouchableWithoutFeedback>
 
-          <Box style={styles.titleVideo}>
-            <Text style={styles.text} numberOfLines={1}>
-              {lastVideos?.title}
-            </Text>
-            <Text style={styles.author} numberOfLines={1}>
-              {lastVideos?.author}
-            </Text>
+              <Box style={styles.titleVideo}>
+                <Text style={styles.text} numberOfLines={1}>
+                  {lastVideo?.title}
+                </Text>
+                <Text style={styles.author} numberOfLines={1}>
+                  {lastVideo?.author}
+                </Text>
+              </Box>
+            </Box>
+
+            <Box style={styles.latestVideos}>
+              <SlideVideo
+                data={latestVideos}
+              />
+            </Box>
+          </View>
+          :
+          <Box style={styles.loading}>
+            <ActivityIndicator size={"large"} color={THEME.colors.primary} />
           </Box>
-        </Box>
+        }
 
         <View style={styles.view}>
-          <Box style={styles.latestVideos}>
-            <SlideVideo
-              data={latestVideos}
-            />
-          </Box>
-
           <Box style={styles.themeYear}>
             <Text style={styles.title}>Destaques</Text>
             <Image
@@ -90,9 +104,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  areaVideos: {
+    marginBottom: 30,
+  },
+  videoBanner: {
+    marginBottom: 5,
+  },
   imageArea: {
     width: width,
-    height: height * .27,
+    height: heightBannerImg,
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -128,19 +148,20 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.subText,
     textTransform: 'capitalize',
   },
+  latestVideos: {
+    paddingLeft: THEME.sizes.paddingPage,
+    paddingRight: THEME.sizes.paddingPage,
+  },
   view: {
     paddingLeft: THEME.sizes.paddingPage,
     paddingRight: THEME.sizes.paddingPage,
   },
-  latestVideos: {
-    marginBottom: 30,
-  },
   themeYear: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
   image: {
     width: width - THEME.sizes.paddingPage * 2,
-    height: height * .24,
+    height: width * .55,
     borderRadius: 5,
     backgroundColor: THEME.colors.black,
   },
@@ -151,4 +172,9 @@ const styles = StyleSheet.create({
     color: THEME.colors.white,
     marginBottom: 10,
   },
+  loading: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: height * .5,
+  }
 });

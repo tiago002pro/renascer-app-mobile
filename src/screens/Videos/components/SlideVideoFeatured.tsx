@@ -35,7 +35,7 @@ export function SlideVideoFeatured({ title, data }:any) {
               <View style={styles.videoContainer}>
                 <Box style={styles.imageArea}>
                   <Image
-                    source={{uri: item.coverImage}}
+                    source={{uri: `https://img.youtube.com/vi/${item.videoId}/0.jpg`}}
                     alt={item.coverImage}
                     style={styles.image}
                     key={item.id.toString()}
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     backgroundColor: THEME.colors.black,
+    objectFit: 'cover',
   },
   playIcon: {
     position: 'absolute',
