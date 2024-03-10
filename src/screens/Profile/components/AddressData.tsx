@@ -14,10 +14,10 @@ const { width } = Dimensions.get('screen');
 interface AddressDataProps {
   address?:any;
   setAddress?:any;
-  save?:() => void;
+  scrollTo?:() => void;
 }
 
-export function AddressData({ address, setAddress, save }:AddressDataProps) {
+export function AddressData({ address, setAddress, scrollTo }:AddressDataProps) {
   const [showDataAddress, setShowDataAddress] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -164,11 +164,11 @@ export function AddressData({ address, setAddress, save }:AddressDataProps) {
       </View>
       <View style={styles.footer}>
         <Button
-          onPress={save}
+          onPress={scrollTo}
           backgroundColor={THEME.colors.gray[500]}
           _text={{ color: THEME.colors.white, fontWeight: 'bold' }}
         >
-          Salvar
+          Próximo
         </Button>
       </View>
     </View>
@@ -197,6 +197,6 @@ export const styles = StyleSheet.create({
     marginBottom: 2,
   },
   footer: {
-    marginBottom: THEME.sizes.paddingPage * 2,
+    marginBottom: THEME.sizes.paddingPage * 5,
   },
 })

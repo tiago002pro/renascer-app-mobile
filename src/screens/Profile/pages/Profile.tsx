@@ -51,7 +51,7 @@ export function Profile() {
                 :
                 <Ionicons
                   name="person-circle"
-                  size={130}
+                  size={170}
                   style={styles.icon}
                   color={THEME.colors.white}
                 />
@@ -83,7 +83,7 @@ export function Profile() {
                         as={vectorIcon}
                         name={icon}
                         color={THEME.colors.white}
-                        size={7}
+                        size={10}
                       />
                     </Box>
 
@@ -146,22 +146,21 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
   },
   imageArea: {
-    width: 125,
-    height: 125,
-    borderRadius: 125,
+    width: 150,
+    height: 150,
+    borderRadius: 150,
     marginBottom: 20,
-    backgroundColor: THEME.colors.gray[500],
     justifyContent: 'center',
     alignItems: 'center',
   },
   icon: {
-    width: 130,
-    height: 130,
+    width: 170,
+    height: 170,
   },
   image: {
-    width: 130,
-    height: 130,
-    borderRadius: 130,
+    width: 150,
+    height: 150,
+    borderRadius: 150,
   },
   textArea: {
     display: 'flex',
@@ -170,16 +169,16 @@ export const styles = StyleSheet.create({
   },
   name: {
     color: '#FFF',
-    fontWeight:'500',
-    fontSize: THEME.fontSizes.lg + 10,
-    lineHeight: THEME.fontSizes.lg + 10,
+    fontFamily: 'Roboto_400Regular',
+    fontSize: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg,
     marginBottom: 5,
   },
   email: {
-    color: THEME.colors.gray[400],
+    color: THEME.colors.yellow[300],
+    fontFamily: 'Roboto_400Regular',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
-    fontWeight: '500'
   },
   accordion: {
     width: '100%',

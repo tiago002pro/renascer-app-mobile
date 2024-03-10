@@ -107,6 +107,6 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   footer: {
-    marginBottom: THEME.sizes.paddingPage * 2,
+    marginBottom: THEME.sizes.paddingPage * 5,
   },
 })

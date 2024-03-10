@@ -5,6 +5,7 @@ import { ContactData } from "./ContactData";
 import { AddressData } from "./AddressData";
 
 import { THEME } from "../../../styles/theme";
+import { ChurchData } from "./ChurchData";
 
 interface OnboardingItemProps {
   item?:any;
@@ -24,7 +25,8 @@ export function OnboardingItem({ item, person, setPerson, address, setAddress, s
       </View>
       {item.id == 1 ? <BasicData person={person} setPerson={setPerson} scrollTo={scrollTo} /> : null}
       {item.id == 2 ? <ContactData person={person} setPerson={setPerson} scrollTo={scrollTo} /> : null}
-      {item.id == 3 ? <AddressData address={address} setAddress={setAddress} save={save} /> : null}
+      {item.id == 3 ? <AddressData address={address} setAddress={setAddress} scrollTo={scrollTo} /> : null}
+      {item.id == 4 ? <ChurchData person={person} setPerson={setPerson} save={save} /> : null}
     </View>
   );
 }

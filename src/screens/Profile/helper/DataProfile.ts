@@ -22,4 +22,12 @@ export default [
     route: 'EditProfile',
     key: 'ADDRESS',
   },
+
+  { 
+    title: 'Igreja',
+    icon: 'church',
+    vectorIcon: MaterialCommunityIcons,
+    route: 'EditProfile',
+    key: 'CHURCH',
+  },
 ]

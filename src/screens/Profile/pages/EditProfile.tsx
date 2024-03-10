@@ -18,6 +18,7 @@ const data = [
   { id: '1', title: 'Dados básicos' },
   { id: '2', title: 'Contato' },
   { id: '3', title: 'Endereço' },
+  { id: '4', title: 'Igreja' },
 ]
 
 export function EditProfile() {
@@ -60,7 +61,7 @@ export function EditProfile() {
 
   async function getUser() {
     const data = await UserService.loadUser(parseInt(user.id))
-
+    
     setPerson(data?.person)
     setAddress(data?.person?.address || {})
   }

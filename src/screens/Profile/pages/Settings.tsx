@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    color: '#FFF',
+    color: THEME.colors.white,
     fontFamily: 'Roboto_500Medium',
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
@@ -305,15 +305,14 @@ export const stylesOpenCamera = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 70,
-    marginRight: THEME.sizes.paddingPage,
+    marginRight: THEME.sizes.paddingPage * 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
   imgContainer: {
-    width: 75,
-    height: 75,
-    borderRadius: 75,
-    backgroundColor: THEME.colors.gray[500],
+    width: 80,
+    height: 80,
+    borderRadius: 80,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -322,8 +321,9 @@ export const stylesOpenCamera = StyleSheet.create({
     height: 80,
   },
   img: {
-    width: 70,
-    height: 70,
-    borderRadius: 70,
+    width: 80,
+    height: 80,
+    borderRadius: 80,
+    backgroundColor: THEME.colors.white,
   }
 })
