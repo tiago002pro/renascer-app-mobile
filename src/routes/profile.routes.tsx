@@ -36,9 +36,8 @@ export default function ProfileRoutes() {
 				options={{
 					headerTitle: 'Meu Perfil',
 					headerRight: () => 
-					<Box>
 						<IconButton
-							m={0} p={0} right={0}
+							m={0} p={0}
 							onPress={() => navigation.navigate('Settings')}
 							icon={
 								<Icon as={Ionicons} name="settings-sharp" />
@@ -51,9 +50,8 @@ export default function ProfileRoutes() {
 							_pressed={{
 								backgroundColor: 'transparent'
 							}}
-							style={{marginEnd: THEME.sizes.paddingPage}}
-						/>
-					</Box>,
+							style={{marginRight: THEME.sizes.paddingPage}}
+						/>,
 					headerLeft: returnBtn
 				}}
 			/>

@@ -65,52 +65,48 @@ export default function DashboardRoutes() {
 					headerRight: (
 						() =>
 						(!signed ?
-							<Box alignItems="center">
-								<Button
-									right={0}
-									onPress={goSignIn}
-									borderRadius={50}
-									height={8}
-									backgroundColor={'transparent'}
-									borderColor={THEME.colors.yellow[400]}
-									borderWidth={1}
-									_pressed={{
-										backgroundColor: THEME.colors.yellow[400],
-										_text: {
-										color: THEME.colors.backgroud,
-										fontWeight: 'bold'
-										}
-									}}
-									_text={{
-										color: THEME.colors.yellow[400],
-										textTransform: 'uppercase',
-										fontSize: 12,
-										lineHeight: 12,
-									}}
-									style={{marginEnd: THEME.sizes.paddingPage}}
-								>
-									Login
-								</Button>
-							</Box>
-						:
-							<Box alignItems="center">
-								<IconButton
-									m={0} p={0} right={0}
-									onPress={goProfile}
-									icon={
-										<Icon as={Ionicons} name="person-circle"/>
+							<Button
+								m={0}
+								onPress={goSignIn}
+								borderRadius={50}
+								height={8}
+								backgroundColor={'transparent'}
+								borderColor={THEME.colors.yellow[400]}
+								borderWidth={1}
+								_pressed={{
+									backgroundColor: THEME.colors.yellow[400],
+									_text: {
+									color: THEME.colors.backgroud,
+									fontWeight: 'bold'
 									}
-									borderRadius={'full'}
-									_icon={{
-										color: THEME.colors.white,
-										size: 8
-									}}
-									_pressed={{
-										backgroundColor: 'transparent'
-									}}
-									style={{marginEnd: THEME.sizes.paddingPage}}
-								/>
-							</Box>
+								}}
+								_text={{
+									color: THEME.colors.yellow[400],
+									textTransform: 'uppercase',
+									fontSize: 12,
+									lineHeight: 12,
+								}}
+								style={{marginRight: THEME.sizes.paddingPage}}
+							>
+								Login
+							</Button>
+						:
+							<IconButton
+								m={0} p={0}
+								onPress={goProfile}
+								icon={
+									<Icon as={Ionicons} name="person-circle"/>
+								}
+								borderRadius={'full'}
+								_icon={{
+									color: THEME.colors.white,
+									size: 8
+								}}
+								_pressed={{
+									backgroundColor: 'transparent'
+								}}
+								style={{marginRight: THEME.sizes.paddingPage}}
+							/>
 						)
 					)
 				}}

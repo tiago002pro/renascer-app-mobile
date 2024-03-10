@@ -7,22 +7,21 @@ export const CloseBtn = () => {
     const navigation:any = useNavigation();
 
     return (
-      <Box>
-        <IconButton
-          onPress={() => navigation.navigate('Settings')}
-          icon={
-            <Icon as={AntDesign} name="close"/>
-          }
-          borderRadius={'full'}
-          _icon={{
-            color: '#FFF',
-            size: 6
-          }}
-          _pressed={{
-            backgroundColor: 'transparent'
-          }}
-          style={{marginStart: THEME.sizes.paddingPage}}
-        />
-      </Box>
+      <IconButton
+        m={0} p={0}
+        onPress={() => navigation.navigate('Settings')}
+        icon={
+          <Icon as={AntDesign} name="close"/>
+        }
+        borderRadius={'full'}
+        _icon={{
+          color: '#FFF',
+          size: 6
+        }}
+        _pressed={{
+          backgroundColor: 'transparent'
+        }}
+        style={{marginRight: THEME.sizes.paddingPage}}
+      />
     );
   }

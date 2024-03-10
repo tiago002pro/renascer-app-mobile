@@ -31,6 +31,7 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
         value={value}
         type={showPassword ? 'text' : 'password'}
         style={styles.input}
+        selectionColor={THEME.colors.white}
         InputLeftElement = {
           <Icon
             as = {
