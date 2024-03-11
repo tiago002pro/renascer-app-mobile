@@ -1,6 +1,7 @@
 import { Animated, StyleSheet, useWindowDimensions, View } from "react-native";
 
 import { THEME } from "../../../styles/theme";
+import { theme } from "native-base";
 
 interface PaginatorProps {
   data?:any;
@@ -21,7 +22,7 @@ export function Paginator({ data, scrollx }:PaginatorProps) {
         //   extrapolate: 'clamp'
         // })
 
-        const dotWidth = (width / data.length) - 15;
+        const dotWidth = (width / data.length) - THEME.sizes.paddingPage * 2;
 
         const opacity = scrollx.interpolate({
           inputRange,
@@ -49,11 +50,10 @@ export function Paginator({ data, scrollx }:PaginatorProps) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: THEME.sizes.paddingPage * 4,
+    height: THEME.sizes.paddingPage,
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: THEME.sizes.paddingPage,
-    paddingRight: THEME.sizes.paddingPage,
+    marginBottom: 20,
   },
   dot: {
     height: 5,

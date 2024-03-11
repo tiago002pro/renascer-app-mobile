@@ -7,6 +7,7 @@ import { Profile } from "../screens/Profile/pages/Profile";
 import { Settings } from "../screens/Profile/pages/Settings";
 import { EditProfile } from "../screens/Profile/pages/EditProfile";
 import { DeleteProdile } from "../screens/Profile/pages/DeleteProfile";
+import { Edit } from "../screens/Profile/pages/Edit";
 
 import { returnBtn } from "../components/ReturnBtn";
 import { CloseBtn } from "../components/CloseBtn";
@@ -68,6 +69,16 @@ export default function ProfileRoutes() {
 			<Screen
 				name="EditProfile"
 				component={EditProfile}
+				options={{
+					headerTitle: 'Editar perfil',
+					headerLeft: returnBtn,
+					headerRight: CloseBtn,
+				}}
+			/>
+
+			<Screen
+				name="Edit"
+				component={Edit}
 				options={{
 					headerTitle: 'Editar perfil',
 					headerLeft: returnBtn,

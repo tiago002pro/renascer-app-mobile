@@ -82,7 +82,7 @@ export function Profile() {
                       <Icon
                         as={vectorIcon}
                         name={icon}
-                        color={THEME.colors.white}
+                        color={THEME.colors.gray[400]}
                         size={10}
                       />
                     </Box>
@@ -129,7 +129,6 @@ export const styles = StyleSheet.create({
     
   },
   containerData: {
-    height: height * .7,
     paddingLeft: THEME.sizes.paddingPage,
     paddingRight: THEME.sizes.paddingPage,
     backgroundColor: THEME.colors.backgroud,
@@ -175,7 +174,7 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
   },
   email: {
-    color: THEME.colors.yellow[300],
+    color: THEME.colors.gray[400],
     fontFamily: 'Roboto_400Regular',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
@@ -195,7 +194,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 20,
+    padding: THEME.sizes.paddingPage,
   },
   data: {
     display: 'flex',
@@ -203,13 +202,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconArea: {
-    marginRight: 10,
+    marginRight: THEME.sizes.paddingPage,
   },
   infoArea: {
   },
   title: {
-    fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
   },
@@ -223,8 +222,6 @@ export const styles = StyleSheet.create({
   },
   component: {
     width: '100%',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 20,
+    padding: THEME.sizes.paddingPage,
   },
 })

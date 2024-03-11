@@ -1,24 +1,24 @@
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default [
   { 
     title: 'Dados básicos',
-    icon: 'file-document-edit-outline',
+    icon: 'file-document-multiple',
     vectorIcon: MaterialCommunityIcons,
     route: 'EditProfile',
     key: 'BASIC',
   },
   { 
     title: 'Contato',
-    icon: 'person-circle-outline',
-    vectorIcon: Ionicons,
+    icon: 'person',
+    vectorIcon: MaterialIcons,
     route: 'EditProfile',
     key: 'CONTACT',
   },
   { 
     title: 'Endereço',
-    icon: 'location-outline',
-    vectorIcon: Ionicons,
+    icon: 'location-on',
+    vectorIcon: MaterialIcons,
     route: 'EditProfile',
     key: 'ADDRESS',
   },
@@ -26,7 +26,7 @@ export default [
   { 
     title: 'Igreja',
     icon: 'church',
-    vectorIcon: MaterialCommunityIcons,
+    vectorIcon: MaterialIcons,
     route: 'EditProfile',
     key: 'CHURCH',
   },
