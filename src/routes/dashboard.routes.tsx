@@ -1,4 +1,4 @@
-import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
+import { Button, Icon, IconButton, Image, Text, View } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
@@ -7,6 +7,8 @@ import { useAuth } from "../contexts/auth";
 
 import { Dashboard } from "../screens/Dashboard";
 import { WatchVideo } from "../screens/Videos/pages/WatchVideo";
+
+import ProfileRoutes from "./profile.routes";
 
 import { returnBtn } from "../components/ReturnBtn";
 
@@ -116,7 +118,13 @@ export default function DashboardRoutes() {
 				name="WatchVideo"
 				component={WatchVideo}
 				options={({ route }:any) => ({ title: route.params.video.title, headerLeft: returnBtn })}
-			/> 
+			/>
+
+			<Screen
+				options={{ headerShown: false }}
+				name="ProfileRoutes"
+				component={ProfileRoutes}
+			/>
 		</Navigator>
 	);
 };

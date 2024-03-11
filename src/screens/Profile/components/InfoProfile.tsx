@@ -256,21 +256,24 @@ export default function InfoProfile({ section, person }:Props) {
 
       {section === 'CHURCH' ? (
         <View style={styles.container}>
-          <FlatList
-            data={churchData}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={(data) => 
-              <TouchableOpacity
-                onPress={
-                  () => goToEdit(data.item.type, data.item.mask, data.item.label, data.item.question, data.item.attribute, data.item.value, data.item.options)
-                }
-                style={styles.item}
-              >
-                <Text style={styles.label}>{data.item.label}</Text>
-                <Text style={styles.value}>{data.item.getValue}</Text>
-              </TouchableOpacity>
+          <ScrollView>
+            {
+              churchData.map((item:any) => {
+                return (
+                  <TouchableOpacity
+                    id={item.id}
+                    style={styles.item}
+                    onPress={
+                      () => goToEdit(item.type, item.mask, item.label, item.question, item.attribute, item.value, item.options)
+                    }
+                  >
+                    <Text style={styles.label}>{item.label}</Text>
+                    <Text style={styles.value}>{item.getValue}</Text>
+                  </TouchableOpacity>
+                )
+              })
             }
-          />
+          </ScrollView>
         </View>
       ) : null}
     </ScrollView>
@@ -284,22 +287,21 @@ export const styles = StyleSheet.create({
     display: 'flex',
     marginBottom: 20,
     borderWidth: 1,
-    borderBottomColor: THEME.colors.white,
+    borderBottomColor: THEME.colors.font,
     borderTopColor: 'transparent',
     borderLeftColor: 'transparent',
-    borderRightColor: 'transparent', 
+    borderRightColor: 'transparent',
   },
   label: {
-    fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md + 2,
-    color: THEME.colors.white,
-    fontFamily: 'Roboto_500Medium',
-    marginBottom: 7,
+    fontSize: THEME.fontSizes.md + 2,
+    lineHeight: THEME.fontSizes.md + 5,
+    color: THEME.colors.font,
+    fontFamily: 'Roboto_700Bold',
   },
   value: {
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm * 2,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'Roboto_400Regular',
   },
 })

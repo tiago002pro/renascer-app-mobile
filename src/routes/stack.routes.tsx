@@ -59,13 +59,7 @@ export default function StackRoutes() {
 				name="Register"
 				component={Register}
 			/>
-
-      <Screen
-        options={{ headerShown: false }}
-				name="ProfileRoutes"
-				component={ProfileRoutes}
-			/>
-
+      
       <Screen
 				name="RecoverPassword"
 				component={RecoverPassword}
