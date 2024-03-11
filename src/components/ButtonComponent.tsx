@@ -18,15 +18,15 @@ export default function ButtonComponent({ label, color, bg, bntFunction, isDisab
       bg={bg || THEME.colors.primary}
       opacity={1}
       _pressed={{
-        backgroundColor: "orange.500",
+        backgroundColor: THEME.colors.yellow[500],
         borderColor: "transparent",
       }}
       mt={2}
       _text={{
         fontSize: THEME.fontSizes.md,
         lineHeight: THEME.fontSizes.md,
-        color: color || "white",
-        fontFamily: "Roboto_700Bold"
+        color: color || THEME.colors.font,
+        fontFamily: "Roboto_500Medium"
       }}
       isDisabled={isDisabled}
       _disabled={{

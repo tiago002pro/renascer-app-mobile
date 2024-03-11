@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Animated, StyleSheet } from "react-native";
-import { FlatList, Text, View } from "native-base";
+import { Box, FlatList, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { showMessage } from "react-native-flash-message";
 
@@ -15,16 +15,7 @@ import { THEME } from "../../../styles/theme";
 
 export function Edit({ route }:any) {
   const navigation:any = useNavigation();
-  const {
-    type,
-    mask,
-    title,
-    question,
-    attb,
-    attbValue,
-    data,
-    dataList
-  } = route.params; 
+  const { type, mask, title, question, attb, attbValue, data, dataList } = route.params; 
   const [value, setValue] = useState(attbValue);
   const scrollx:any = useRef(new Animated.Value(0)).current;
 
@@ -45,11 +36,10 @@ export function Edit({ route }:any) {
   return (
     <View style={styles.container}>
       <Paginator data={[{}]} scrollx={scrollx} />
-      <Text style={styles.title}>{question}</Text>
+      <Text style={styles.question}>{question}</Text>
 
       {type == 'checkbox' ?
         <FlatList
-          style={styles.flatList}
           data={dataList}
           keyExtractor={(item:any) => item.key}
           renderItem={(item:any) => 
@@ -64,23 +54,27 @@ export function Edit({ route }:any) {
         />
         :
         type == 'input' ?
-        <InputTextComponent
-          label={title}
-          type={'numeric'}
-          valiable={value}
-          setValiable={setValue2}
-          mask={mask}
-        />
+        <Box flex={1}>
+          <InputTextComponent
+            label={title}
+            type={'numeric'}
+            valiable={value}
+            setValiable={setValue2}
+            mask={mask}
+          />
+        </Box>
         :
         null
       }
 
-      <ButtonComponent
-        label={'Salvar'}
-        bntFunction={save}
-        isDisabled={false}
-        bg={THEME.colors.gray[700]}
-      />
+      <Box bottom={0}>
+        <ButtonComponent
+          label={'Salvar'}
+          bntFunction={save}
+          isDisabled={false}
+          bg={THEME.colors.second}
+        />
+      </Box>
     </View>
   );
 }
@@ -91,13 +85,11 @@ export const styles = StyleSheet.create({
     padding: THEME.sizes.paddingPage,
     backgroundColor: THEME.colors.backgroud,
   },
-  flatList: {
-  },
-  title: {
+  question: {
     fontFamily: 'Roboto_700Bold',
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,
-    marginBottom: 10,
+    marginBottom: 20,
   }
 })

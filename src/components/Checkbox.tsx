@@ -11,14 +11,14 @@ export const Checkbox = ({ id, title, op, value, setValue }: any) => {
       uncheckedIcon="circle-o"
       onPress={() => setValue(op)}
       containerStyle={{
-        backgroundColor: value == op ? THEME.colors.gray[700] : THEME.colors.header,
+        backgroundColor: value == op ? THEME.colors.second : THEME.colors.tabBar,
         borderRadius: 10,
         width: '100%',
         left: -10,
       }}
-      checkedColor={THEME.colors.white}
+      checkedColor={THEME.colors.font}
       textStyle={{
-        color: THEME.colors.white,
+        color: THEME.colors.font,
         fontFamily: 'Roboto_400Regular',
         fontSize: THEME.fontSizes.md
       }}

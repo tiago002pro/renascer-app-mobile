@@ -70,6 +70,7 @@ export function Profile() {
             return (
               <TouchableOpacity
                 key={key}
+                id={key}
                 onPress={() => {
                   setCurrentSection(key === currentSection ? null : key)
                 }}
@@ -82,7 +83,7 @@ export function Profile() {
                       <Icon
                         as={vectorIcon}
                         name={icon}
-                        color={THEME.colors.gray[400]}
+                        color={THEME.colors.third}
                         size={10}
                       />
                     </Box>
@@ -181,7 +182,7 @@ export const styles = StyleSheet.create({
   },
   accordion: {
     width: '100%',
-    backgroundColor: THEME.colors.header,
+    backgroundColor: THEME.colors.tabBar,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -207,10 +208,10 @@ export const styles = StyleSheet.create({
   infoArea: {
   },
   title: {
-    fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
+    fontSize: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg,
     fontFamily: 'Roboto_700Bold',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   },
   arrowArea: {
     display: 'flex',
