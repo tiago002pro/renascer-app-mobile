@@ -9,7 +9,7 @@ export const CloseBtn = () => {
     return (
       <IconButton
         m={0} p={0}
-        onPress={() => navigation.navigate('Settings')}
+        onPress={() => navigation.goBack()}
         icon={
           <Icon as={AntDesign} name="close"/>
         }
