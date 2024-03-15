@@ -1,10 +1,9 @@
 import { CheckBox } from "@rneui/themed";
 import { THEME } from "../styles/theme";
 
-export const Checkbox = ({ id, title, op, value, setValue }: any) => {
+export const Checkbox = ({ title, op, value, setValue }: any) => {
   return (
     <CheckBox
-      id={id}
       title={title}
       checked={value == op}
       checkedIcon="dot-circle-o"
