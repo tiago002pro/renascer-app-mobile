@@ -24,9 +24,9 @@ export function Dashboard() {
     async function getLatest() {
       const result:any[] = await VideoService.getLatest()
       if (result && result.length > 0) {
+        setLastVideo(result[0])
         result.shift()
         setLatestVideos(result)
-        setLastVideo(result[0])
         setLoadingVideos(true)
       }
     }
