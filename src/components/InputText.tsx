@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { View } from "native-base";
 import { TextInput } from "react-native-paper";
 import MaskInput from "react-native-mask-input";
 import { THEME } from "../styles/theme";

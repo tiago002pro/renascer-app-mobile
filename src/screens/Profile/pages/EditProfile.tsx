@@ -17,8 +17,7 @@ import { THEME } from "../../../styles/theme";
 const data = [
   { id: '1', title: 'Dados básicos' },
   { id: '2', title: 'Contato' },
-  { id: '3', title: 'Endereço' },
-  { id: '4', title: 'Igreja' },
+  { id: '3', title: 'Igreja' },
 ]
 
 export function EditProfile() {

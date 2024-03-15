@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { Animated, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { Animated, StyleSheet, TouchableOpacity } from "react-native";
 import { Box, VStack, Image, Text, Icon, View, ScrollView } from "native-base";
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
 
-import InfoProfile from "../components/InfoProfile";
-
 import { THEME } from "../../../styles/theme";
-const { height } = Dimensions.get('screen');
 import data from '../helper/DataProfile';
 import { useNavigation } from "@react-navigation/native";
+import { DataAccordion } from "../helper/DataAccordion";
 
 export function Profile() {
   const navigation:any = useNavigation();
@@ -22,10 +20,12 @@ export function Profile() {
   const [load, setLoad] = useState(false);
 
   async function getUser() {
-    // if (!!load) {
-      const data = await UserService.loadUser(parseInt(user.id))
-      setPerson(data?.person)
-    // }
+    const data = await UserService.loadUser(parseInt(user.id))
+    setPerson(data?.person)
+  }
+
+  function goToEdit(item:any):void {
+    navigation.navigate('Edit', { item: item, data: person, })
   }
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export function Profile() {
     }
     onInit()
   }, [load, navigation])
+  
 
   return (
     <VStack style={styles.container}>
@@ -66,11 +67,11 @@ export function Profile() {
         </Box>
 
         <Box style={styles.containerData}>
-          {data.map(({title, icon, vectorIcon, route, key}) => {
+          {data.map(({id, title, icon, vectorIcon, key}) => {
             return (
               <TouchableOpacity
-                key={key}
-                id={key}
+                key={id.toString()}
+                id={id.toString()}
                 onPress={() => {
                   setCurrentSection(key === currentSection ? null : key)
                 }}
@@ -106,10 +107,22 @@ export function Profile() {
 
                 {key === currentSection && (
                   <View style={styles.component}>
-                    <InfoProfile
-                      section={key}
-                      person={person}
-                    />
+                    <ScrollView id={key}>
+                      {
+                        DataAccordion.getData(person, key).map((item:any, i:number) => {
+                          return(
+                          <TouchableOpacity
+                            key={i}
+                            style={styles.item}
+                            onPress={() => goToEdit(item)}
+                          >
+                            <Text style={styles.label}>{item.label}</Text>
+                            <Text style={styles.value}>{item.getValue}</Text>
+                          </TouchableOpacity>
+                          );
+                        })
+                      }
+                    </ScrollView>
                   </View>
                 )}
               </TouchableOpacity>
@@ -224,5 +237,28 @@ export const styles = StyleSheet.create({
   component: {
     width: '100%',
     padding: THEME.sizes.paddingPage,
+  },
+  item: {
+    display: 'flex',
+    marginBottom: 20,
+    borderWidth: 1,
+    borderBottomColor: THEME.colors.font,
+    borderTopColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+  },
+  label: {
+    fontSize: THEME.fontSizes.md + 2,
+    lineHeight: THEME.fontSizes.md + 2,
+    color: THEME.colors.font,
+    fontFamily: 'Roboto_700Bold',
+    marginBottom: 5,
+  },
+  value: {
+    fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
+    color: THEME.colors.font,
+    fontFamily: 'Roboto_400Regular',
+    marginBottom: 5,
   },
 })
