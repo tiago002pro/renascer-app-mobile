@@ -47,10 +47,10 @@ export namespace TranslateEnum {
         }
     }
     
-    export function getBoolean(value:string):string {
+    export function getBoolean(value:boolean):string {
         switch(value) {
-            case 'YES': return 'Sim';
-            case 'NO': return 'Não';
+            case true: return 'Sim';
+            case false: return 'Não';
             default: return '-';
         }
     }

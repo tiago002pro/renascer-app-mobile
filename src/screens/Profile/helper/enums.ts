@@ -30,7 +30,7 @@ export default {
         {label: 'Aclamação: fui batizado(a) em outra igreja', key: 'ACLAMACAO'},
     ],
     booleanList: [
-        {label: 'Sim', key: 'YES'},
-        {label: 'Não', key: 'NO'},
+        {label: 'Sim', key: true},
+        {label: 'Não', key: false},
     ]
 }
