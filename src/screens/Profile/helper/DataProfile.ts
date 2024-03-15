@@ -2,32 +2,24 @@ import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default [
   { 
+    id: 1,
     title: 'Dados básicos',
     icon: 'file-document-multiple',
     vectorIcon: MaterialCommunityIcons,
-    route: 'EditProfile',
     key: 'BASIC',
   },
   { 
+    id: 2,
     title: 'Contato',
-    icon: 'person',
+    icon: 'location-on',
     vectorIcon: MaterialIcons,
-    route: 'EditProfile',
     key: 'CONTACT',
   },
   { 
-    title: 'Endereço',
-    icon: 'location-on',
-    vectorIcon: MaterialIcons,
-    route: 'EditProfile',
-    key: 'ADDRESS',
-  },
-
-  { 
+    id: 3,
     title: 'Igreja',
     icon: 'church',
     vectorIcon: MaterialIcons,
-    route: 'EditProfile',
     key: 'CHURCH',
   },
 ]

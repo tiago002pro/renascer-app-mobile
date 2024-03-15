@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Animated, StyleSheet } from "react-native";
-import { Box, FlatList, Text, View } from "native-base";
+import { Box, KeyboardAvoidingView, ScrollView, Text } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { showMessage } from "react-native-flash-message";
 
@@ -10,22 +10,23 @@ import ButtonComponent from "../../../components/ButtonComponent";
 import InputTextComponent from "../../../components/InputText";
 import { Checkbox } from "../../../components/Checkbox";
 import { Paginator } from "../components/Paginator";
+import { Address } from "../components/Address";
+import InputDate from "../../../components/InputDate";
 
 import { THEME } from "../../../styles/theme";
 
 export function Edit({ route }:any) {
   const navigation:any = useNavigation();
-  const { type, mask, title, question, attb, attbValue, data, dataList } = route.params; 
-  const [value, setValue] = useState(attbValue);
+  const { item, data } = route.params; 
+  const [person, setPerson] = useState(data);
   const scrollx:any = useRef(new Animated.Value(0)).current;
 
-  function setValue2(teste:any) {
-    setValue(teste)
-    data[attb] = teste
+  function putValue(value:any) {
+    setPerson({...data, [item.attribute]: value})
   }
 
   async function save():Promise<void> {
-    await PersonService.update(data).then(() => {
+    await PersonService.update(person).then(() => {
       showMessage({ message: "Salvo com sucesso", type: "success"})
       navigation.navigate('Profile')
     }).catch(() => {
@@ -34,40 +35,57 @@ export function Edit({ route }:any) {
   }
 
   return (
-    <View style={styles.container}>
-      <Paginator data={[{}]} scrollx={scrollx} />
-      <Text style={styles.question}>{question}</Text>
+    <KeyboardAvoidingView
+      key={item.attribute}
+      style={styles.container}
+      behavior='padding'
+      keyboardVerticalOffset={100}
+    >
+      <ScrollView flex={1}>
+        <Paginator data={[{}]} scrollx={scrollx} />
+        <Text style={styles.question}>{item.question}</Text>
 
-      {type == 'checkbox' ?
-        <FlatList
-          data={dataList}
-          keyExtractor={(item:any) => item.key}
-          renderItem={(item:any) => 
-            <Checkbox
-              id={item.item.key}
-              title={item.item.label}
-              op={item.item.key}
-              value={value}
-              setValue={setValue2}
+        {item.type == 'checkbox' ?
+          item.options.map((data:any, i:number) => {
+            return (
+              <Box key={i}>
+                <Checkbox
+                  title={data.label}
+                  op={data.key}
+                  value={person[item.attribute]}
+                  setValue={putValue}
+                />
+              </Box>
+            )
+          })
+          : item.type == 'input' ?
+          <Box flex={1}>
+            <InputTextComponent
+              label={item.label}
+              type={item.inputType}
+              valiable={person[item.attribute]}
+              setValiable={putValue}
+              mask={item.mask}
             />
-          }
-        />
-        :
-        type == 'input' ?
-        <Box flex={1}>
-          <InputTextComponent
-            label={title}
-            type={'numeric'}
-            valiable={value}
-            setValiable={setValue2}
-            mask={mask}
-          />
-        </Box>
-        :
-        null
-      }
-
-      <Box bottom={0}>
+          </Box>
+          : item.type == 'address' ?
+            <Address
+              address={person[item.attribute]}
+              setAddress={putValue}
+            />
+          : item.type == 'date' ?
+          <Box flex={1}>
+            <InputDate
+              label={item.label}
+              valiable={person[item.attribute]}
+              setValiable={putValue}
+            />
+          </Box>
+          : null
+        }
+      </ScrollView>
+      
+      <Box bottom={3}>
         <ButtonComponent
           label={'Salvar'}
           bntFunction={save}
@@ -75,7 +93,7 @@ export function Edit({ route }:any) {
           bg={THEME.colors.second}
         />
       </Box>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
