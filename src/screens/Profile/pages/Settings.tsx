@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Alert, StyleSheet, TouchableOpacity } from "react-native";
+import { Alert, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import { Box, Icon, IconButton, Image, Text, View } from "native-base";
-import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { showMessage } from "react-native-flash-message";
+import { ActivityIndicator } from "react-native-paper";
 
 import { useAuth } from "../../../contexts/auth";
 import { storage } from "../../../../firebaseConfig";
@@ -15,12 +16,15 @@ import PersonService from "../service/PersonService";
 import { THEME } from "../../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
 
+const {width, height} = Dimensions.get('screen')
+
 export function Settings() {
   const navigation:any = useNavigation();
   const {signOut, user} = useAuth() as any;
 
   const [person, setPerson] = useState(null);
   const [load, setLoad] = useState(false);
+  const [loadImage, setLoadImage] = useState(false);
 
   useEffect(() => {
     function onInit() {
@@ -39,14 +43,14 @@ export function Settings() {
   }
 
   const options = [
-    {
-      id: '1',
-      vectorIcon: MaterialCommunityIcons,
-      icon: 'account-edit',
-      colorIcon: null,
-      label: 'Editar perfil',
-      action: goEditProfile,
-    },
+    // {
+    //   id: '1',
+    //   vectorIcon: MaterialCommunityIcons,
+    //   icon: 'account-edit',
+    //   colorIcon: null,
+    //   label: 'Editar perfil',
+    //   action: goEditProfile,
+    // },
     {
       id: '2',
       vectorIcon: MaterialIcons,
@@ -81,13 +85,20 @@ export function Settings() {
 
   return (
     <View style={styles.container}>
+      {loadImage?
+        <Box flex={1} w={width} h={height} position={'absolute'} zIndex={1} justifyContent={'center'} alignContent={'center'} alignItems={'center'}>
+          <ActivityIndicator size={"large"} color={THEME.colors.primary} style={{bottom: '20%'}}/>
+        </Box>
+        : null
+      }
+
       <TouchableOpacity
         key={'0'}
         style={styles.option}
         activeOpacity={.8}
       >
         <Box style={styles.profile}>
-          <OpenCamera person={person} setPerson={setPerson} />
+          <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoadImage} />
 
           <Box style={styles.textArea}>
             <Text style={styles.name}>{user?.name}</Text>
@@ -158,7 +169,7 @@ export const styles = StyleSheet.create({
   },
 })
 
-function OpenCamera({ person, setPerson }:any) {
+function OpenCamera({ person, setPerson, setLoadImage }:any) {
   function setProfileImage(image:any) { setPerson({...person, profileImage: image}) }
   
   function handleImageUser() {
@@ -168,12 +179,12 @@ function OpenCamera({ person, setPerson }:any) {
       [
         {
           text: "Galeria",
-          onPress: async () => await pickImageFromGalery(),
+          onPress: async () => await pickImageFromGalery(setLoadImage),
           style: 'default'
         },
         {
           text: "Câmera",
-          onPress: async () => await pickImageFromCamera(),
+          onPress: async () => await pickImageFromCamera(setLoadImage),
           style: 'default'
         },
       ],
@@ -183,7 +194,7 @@ function OpenCamera({ person, setPerson }:any) {
     )
   }
 
-  const pickImageFromGalery = async () => {
+  const pickImageFromGalery = async (setLoadImage:Function) => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (status !== "granted") {
@@ -200,12 +211,12 @@ function OpenCamera({ person, setPerson }:any) {
       });
   
       if (!result.canceled) {
-        uploadImageFirebase(result.assets[0].uri)
+        uploadImageFirebase(result.assets[0].uri, setLoadImage)
       }
     }
   }
 
-  const pickImageFromCamera = async () => {
+  const pickImageFromCamera = async (setLoadImage:Function) => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     
     if (status !== "granted") {
@@ -224,13 +235,14 @@ function OpenCamera({ person, setPerson }:any) {
       });
   
       if (!result.canceled) {
-        uploadImageFirebase(result.assets[0].uri)
+        uploadImageFirebase(result.assets[0].uri, setLoadImage)
       }
     }
   }
 
-  const uploadImageFirebase = async (file:any) => {
+  const uploadImageFirebase = async (file:any, setLoadImage:Function) => {
     try {
+      setLoadImage(true);
       const response = await fetch(file);
       const blob = await response.blob();
       const storageRef  = ref(storage, `users/${person.id}`);
@@ -244,14 +256,15 @@ function OpenCamera({ person, setPerson }:any) {
             message: "Foto do perfil atualizada com sucesso!",
             type: "success",
           })
+          setLoadImage(false)
         }).catch(() => {
           showMessage({
             message: "Algo deu errado",
             type: "warning",
           })
+          setLoadImage(false)
         })
       }))
-
     } catch(e) {
       console.log("error", e);
       showMessage({
@@ -285,7 +298,7 @@ function OpenCamera({ person, setPerson }:any) {
 
       <Box position={'absolute'} bottom={-10} right={-10}>
         <IconButton
-        onPress={handleImageUser}
+          onPress={handleImageUser}
           padding={3}
           backgroundColor={THEME.colors.backgroud}
           icon={<Icon as={MaterialIcons} name="add-a-photo"/>}
