@@ -8,20 +8,20 @@ export const returnBtn = () => {
     
     return (
       <IconButton
-        m={0} p={0}
         onPress={() => navigation.goBack()}
         icon={
           <Icon as={MaterialIcons} name="arrow-back-ios"/>
         }
         borderRadius={'full'}
         _icon={{
-          color: '#FFF',
-          size: 6
+          color: THEME.colors.white,
+          size: 6,
+          left: 1.5,
         }}
         _pressed={{
-          backgroundColor: 'transparent'
+          backgroundColor: THEME.colors.primary2,
         }}
-        style={{marginLeft: THEME.sizes.paddingPage}}
+        style={{marginLeft: THEME.sizes.paddingPage * 2}}
       />
     );
   }

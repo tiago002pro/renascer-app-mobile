@@ -97,6 +97,7 @@ export default function SignIn() {
           label={'Entrar'}
           bntFunction={handleSignIn}
           isDisabled={disabledBtn}
+          color={THEME.colors.header}
         />
 
         <Box style={styles.footerArea}>

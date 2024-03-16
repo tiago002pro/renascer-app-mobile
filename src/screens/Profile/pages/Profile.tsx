@@ -10,6 +10,7 @@ import { THEME } from "../../../styles/theme";
 import data from '../helper/DataProfile';
 import { useNavigation } from "@react-navigation/native";
 import { DataAccordion } from "../helper/DataAccordion";
+import ButtonComponent from "../../../components/ButtonComponent";
 
 export function Profile() {
   const navigation:any = useNavigation();
@@ -34,8 +35,7 @@ export function Profile() {
       getUser()
     }
     onInit()
-  }, [load, navigation])
-  
+  }, [load, navigation])  
 
   return (
     <VStack style={styles.container}>
@@ -122,6 +122,11 @@ export function Profile() {
                           );
                         })
                       }
+                      <ButtonComponent
+                        bg={THEME.colors.gray[500]}
+                        label="Editar"
+                        bntFunction={() => navigation.navigate('EditProfile', {data: DataAccordion.getData(person, key)})}
+                      />
                     </ScrollView>
                   </View>
                 )}
@@ -165,6 +170,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: THEME.colors.header,
   },
   icon: {
     width: 170,

@@ -31,7 +31,6 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
         value={value}
         type={showPassword ? 'text' : 'password'}
         style={styles.input}
-        selectionColor={THEME.colors.white}
         InputLeftElement = {
           <Icon
             as = {
@@ -51,9 +50,16 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
         color={THEME.colors.white}
         borderColor={THEME.colors.header}
         bg={THEME.colors.header}
+        selectionColor={THEME.colors.primary}
         _focus={{
           backgroundColor: THEME.colors.header,
           borderColor: THEME.colors.header,
+          _ios: {
+            selectionColor: THEME.colors.primary,
+          },
+          _android: {
+            selectionColor: THEME.colors.primary,
+          }
         }}
         autoCapitalize={autoCapitalize ? "sentences" : "none"}
       />

@@ -38,7 +38,6 @@ export default function ProfileRoutes() {
 					headerTitle: 'Meu Perfil',
 					headerRight: () => 
 						<IconButton
-							m={0} p={0}
 							onPress={() => navigation.navigate('Settings')}
 							icon={
 								<Icon as={Ionicons} name="settings-sharp" />
@@ -46,12 +45,12 @@ export default function ProfileRoutes() {
 							borderRadius={'full'}
 							_icon={{
 								color: '#FFF',
-								size: 6
+								size: 6,
 							}}
 							_pressed={{
-								backgroundColor: 'transparent'
+								backgroundColor: THEME.colors.primary2,
 							}}
-							style={{marginRight: THEME.sizes.paddingPage}}
+							style={{marginRight: THEME.sizes.paddingPage * 2}}
 						/>,
 					headerLeft: returnBtn
 				}}

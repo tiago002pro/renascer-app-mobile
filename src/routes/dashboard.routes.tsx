@@ -88,13 +88,12 @@ export default function DashboardRoutes() {
 									fontSize: 12,
 									lineHeight: 12,
 								}}
-								style={{marginRight: THEME.sizes.paddingPage}}
+								style={{marginRight: THEME.sizes.paddingPage * 2}}
 							>
 								Login
 							</Button>
 						:
 							<IconButton
-								m={0} p={0}
 								onPress={goProfile}
 								icon={
 									<Icon as={Ionicons} name="person-circle"/>
@@ -102,12 +101,12 @@ export default function DashboardRoutes() {
 								borderRadius={'full'}
 								_icon={{
 									color: THEME.colors.white,
-									size: 8
+									size: 6,
 								}}
 								_pressed={{
-									backgroundColor: 'transparent'
+									backgroundColor: THEME.colors.primary2,
 								}}
-								style={{marginRight: THEME.sizes.paddingPage}}
+								style={{marginRight: THEME.sizes.paddingPage * 2}}
 							/>
 						)
 					)

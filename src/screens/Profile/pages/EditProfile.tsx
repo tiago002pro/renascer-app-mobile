@@ -14,14 +14,9 @@ import { Paginator } from "../components/Paginator";
 
 import { THEME } from "../../../styles/theme";
 
-const data = [
-  { id: '1', title: 'Dados básicos' },
-  { id: '2', title: 'Contato' },
-  { id: '3', title: 'Igreja' },
-]
-
-export function EditProfile() {
+export function EditProfile({ route }:any) {
   const navigation:any = useNavigation();
+  const { data } = route.params; 
   const { user } = useAuth() as any;
   const { width, height } = useWindowDimensions();
 
@@ -90,12 +85,8 @@ export function EditProfile() {
             ({ item }) => 
             <OnboardingItem
               item={item}
-              person={person}
-              setPerson={setPerson}
-              address={address}
-              setAddress={setAddress}
-              scrollTo={scrollTo}
-              save={save}
+              data={person}
+              setData={setPerson}
             />
           }
           horizontal

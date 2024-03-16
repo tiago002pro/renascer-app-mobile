@@ -110,6 +110,7 @@ export default function Register() {
         label={'Cadastrar'}
         bntFunction={register}
         isDisabled={disabledBtn}
+        color={THEME.colors.header}
       />
 
       <Box style={styles.footerArea}>
