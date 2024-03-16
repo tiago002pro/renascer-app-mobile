@@ -122,11 +122,11 @@ export function Profile() {
                           );
                         })
                       }
-                      <ButtonComponent
+                      {/* <ButtonComponent
                         bg={THEME.colors.gray[500]}
                         label="Editar"
                         bntFunction={() => navigation.navigate('EditProfile', {data: DataAccordion.getData(person, key)})}
-                      />
+                      /> */}
                     </ScrollView>
                   </View>
                 )}
