@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'Roboto_700Bold',
     marginBottom: 15,
     textTransform: 'uppercase',
@@ -74,14 +74,14 @@ const styles = StyleSheet.create({
   speaker: {
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'Roboto_400Regular',
     marginBottom: 15,
   },
   description: {
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'Roboto_400Regular',
     textAlign: 'justify'
   }
