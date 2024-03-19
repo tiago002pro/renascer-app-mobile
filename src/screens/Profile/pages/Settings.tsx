@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Alert, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { Alert, Dimensions, Linking, StyleSheet, TouchableOpacity } from "react-native";
 import { Box, Icon, IconButton, Image, Text, View } from "native-base";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, Entypo } from "@expo/vector-icons";
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { showMessage } from "react-native-flash-message";
@@ -43,45 +43,65 @@ export function Settings() {
   }
 
   const options = [
-    // {
-    //   id: '1',
-    //   vectorIcon: MaterialCommunityIcons,
-    //   icon: 'account-edit',
-    //   colorIcon: null,
-    //   label: 'Editar perfil',
-    //   action: goEditProfile,
-    // },
     {
-      id: '2',
-      vectorIcon: MaterialIcons,
-      icon: 'logout',
+      id: '1',
+      vectorIcon: Entypo,
+      icon: 'text-document-inverted',
       colorIcon: null,
-      label: 'Sair',
-      action: out,
+      label: 'Política de privacidade',
+      action: goPrivacyPolicy,
     },
     {
-      id: '3',
-      vectorIcon: MaterialIcons,
-      icon: 'delete-outline',
+      id: '2',
+      vectorIcon: Entypo,
+      icon: 'trash',
       colorIcon: THEME.colors.red[500],
       label: 'Excluir conta',
       action: goDeleteAccount,
     },
+    {
+      id: '3',
+      vectorIcon: Entypo,
+      icon: 'log-out',
+      colorIcon: THEME.colors.red[500],
+      label: 'Sair',
+      action: alertOut,
+    },
   ]
+
+  function goPrivacyPolicy():void {
+		Linking.openURL("https://igrejarenacer.blogspot.com/2024/03/terms-conditions-para-idioma-portugues.html");
+  }
+
+  function goDeleteAccount():void {
+		navigation.navigate('DeleteProdile');
+  }
+
+  function alertOut():void {
+    Alert.alert(
+      'Atenção',
+      'Tem certeza que gostaria de sair?',
+      [
+        {
+          text: "Sair",
+          onPress: out,
+          style: 'default',
+        },
+        {
+          text: "Cancelar",
+          onPress: (() => {}),
+          style: 'default'
+        },
+      ],
+    )
+  }
 
   function out():void {
     signOut()
     navigation.goBack()
 		navigation.navigate('DashboardRoutes', {screen: 'Dashboard'});
   }
-
-  function goEditProfile():void {
-		navigation.navigate('EditProfile');
-  }
-
-  function goDeleteAccount():void {
-		navigation.navigate('DeleteProdile');
-  }
+  
 
   return (
     <View style={styles.container}>
