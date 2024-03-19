@@ -17,7 +17,7 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
     <TextInput
       key={label}
       label={label}
-      value={valiable}
+      value={valiable ? valiable : ''}
       onChangeText={setValiable}
       onChange={onChange}
       mode='outlined'

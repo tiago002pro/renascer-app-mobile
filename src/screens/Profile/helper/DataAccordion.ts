@@ -33,15 +33,15 @@ export namespace DataAccordion {
       },
       {
         id: 'A3',
-        type: 'date',
-        inputType: null,
-        mask: null,
+        type: 'input',
+        inputType: 'numeric',
+        mask: Masks.DATE_DDMMYYYY,
         label: 'Data de nascimento',
         question: 'Data de nascimento',
         attribute: 'dateBirth',
         value: person?.dateBirth,
         options: null,
-        getValue: TranslateEnum.getDate(person?.dateBirth)
+        getValue: TranslateEnum.getValue(person?.dateBirth)
       },
       {
         id: 'A4',
@@ -135,15 +135,15 @@ export namespace DataAccordion {
       },
       {
         id: 'C3',
-        type: 'date',
-        inputType: null,
-        mask: null,
+        type: 'input',
+        inputType: 'numeric',
+        mask: Masks.DATE_DDMMYYYY,
         label: 'Data da entrada',
         question: 'Quando começou a frequentar/visitar a igreja?',
         attribute: 'entryDate',
         value: person?.entryDate,
         options: null,
-        getValue: TranslateEnum.getDate(person?.entryDate),
+        getValue: TranslateEnum.getValue(person?.entryDate),
       },
       {
         id: 'C4',

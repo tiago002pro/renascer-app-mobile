@@ -11,7 +11,6 @@ import InputTextComponent from "../../../components/InputText";
 import { Checkbox } from "../../../components/Checkbox";
 import { Paginator } from "../components/Paginator";
 import { Address } from "../components/Address";
-import InputDate from "../../../components/InputDate";
 
 import { THEME } from "../../../styles/theme";
 
@@ -73,14 +72,6 @@ export function Edit({ route }:any) {
               address={person[item.attribute]}
               setAddress={putValue}
             />
-          : item.type == 'date' ?
-          <Box flex={1}>
-            <InputDate
-              label={item.label}
-              valiable={person[item.attribute]}
-              setValiable={putValue}
-            />
-          </Box>
           : null
         }
       </ScrollView>

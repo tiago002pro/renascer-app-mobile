@@ -1,5 +1,3 @@
-import moment from "moment"
-
 export namespace TranslateEnum {
     export function gender(value:string):string {
         switch(value) {
@@ -68,9 +66,5 @@ export namespace TranslateEnum {
             case 'ACLAMACAO': return 'Aclamação: fui batizado(a) em outra igreja';
             default: return '-';
         }
-    }
-
-    export function getDate(value:any):string {
-        return value ? moment(value).format("DD/MM/YYYY") : '-';
     }
 }
