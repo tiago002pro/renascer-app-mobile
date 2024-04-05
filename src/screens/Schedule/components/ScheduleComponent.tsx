@@ -37,11 +37,11 @@ export default function ScheduleComponent({ item }:any) {
                 style={styles.image}
               />
             :
-            <Image
-              source={require('../../../../assets/images/eventos.png')}
-              alt={item.title}
-              style={styles.image}
-            />
+            <Box style={styles.whithOutImage}>
+              <Text style={styles.whithOutImageText}>
+                Eventos
+              </Text>
+            </Box>
           }
         </Box>
 
@@ -81,7 +81,21 @@ export const styles = StyleSheet.create({
     width: screenWidth * .35,
     height: screenWidth * .20,
     borderRadius: 5,
-    backgroundColor: THEME.colors.gray[500]
+    backgroundColor: THEME.colors.primary
+  },
+  whithOutImage: {
+    backgroundColor: THEME.colors.primary,
+    width: screenWidth * .35,
+    height: screenWidth * .20,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  whithOutImageText: {
+    color: THEME.colors.backgroud,
+    fontSize: THEME.fontSizes.md + 2,
+    lineHeight: THEME.fontSizes.md + 2,
+    fontFamily: 'Roboto_500Medium',
   },
   description: {
     width: (screenWidth * .65) - THEME.sizes.paddingPage * 3,
@@ -91,17 +105,17 @@ export const styles = StyleSheet.create({
     display: 'flex',
   },
   date: {
-    color:  THEME.colors.gray[300],
-    fontSize: THEME.fontSizes.subText,
-    lineHeight: THEME.fontSizes.subText,
+    color:  THEME.colors.primary,
+    fontSize: THEME.fontSizes.sm - 3,
+    lineHeight: THEME.fontSizes.sm - 3,
     textTransform: 'uppercase',
     marginBottom: 10,
     fontFamily: 'Roboto_400Regular',
   },
   title: {
     color: THEME.colors.white,
-    fontSize: THEME.fontSizes.subTitle,
-    lineHeight: THEME.fontSizes.subTitle,
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     fontFamily: 'Roboto_700Bold',
   },
   data: {

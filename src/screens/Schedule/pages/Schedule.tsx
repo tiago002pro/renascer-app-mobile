@@ -72,6 +72,6 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.title,
     fontFamily: 'Roboto_700Bold',
     color: THEME.colors.white,
-    paddingBottom: 10,
+    paddingBottom: 20,
   }
 })

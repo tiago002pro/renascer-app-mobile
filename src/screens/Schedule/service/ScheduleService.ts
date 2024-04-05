@@ -7,7 +7,7 @@ class ScheduleService {
       return result.data
     } catch(error) {
       console.log("error", error);
-      return null
+      return []
     }
   }
   
@@ -17,7 +17,17 @@ class ScheduleService {
       return result.data
     } catch(error) {
       console.log("error", error);
-      return null
+      return [null]
+    }
+  }
+
+  async getByStartDate(startDate:string):Promise<any[]> {
+    try {
+      const result = await api.get(`/auth/all-schedule/by-date?startDate=${startDate}`)
+      return result.data
+    } catch(error) {
+      console.log("error", error);
+      return []
     }
   }
 }
