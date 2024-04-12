@@ -1,3 +1,4 @@
+import { ScheduleDTO } from "../../../interfaces/Schedule.interface";
 import api from "../../../services/api";
 
 class ScheduleService {
@@ -11,19 +12,19 @@ class ScheduleService {
     }
   }
   
-  async getAllByValidDeadline():Promise<any[]> {
+  async getAllByValidDeadline():Promise<ScheduleDTO[]> {
     try {
       const result = await api.get(`/auth/all-schedule-valid-deadline`)
       return result.data
     } catch(error) {
       console.log("error", error);
-      return [null]
+      return []
     }
   }
 
-  async getByStartDate(startDate:string):Promise<any[]> {
+  async getByStartDate(startDate:string):Promise<any> {
     try {
-      const result = await api.get(`/auth/all-schedule/by-date?startDate=${startDate}`)
+      const result = await api.post(`/auth/all-schedule/by-date?startDate=${startDate}`)
       return result.data
     } catch(error) {
       console.log("error", error);

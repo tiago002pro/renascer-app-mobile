@@ -9,3 +9,8 @@ export interface Schedule {
   registration: Boolean;
   deadline: Date;
 }
+
+export interface ScheduleDTO {
+  month:string;
+  scheduleList:Schedule[];
+}

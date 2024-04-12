@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
-import { Box, FlatList, Icon, Select, Text, VStack } from "native-base";
+import { Dimensions, StyleSheet } from "react-native";
+import { Box, FlatList, Icon, Select, Text, VStack, View } from "native-base";
 import moment from "moment";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import ScheduleService from "../service/ScheduleService";
-import { Schedule } from "../../../interfaces/Schedule.interface";
+import { Schedule, ScheduleDTO } from "../../../interfaces/Schedule.interface";
 import { THEME } from "../../../styles/theme";
+
+const { width: screenWidth } = Dimensions.get('window');
 
 export function ScheduleList() {
   const currentYear = moment(new Date()).format('YYYY');
@@ -30,15 +32,16 @@ export function ScheduleList() {
 
   useEffect(() => {
     async function getSchedule() {
-      const result:any[] = await ScheduleService.getAllByValidDeadline()
-      setSchedules(result)
+      console.log("date", date);
+      
+      getByStartDate(date)
     }
     getSchedule()
   }, [])
 
   async function getByStartDate(startDate:string) {
     setDate(startDate)
-    const result:any[] = await ScheduleService.getByStartDate(startDate)
+    const result:any = await ScheduleService.getByStartDate(startDate)
     setSchedules(result)
   }
 
@@ -52,6 +55,37 @@ export function ScheduleList() {
 
   function getTime(date:any):string {
     return moment(new Date(date)).format('LT')
+  }
+
+  function getMonth(m:string):string {
+    switch(m) {
+      case '1':
+        return 'Janeiro/2024'
+      case '2':
+        return 'Fevereiro/2024'
+      case '3':
+        return 'Março/2024'
+      case '4':
+        return 'Abril/2024'
+      case '5':
+        return 'Maio/2024'
+      case '6':
+        return 'Junho/2024'
+      case '7':
+        return 'Julho/2024'
+      case '8':
+        return 'Agosto/2024'
+      case '9':
+        return 'Setembro/2024'
+      case '10':
+        return 'Outubro/2024'
+      case '11':
+        return 'Novembro/2024'
+      case '12':
+        return 'Dezembro/2024'
+      default:
+        return ''
+    }
   }
 
   return (
@@ -93,28 +127,53 @@ export function ScheduleList() {
           }
         </Select>
       </Box>
-      
 
       <FlatList
         data={schedules}
-        keyExtractor={(item:Schedule) => item.id.toString()}
+        keyExtractor={(item:ScheduleDTO) => item?.month}
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
-          <Box style={styles.section}>
-            <Box style={styles.areaDate}>
-              <Box style={styles.circleDate}>
-                <Text style={styles.date}>
-                  {getDate(item.startDate)}
-                </Text>
-              </Box>
-
-              <Text style={styles.dayWeek}>
-                {getDayWeek(item.startDate)}
-              </Text>
-            </Box>
-            <Text style={styles.label}>
-              {item.title + ' às ' + getTime(item.startDate)} 
-            </Text>
+          <Box mb={5}>
+            <Text style={styles.title}>{getMonth(item?.month)}</Text>
+            {
+              item?.scheduleList.length > 0 ?
+              (
+                <View>
+                  <FlatList
+                    data={item?.scheduleList}
+                    keyExtractor={(schedule:Schedule) => schedule?.id.toString()}
+                    renderItem={
+                      ({item}) => (
+                        <Box style={styles.section}>
+                          <Box style={styles.areaDate}>
+                            <Box style={styles.circleDate}>
+                              <Text style={styles.date}>
+                                {getDate(item.startDate)}
+                              </Text>
+                            </Box>
+                      
+                            <Text style={styles.dayWeek}>
+                              {getDayWeek(item.startDate)}
+                            </Text>
+                          </Box>
+                          <Text style={styles.label}>
+                            {item.title + ' às ' + getTime(item.startDate)} 
+                          </Text>
+                        </Box>
+                      )
+                    }
+                  />
+                </View>
+              )
+              :
+              (
+                <Box p={5}>
+                  <Text style={styles.withoutEvent}>
+                    Ainda não foi cadastrado nenhum evento.
+                  </Text>
+                </Box>
+              )
+            }
           </Box>
         )}
       />
@@ -141,13 +200,21 @@ export const styles = StyleSheet.create({
     color: THEME.colors.primary,
   },
   title: {
-    fontSize: THEME.fontSizes.title,
-    lineHeight: THEME.fontSizes.title,
-    fontFamily: 'Roboto_700Bold',
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
+    fontFamily: 'Roboto_500Medium',
     color: THEME.colors.white,
     paddingBottom: 10,
   },
+  withoutEvent: {
+    fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
+    fontFamily: 'Roboto_300Light',
+    color: THEME.colors.white,
+    textAlign:'center',
+  },
   section: {
+    width: screenWidth,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: THEME.colors.header,
