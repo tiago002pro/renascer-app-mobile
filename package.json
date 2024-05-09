@@ -16,7 +16,7 @@
     "@react-navigation/stack": "^6.3.23",
     "@rneui/themed": "^4.0.0-rc.8",
     "axios": "^1.6.7",
-    "expo": "~50.0.15",
+    "expo": "~50.0.17",
     "expo-build-properties": "~0.11.1",
     "expo-font": "~11.10.3",
     "expo-image-picker": "~14.7.1",
