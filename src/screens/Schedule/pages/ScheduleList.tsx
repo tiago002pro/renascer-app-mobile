@@ -32,8 +32,6 @@ export function ScheduleList() {
 
   useEffect(() => {
     async function getSchedule() {
-      console.log("date", date);
-      
       getByStartDate(date)
     }
     getSchedule()
@@ -88,6 +86,18 @@ export function ScheduleList() {
     }
   }
 
+  const onViewableItemsChanged = ({ viewableItems, changed }:any) => {
+    const currentYear = moment(new Date()).format('YYYY');
+    let month = viewableItems[0]?.item?.month
+    
+    if (month.length < 2) {
+      month = "0" + month
+    }
+
+    const filter = currentYear + "-" + month
+    setDate(filter)
+  }
+
   return (
     <VStack style={styles.container}>
       <Box style={{marginBottom: 30}}>
@@ -132,6 +142,7 @@ export function ScheduleList() {
         data={schedules}
         keyExtractor={(item:ScheduleDTO) => item?.month}
         showsVerticalScrollIndicator={false}
+        onViewableItemsChanged={onViewableItemsChanged}
         renderItem={({item}) => (
           <Box mb={5}>
             <Text style={styles.title}>{getMonth(item?.month)}</Text>
@@ -144,7 +155,7 @@ export function ScheduleList() {
                     keyExtractor={(schedule:Schedule) => schedule?.id.toString()}
                     renderItem={
                       ({item}) => (
-                        <Box style={styles.section}>
+                        <Box style={styles.section} key={item.id}>
                           <Box style={styles.areaDate}>
                             <Box style={styles.circleDate}>
                               <Text style={styles.date}>

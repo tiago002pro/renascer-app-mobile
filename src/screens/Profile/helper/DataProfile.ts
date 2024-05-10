@@ -4,7 +4,7 @@ export default [
   { 
     id: 1,
     title: 'Dados básicos',
-    icon: 'file-document-multiple',
+    icon: 'text-box',
     vectorIcon: MaterialCommunityIcons,
     key: 'BASIC',
   },
