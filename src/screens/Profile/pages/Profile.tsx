@@ -39,27 +39,32 @@ export function Profile() {
       <ScrollView>
         <Box style={styles.containerProfile}>
           <Box style={styles.profile}>
-            <Box style={styles.imageArea}>
-              {person?.profileImage ? 
-                <Image
-                  source={{uri: person?.profileImage}}
-                  alt="User"
-                  style={styles.image}
-                />
-                :
-                <Ionicons
-                  name="person-circle"
-                  size={170}
-                  style={styles.icon}
-                  color={THEME.colors.white}
-                />
-              }
+            <Box style={styles.box}>
+              <Box style={styles.imgContainer}>
+                {person?.profileImage ? 
+                  <Image
+                    source={{uri: person?.profileImage}}
+                    alt="User"
+                    style={styles.image}
+                  />
+                  :
+                  <Box style={styles.imgContainer}>
+                    <Box style={styles.circle}></Box>
+                    <Ionicons
+                      name="person-circle-outline"
+                      size={150}
+                      style={styles.icon}
+                      color={THEME.colors.primary}
+                    />
+                  </Box>
+                }
+              </Box>
             </Box>
+          </Box>
             
-            <Box style={styles.textArea}>
-              <Text style={styles.name}>{user?.name}</Text>
-              <Text style={styles.email}>{user?.email}</Text>
-            </Box>
+          <Box style={styles.textArea}>
+            <Text style={styles.name}>{user?.name}</Text>
+            <Text style={styles.email}>{user?.email}</Text>
           </Box>
         </Box>
 
@@ -142,7 +147,10 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
   },
   containerProfile: {
-    
+    justifyContent: 'center',
+    flexDirection: 'column',
+    marginTop: 30,
+    marginBottom: 30,
   },
   containerData: {
     paddingLeft: THEME.sizes.paddingPage,
@@ -152,31 +160,43 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 70,
   },
   profile: {
-    width: '100%',
     display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    borderRadius: 5,
-    marginTop: 30,
-    marginBottom: 30,
-  },
-  imageArea: {
-    width: 150,
-    height: 150,
-    borderRadius: 150,
-    marginBottom: 20,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: THEME.colors.header,
+    alignContent: 'center',
   },
-  icon: {
-    width: 170,
-    height: 170,
+  box: {
+    marginBottom: 15,
   },
-  image: {
+  imgContainer: {
     width: 150,
     height: 150,
     borderRadius: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  circle: {
+    borderRadius: 112,
+    width: 112,
+    height: 112,
+    borderWidth: 5,
+    borderColor: THEME.colors.header,
+    zIndex: 999999,
+    position: 'absolute'
+  },
+  icon: {
+    width: 150,
+    height: 150,
+    zIndex: 0,
+    position: 'absolute'
+  },
+  image: {
+    width: 140,
+    height: 140,
+    borderRadius: 140,
+    borderWidth: 2,
+    borderColor: THEME.colors.primary,
   },
   textArea: {
     display: 'flex',
@@ -192,9 +212,9 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
   },
   email: {
-    color: THEME.colors.gray[400],
-    fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    color: THEME.colors.primary,
+    fontFamily: 'InterTight_300Light',
+    fontWeight: 300,
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
   },

@@ -370,7 +370,7 @@ export const stylesOpenCamera = StyleSheet.create({
     width: 95,
     height: 95,
     borderRadius: 95,
-    borderWidth: 5,
+    borderWidth: 2,
     borderColor: THEME.colors.primary,
   }
 })
