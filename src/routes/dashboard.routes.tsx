@@ -56,7 +56,7 @@ export default function DashboardRoutes() {
 								style={{ width: 25, height: 25, marginRight: 7 }}
 							/>
 							<Text
-								color={'#FFF'}
+								color={THEME.colors.white}
 								textTransform={'uppercase'}
 								fontSize={12}
 							>
@@ -73,17 +73,17 @@ export default function DashboardRoutes() {
 								borderRadius={50}
 								height={8}
 								backgroundColor={'transparent'}
-								borderColor={THEME.colors.yellow[400]}
+								borderColor={THEME.colors.primary}
 								borderWidth={1}
 								_pressed={{
-									backgroundColor: THEME.colors.yellow[400],
+									backgroundColor: THEME.colors.primary,
 									_text: {
 									color: THEME.colors.backgroud,
 									fontWeight: 'bold'
 									}
 								}}
 								_text={{
-									color: THEME.colors.yellow[400],
+									color: THEME.colors.primary,
 									textTransform: 'uppercase',
 									fontSize: 12,
 									lineHeight: 12,
@@ -104,7 +104,10 @@ export default function DashboardRoutes() {
 									size: 6,
 								}}
 								_pressed={{
-									backgroundColor: THEME.colors.primary2,
+									backgroundColor: THEME.colors.primary,
+									_icon: {
+									  color: THEME.colors.backgroud
+									}
 								}}
 								style={{marginRight: THEME.sizes.paddingPage * 2}}
 							/>

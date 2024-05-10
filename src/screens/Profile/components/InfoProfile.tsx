@@ -1,13 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Masks } from "react-native-mask-input";
-
-import { THEME } from "../../../styles/theme";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-
-import enums from "../helper/enums";
-import { TranslateEnum } from "../helper/translateEnum";
 import { DataAccordion } from "../helper/DataAccordion";
+import { THEME } from "../../../styles/theme";
 
 type Props = {
   section: string;
@@ -20,10 +15,6 @@ export default function InfoProfile({ section, person }:Props) {
   function goToEdit(item:any):void {
     navigation.navigate('Edit', { item: item, data: person, })
   }
-
-
-
-
 
   return (
     <ScrollView id={section}>

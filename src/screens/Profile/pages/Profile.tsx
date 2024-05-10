@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { Animated, StyleSheet, TouchableOpacity } from "react-native";
 import { Box, VStack, Image, Text, Icon, View, ScrollView } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
-
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
-
+import { DataAccordion } from "../helper/DataAccordion";
 import { THEME } from "../../../styles/theme";
 import data from '../helper/DataProfile';
-import { useNavigation } from "@react-navigation/native";
-import { DataAccordion } from "../helper/DataAccordion";
-import ButtonComponent from "../../../components/ButtonComponent";
 
 export function Profile() {
   const navigation:any = useNavigation();
@@ -84,7 +81,7 @@ export function Profile() {
                       <Icon
                         as={vectorIcon}
                         name={icon}
-                        color={THEME.colors.third}
+                        color={THEME.colors.primary}
                         size={10}
                       />
                     </Box>
@@ -227,8 +224,8 @@ export const styles = StyleSheet.create({
   infoArea: {
   },
   title: {
-    fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     fontFamily: 'Roboto_700Bold',
     color: THEME.colors.font,
   },

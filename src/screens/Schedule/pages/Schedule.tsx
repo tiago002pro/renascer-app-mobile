@@ -49,7 +49,7 @@ export function Schedule() {
         :
         <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
           <Box mb={3}>
-            <FontAwesome5 name="calendar-times" color={THEME.colors.yellow[400]} size={50}/>
+            <FontAwesome5 name="calendar-times" color={THEME.colors.primary} size={50}/>
           </Box>
           <Text style={styles.title} textAlign={'center'}>Nenhum evento</Text>
           <Text style={styles.title} textAlign={'center'}>foi encontrado</Text>

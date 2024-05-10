@@ -32,7 +32,7 @@ export function WatchVideo({ route }:any) {
           onReady={() => setVideoReady(true)}
           onFullScreenChange={onFullScreenChange}
         />
-        {!videoReady && <ActivityIndicator color={THEME.colors.yellow[400]}/>}
+        {!videoReady && <ActivityIndicator color={THEME.colors.primary}/>}
       </Box>
 
       <Box style={styles.descriptionPlayer}>

@@ -97,7 +97,7 @@ export function Address({ address, setAddress }:AddressProps) {
 
       {loading ?
         <Box mt={20}>
-          <ActivityIndicator size={"large"} color={THEME.colors.yellow[500]} />
+          <ActivityIndicator size={"large"} color={THEME.colors.primary} />
         </Box>
         : null 
       }   

@@ -128,7 +128,7 @@ export const styles = StyleSheet.create({
   registration: {
     width: screenWidth * .30,
     alignItems: 'center',
-    backgroundColor: THEME.colors.yellow[400],
+    backgroundColor: THEME.colors.primary,
     padding: 5,
     borderRadius: 10,
   },

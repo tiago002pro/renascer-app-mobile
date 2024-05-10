@@ -19,7 +19,10 @@ export const returnBtn = () => {
           left: 1.5,
         }}
         _pressed={{
-          backgroundColor: THEME.colors.primary2,
+          backgroundColor: THEME.colors.primary,
+          _icon: {
+            color: THEME.colors.backgroud
+          }
         }}
         style={{marginLeft: THEME.sizes.paddingPage * 2}}
       />

@@ -100,7 +100,7 @@ export function AddressData({ address, setAddress, scrollTo }:AddressDataProps) 
 
         {loading ?
           <Box mt={20}>
-            <ActivityIndicator size={"large"} color={THEME.colors.yellow[500]} />
+            <ActivityIndicator size={"large"} color={THEME.colors.primary} />
           </Box>
           : null 
         }   

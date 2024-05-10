@@ -50,7 +50,10 @@ export default function ScheduleRoutes() {
 							size: 6,
 						}}
 						_pressed={{
-							backgroundColor: THEME.colors.primary2,
+							backgroundColor: THEME.colors.primary,
+							_icon: {
+							  color: THEME.colors.backgroud
+							}
 						}}
 						style={{marginRight: THEME.sizes.paddingPage * 2}}
 					/>,
@@ -64,7 +67,6 @@ export default function ScheduleRoutes() {
 					headerTitle: 'Eventos',
 					headerLeft: returnBtn,
 				}}
-				
 			/>
 
 			<Screen

@@ -47,7 +47,7 @@ export function Settings() {
       id: '1',
       vectorIcon: Entypo,
       icon: 'text-document-inverted',
-      colorIcon: null,
+      colorIcon: THEME.colors.primary,
       label: 'Política de privacidade',
       action: goPrivacyPolicy,
     },
@@ -198,6 +198,10 @@ function OpenCamera({ person, setPerson, setLoadImage }:any) {
       "Informe de onde vecê quer pegar a foto",
       [
         {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
           text: "Galeria",
           onPress: async () => await pickImageFromGalery(setLoadImage),
           style: 'default'
@@ -301,22 +305,23 @@ function OpenCamera({ person, setPerson, setLoadImage }:any) {
           <Image
             resizeMode="cover"
             style={stylesOpenCamera.img}
-            source={{
-              uri: person?.profileImage,
-            }}
+            source={{uri: person?.profileImage}}
             alt="user"
           />
           :
-          <Ionicons
-            name="person-circle"
-            size={80}
-            style={stylesOpenCamera.icon}
-            color={THEME.colors.white}
-          />
+          <Box style={stylesOpenCamera.imgContainer}>
+            <Box style={stylesOpenCamera.circle}></Box>
+            <Ionicons
+              name="person-circle-outline"
+              size={100}
+              style={stylesOpenCamera.icon}
+              color={THEME.colors.primary}
+            />
+          </Box>
         }
       </Box>
 
-      <Box position={'absolute'} bottom={-10} right={-10}>
+      <Box position={'absolute'} bottom={0} right={0}>
         <IconButton
           onPress={handleImageUser}
           padding={3}
@@ -335,28 +340,35 @@ function OpenCamera({ person, setPerson, setLoadImage }:any) {
 
 export const stylesOpenCamera = StyleSheet.create({
   container: {
-    width: 70,
-    height: 70,
-    borderRadius: 70,
     marginRight: THEME.sizes.paddingPage * 2,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   imgContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 80,
+    width: 100,
+    height: 100,
+    borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  circle: {
+    borderRadius: 74,
+    width: 74,
+    height: 74,
+    borderWidth: 5,
+    borderColor: THEME.colors.header,
+    zIndex: 999999,
+    position: 'absolute'
+  },
   icon: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
+    zIndex: 0,
+    position: 'absolute'
   },
   img: {
-    width: 80,
-    height: 80,
-    borderRadius: 80,
-    backgroundColor: THEME.colors.white,
+    width: 95,
+    height: 95,
+    borderRadius: 95,
+    borderWidth: 5,
+    borderColor: THEME.colors.primary,
   }
 })

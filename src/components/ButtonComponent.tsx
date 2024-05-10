@@ -18,8 +18,7 @@ export default function ButtonComponent({ label, color, bg, bntFunction, isDisab
       bg={bg || THEME.colors.primary}
       opacity={1}
       _pressed={{
-        backgroundColor: THEME.colors.yellow[500],
-        borderColor: "transparent",
+        backgroundColor: THEME.colors.primary,
       }}
       mt={2}
       _text={{
