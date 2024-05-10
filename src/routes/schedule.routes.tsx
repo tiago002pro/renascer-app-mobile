@@ -27,9 +27,11 @@ export default function ScheduleRoutes() {
 			headerBackTitleVisible: false,
 			headerTitleStyle: {
 				color: THEME.colors.white,
-				fontFamily: 'Roboto_700Bold',
+				fontFamily: 'InterTight_600SemiBold',
+				fontWeight: 600,
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
+				opacity: .7,
 			},
 		}}>
 			<Screen
@@ -48,11 +50,13 @@ export default function ScheduleRoutes() {
 						_icon={{
 							color: '#FFF',
 							size: 6,
+							opacity: .7
 						}}
 						_pressed={{
 							backgroundColor: THEME.colors.primary,
 							_icon: {
-							  color: THEME.colors.backgroud
+							  color: THEME.colors.backgroud,
+								opacity: 1,
 							}
 						}}
 						style={{marginRight: THEME.sizes.paddingPage * 2}}

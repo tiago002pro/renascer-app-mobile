@@ -60,7 +60,8 @@ export const styles = StyleSheet.create({
   text: {
     fontSize: THEME.fontSizes.md,
     color: THEME.colors.white,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
   },
   image: {
     height: 50,

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { LogBox } from 'react-native';
 import { NativeBaseProvider, StatusBar } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
-import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { useFonts, InterTight_300Light, InterTight_400Regular, InterTight_500Medium, InterTight_600SemiBold, InterTight_700Bold, InterTight_800ExtraBold } from '@expo-google-fonts/inter-tight';
 
 import Routes from './src/routes';
 import Loading from './src/screens/Loading';
@@ -19,10 +19,12 @@ export default function App() {
   }, []);
 
   const [fontsLoaded, fontError] = useFonts({
-    Roboto_300Light,
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
+    InterTight_300Light,
+    InterTight_400Regular,
+    InterTight_500Medium,
+    InterTight_600SemiBold,
+    InterTight_700Bold,
+    InterTight_800ExtraBold,
   });
 
   if (!fontsLoaded && !fontError) {

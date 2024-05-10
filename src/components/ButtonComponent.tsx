@@ -25,7 +25,8 @@ export default function ButtonComponent({ label, color, bg, bntFunction, isDisab
         fontSize: THEME.fontSizes.md,
         lineHeight: THEME.fontSizes.md,
         color: color || THEME.colors.font,
-        fontFamily: "Roboto_500Medium"
+        fontFamily: 'InterTight_600SemiBold',
+        fontWeight: 600,
       }}
       isDisabled={isDisabled}
       _disabled={{

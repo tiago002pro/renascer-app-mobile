@@ -18,7 +18,8 @@ export const Checkbox = ({ title, op, value, setValue }: any) => {
       checkedColor={THEME.colors.font}
       textStyle={{
         color: THEME.colors.font,
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: 'InterTight_500Medium',
+        fontWeight: 500,
         fontSize: THEME.fontSizes.md
       }}
     />

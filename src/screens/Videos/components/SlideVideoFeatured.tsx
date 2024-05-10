@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.title,
     lineHeight: THEME.fontSizes.title,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     color: THEME.colors.white,
   },
   videoContainer: {
@@ -88,6 +89,8 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: THEME.colors.primary,
+    borderRadius: 15,
   },
   image: {
     width: imageW - 10,
@@ -99,7 +102,7 @@ const styles = StyleSheet.create({
   },
   playIcon: {
     position: 'absolute',
-    opacity: .5,
+    opacity: .7,
   },
   description: {
     width: imageW - 10,
@@ -111,7 +114,8 @@ const styles = StyleSheet.create({
   titleVideo: {
     fontSize: THEME.fontSizes.text,
     lineHeight: THEME.fontSizes.text,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     color: THEME.colors.white,
     textTransform: 'capitalize',
     marginBottom: 5,
@@ -119,7 +123,8 @@ const styles = StyleSheet.create({
   authorVideo: {
     fontSize: THEME.fontSizes.subText,
     lineHeight: THEME.fontSizes.subText,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     color: THEME.colors.gray[200],
     textTransform: 'capitalize',
   }

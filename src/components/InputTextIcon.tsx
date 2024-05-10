@@ -24,7 +24,9 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
       isInvalid={error}
       style={styles.container}
     >
-      <FormControl.Label fontFamily={'Roboto_500Medium'}>{label}</FormControl.Label>
+      <FormControl.Label fontFamily={'InterTight_400Regular'} fontWeight={400}>
+        {label}
+      </FormControl.Label>
       <Input
         onChangeText={onChangeText}
         placeholder={placeholder}
@@ -79,7 +81,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   input: {
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     fontSize: THEME.fontSizes.md,
   },
   icon: {

@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.md,
     height: 39,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
   },
 })

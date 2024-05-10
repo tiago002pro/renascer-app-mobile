@@ -59,6 +59,8 @@ export default function DashboardRoutes() {
 								color={THEME.colors.white}
 								textTransform={'uppercase'}
 								fontSize={12}
+								fontFamily={'InterTight_500Medium'}
+								fontWeight={500}
 							>
 								Igreja Renascer
 							</Text>
@@ -83,6 +85,8 @@ export default function DashboardRoutes() {
 									}
 								}}
 								_text={{
+									fontFamily: 'InterTight_500Medium',
+									fontWeight: 500,
 									color: THEME.colors.primary,
 									textTransform: 'uppercase',
 									fontSize: 12,
@@ -102,11 +106,13 @@ export default function DashboardRoutes() {
 								_icon={{
 									color: THEME.colors.white,
 									size: 6,
+									opacity: .7
 								}}
 								_pressed={{
 									backgroundColor: THEME.colors.primary,
 									_icon: {
-									  color: THEME.colors.backgroud
+									  color: THEME.colors.backgroud,
+										opacity: 1,
 									}
 								}}
 								style={{marginRight: THEME.sizes.paddingPage * 2}}

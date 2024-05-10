@@ -115,7 +115,8 @@ export function ScheduleList() {
             />
           }
           color={THEME.colors.white}
-          fontFamily={'Roboto_400Regular'}
+          fontFamily={'InterTight_600SemiBold'}
+          fontWeight={600}
           fontSize={THEME.fontSizes.md}
           borderColor={THEME.colors.header}
           bg={THEME.colors.header}
@@ -129,7 +130,8 @@ export function ScheduleList() {
                 key={item.key}
                 _text={{
                   color: THEME.colors.backgroud,
-                  fontFamily: 'Roboto_400Regular',
+                  fontFamily: 'InterTight_400Regular',
+                  fontWeight: 400,
                   fontSize: THEME.fontSizes.md,
                 }}
               />
@@ -200,7 +202,8 @@ export const styles = StyleSheet.create({
     paddingBottom: 10 + THEME.sizes.paddingPage,
   },
   input: {
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     fontSize: THEME.fontSizes.md,
     color: THEME.colors.white
   },
@@ -213,14 +216,16 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     color: THEME.colors.white,
     paddingBottom: 10,
   },
   withoutEvent: {
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
-    fontFamily: 'Roboto_300Light',
+    fontFamily: 'InterTight_300Light',
+    fontWeight: 300,
     color: THEME.colors.white,
     textAlign:'center',
   },
@@ -248,18 +253,22 @@ export const styles = StyleSheet.create({
     color: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_500Medium',
+    fontWeight: 500,
   },
   dayWeek: {
     color: THEME.colors.primary,
     fontSize: THEME.fontSizes.sm - 3,
     lineHeight: THEME.fontSizes.sm - 3,
     textTransform: 'uppercase',
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_500Medium',
+    fontWeight: 500,
   },
   label: {
     color: THEME.colors.font,
-    fontSize: THEME.fontSizes.md,
-    fontFamily: 'Roboto_500Medium',
+    fontSize: THEME.fontSizes.sm,
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
+    textTransform: 'uppercase',
   }
 })

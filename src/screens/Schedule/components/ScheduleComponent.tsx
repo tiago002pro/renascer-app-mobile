@@ -95,7 +95,8 @@ export const styles = StyleSheet.create({
     color: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.md + 2,
     lineHeight: THEME.fontSizes.md + 2,
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_800ExtraBold',
+    fontWeight: 800,
   },
   description: {
     width: (screenWidth * .65) - THEME.sizes.paddingPage * 3,
@@ -110,13 +111,15 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.sm - 3,
     textTransform: 'uppercase',
     marginBottom: 10,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
   },
   title: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
   },
   data: {
     width: screenWidth * .65 - THEME.sizes.paddingPage * 3,
@@ -136,5 +139,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.sm - 2,
     lineHeight: THEME.fontSizes.sm - 2,
     color: THEME.colors.backgroud,
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
   }
 })

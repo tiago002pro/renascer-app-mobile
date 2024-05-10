@@ -70,7 +70,8 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.title,
     lineHeight: THEME.fontSizes.title,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     color: THEME.colors.white,
     paddingBottom: 20,
   }

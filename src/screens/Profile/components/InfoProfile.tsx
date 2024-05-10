@@ -52,12 +52,14 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md + 2,
     lineHeight: THEME.fontSizes.md + 5,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
   },
   value: {
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm * 2,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
   },
 })

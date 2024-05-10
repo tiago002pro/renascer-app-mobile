@@ -116,11 +116,11 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: THEME.colors.black,
+    backgroundColor: THEME.colors.primary,
   },
   playIcon: {
     position: 'absolute',
-    opacity: .5,
+    opacity: .7,
   },
   titleVideo: {
     width: width - THEME.sizes.paddingPage * 2,
@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: THEME.colors.white,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     fontSize: THEME.fontSizes.subTitle,
     lineHeight: THEME.fontSizes.subTitle,
     textTransform: 'uppercase',
@@ -143,7 +144,8 @@ const styles = StyleSheet.create({
   },
   author: {
     color: THEME.colors.white,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     fontSize: THEME.fontSizes.subText,
     lineHeight: THEME.fontSizes.subText,
     textTransform: 'capitalize',
@@ -168,7 +170,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.title,
     lineHeight: THEME.fontSizes.title,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     color: THEME.colors.white,
     marginBottom: 10,
   },

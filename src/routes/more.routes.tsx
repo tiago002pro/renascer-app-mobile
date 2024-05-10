@@ -18,9 +18,11 @@ export default function MoreRoutes() {
 			headerBackTitleVisible: false,
 			headerTitleStyle: {
 				color: THEME.colors.white,
-				fontFamily: 'Roboto_500Medium',
+				fontFamily: 'InterTight_600SemiBold',
+				fontWeight: 600,
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
+				opacity: .7,
 			},
 		}}>
 			<Screen

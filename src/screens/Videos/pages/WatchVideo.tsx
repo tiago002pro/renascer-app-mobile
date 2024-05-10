@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     marginBottom: 15,
     textTransform: 'uppercase',
   },
@@ -75,14 +76,16 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     marginBottom: 15,
   },
   description: {
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     textAlign: 'justify'
   }
 });

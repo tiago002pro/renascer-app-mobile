@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,

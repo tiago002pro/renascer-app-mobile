@@ -45,6 +45,7 @@ export default function RecoverPassword() {
         label={'Enviar'}
         bntFunction={recoverPassword}
         isDisabled={false}
+        color={THEME.colors.header}
       />
 
       {
@@ -71,7 +72,8 @@ export const styles = StyleSheet.create({
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     marginBottom: 10,
   },
   loading: {

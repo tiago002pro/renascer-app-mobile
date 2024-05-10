@@ -108,7 +108,8 @@ export default function SignIn() {
             p={0}
             _text={{
               color: THEME.colors.primary,
-              fontFamily: 'Roboto_700Bold',
+              fontFamily: 'InterTight_600SemiBold',
+              fontWeight: 600,
               fontSize: THEME.fontSizes.sm,
               lineHeight: THEME.fontSizes.sm,
             }}
@@ -142,7 +143,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   forgotPassword: {
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
@@ -150,7 +152,8 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   label: {
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
@@ -167,7 +170,8 @@ const styles = StyleSheet.create({
     left: 5
   },
   register: {
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,

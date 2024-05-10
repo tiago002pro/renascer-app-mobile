@@ -159,7 +159,8 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     marginBottom: 5,
   }
 })

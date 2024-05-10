@@ -27,11 +27,13 @@ export default function TabRoutes() {
       tabBarLabelStyle: {
         marginTop: -5,
         marginBottom: 5,
-        fontFamily: 'Roboto_400Regular'
+        fontFamily: 'InterTight_500Medium',
+        fontWeight: 500,
       },
       headerTitleStyle: {
 				color: THEME.colors.white,
-				fontFamily: 'Roboto_700Bold',
+				fontFamily: 'InterTight_700Bold',
+        fontWeight: 700,
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
       },

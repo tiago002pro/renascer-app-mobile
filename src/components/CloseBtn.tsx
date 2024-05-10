@@ -1,4 +1,4 @@
-import { Box, Icon, IconButton } from "native-base";
+import { Icon, IconButton } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { THEME } from "../styles/theme";
@@ -8,20 +8,24 @@ export const CloseBtn = () => {
 
     return (
       <IconButton
-        m={0} p={0}
         onPress={() => navigation.goBack()}
         icon={
           <Icon as={AntDesign} name="close"/>
         }
         borderRadius={'full'}
         _icon={{
-          color: '#FFF',
-          size: 6
+          color: THEME.colors.white,
+          size: 6,
+          opacity: .7
         }}
         _pressed={{
-          backgroundColor: 'transparent'
+          backgroundColor: THEME.colors.primary,
+          _icon: {
+            color: THEME.colors.backgroud,
+            opacity: 1,
+          }
         }}
-        style={{marginRight: THEME.sizes.paddingPage}}
+        style={{marginRight: THEME.sizes.paddingPage * 2}}
       />
     );
   }

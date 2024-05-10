@@ -95,7 +95,8 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
   },
   question: {
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,

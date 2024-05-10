@@ -1,4 +1,4 @@
-import { Box, Icon, IconButton } from "native-base";
+import { Icon, IconButton } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { THEME } from "../styles/theme";
@@ -17,11 +17,13 @@ export const returnBtn = () => {
           color: THEME.colors.white,
           size: 6,
           left: 1.5,
+          opacity: .7
         }}
         _pressed={{
           backgroundColor: THEME.colors.primary,
           _icon: {
-            color: THEME.colors.backgroud
+            color: THEME.colors.backgroud,
+            opacity: 1,
           }
         }}
         style={{marginLeft: THEME.sizes.paddingPage * 2}}

@@ -185,14 +185,16 @@ export const styles = StyleSheet.create({
   },
   name: {
     color: '#FFF',
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     marginBottom: 5,
   },
   email: {
     color: THEME.colors.gray[400],
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
   },
@@ -226,7 +228,8 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     color: THEME.colors.font,
   },
   arrowArea: {
@@ -251,17 +254,19 @@ export const styles = StyleSheet.create({
     borderRightColor: 'transparent',
   },
   label: {
-    fontSize: THEME.fontSizes.md + 2,
-    lineHeight: THEME.fontSizes.md + 2,
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_700Bold',
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
     marginBottom: 5,
   },
   value: {
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.font,
-    fontFamily: 'Roboto_400Regular',
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: 400,
     marginBottom: 5,
   },
 })
