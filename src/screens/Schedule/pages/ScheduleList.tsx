@@ -27,7 +27,7 @@ export function ScheduleList() {
     { key: `${currentYear}-11`, label: `Novembro de `  + currentYear },
     { key: `${currentYear}-12`, label: `Dezembro de `  + currentYear },
   ]
-  const [date, setDate] = useState(moment().format('YYYY-MM'));
+  const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
   const [schedules, setSchedules] = useState([]) as any[];
 
   useEffect(() => {
