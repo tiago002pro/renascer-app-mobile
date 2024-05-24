@@ -8,11 +8,11 @@ import UserService from "../service/UserService";
 import { DataAccordion } from "../helper/DataAccordion";
 import { THEME } from "../../../styles/theme";
 import data from '../helper/DataProfile';
+import Loading from "../../Loading";
 
 export function Profile() {
   const navigation:any = useNavigation();
   const { user } = useAuth() as any;
-
   const [person, setPerson] = useState(null) as any;
   const [currentSection, setCurrentSection] = useState(null) as any;
   const [load, setLoad] = useState(false);
@@ -32,7 +32,12 @@ export function Profile() {
       getUser()
     }
     onInit()
-  }, [load, navigation])  
+  }, [load, navigation])
+
+  
+  if (!person || !person?.profileImage) {
+    return <Loading/>;
+  }
 
   return (
     <VStack style={styles.container}>
@@ -52,7 +57,7 @@ export function Profile() {
                     <Box style={styles.circle}></Box>
                     <Ionicons
                       name="person-circle-outline"
-                      size={150}
+                      size={180}
                       style={styles.icon}
                       color={THEME.colors.primary}
                     />
@@ -170,26 +175,25 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
   },
   imgContainer: {
-    width: 150,
+    width: 200,
     height: 150,
-    borderRadius: 150,
     justifyContent: 'center',
     alignItems: 'center',
   },
   circle: {
-    borderRadius: 112,
-    width: 112,
-    height: 112,
+    borderRadius: 132,
+    width: 132,
+    height: 132,
     borderWidth: 5,
     borderColor: THEME.colors.header,
     zIndex: 999999,
     position: 'absolute'
   },
   icon: {
-    width: 150,
-    height: 150,
     zIndex: 0,
-    position: 'absolute'
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
     width: 140,
