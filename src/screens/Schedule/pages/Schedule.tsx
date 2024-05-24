@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Box, FlatList, Text, VStack, View } from "native-base";
 import { FontAwesome5 } from '@expo/vector-icons';
-
 import ScheduleService from "../service/ScheduleService";
-
 import ScheduleComponent from "../components/ScheduleComponent";
-
+import Loading from "../../Loading";
 import { THEME } from "../../../styles/theme";
-const { height } = Dimensions.get('window');
 
 type Schedule = {
   id: string,
@@ -33,26 +30,32 @@ export function Schedule() {
     getSchedule()
   }, [])
 
+  if (!schedules) {
+    return <Loading/>;
+  }
+
   return (
     <VStack style={styles.container}>
-      {schedules && schedules.length > 0 ? 
+      {schedules.length > 0 ? 
         <View>
           <Text style={styles.title}>Próximos eventos</Text>
           <FlatList
             data={schedules}
+            keyExtractor={(item:any) => item.id.toString()}
             renderItem={
               ({item}) => <ScheduleComponent item={item} />
             }
-            keyExtractor={(item:any) => item.id.toString()}
           />
         </View>
         :
-        <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
+        <View style={styles.without}>
           <Box mb={3}>
             <FontAwesome5 name="calendar-times" color={THEME.colors.primary} size={50}/>
           </Box>
-          <Text style={styles.title} textAlign={'center'}>Nenhum evento</Text>
-          <Text style={styles.title} textAlign={'center'}>foi encontrado</Text>
+          <Box alignItems={'center'}>
+            <Text style={[styles.withoutText, {marginBottom: 5}]}>Nenhum evento</Text>
+            <Text style={styles.withoutText}>encontrado</Text>
+          </Box>
         </View>
       }
     </VStack>
@@ -62,10 +65,8 @@ export function Schedule() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height,
     backgroundColor: THEME.colors.backgroud,
     padding: THEME.sizes.paddingPage,
-    paddingBottom: 10 + THEME.sizes.paddingPage,
   },
   title: {
     fontSize: THEME.fontSizes.title,
@@ -73,6 +74,18 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: 600,
     color: THEME.colors.white,
-    paddingBottom: 20,
+    marginBottom: 20,
+  },
+  without: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  withoutText: {
+    fontSize: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg,
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: 600,
+    color: THEME.colors.white,
   }
 })
