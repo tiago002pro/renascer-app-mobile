@@ -6,9 +6,9 @@ export function Contribute() {
   return(
     <View style={styles.container}>
       <Box style={styles.box}>
-        <Text style={styles.text}>FAMILIA JESUSCOPY</Text>
+        <Text style={styles.text}>IGREJA RENASCER MARINGÁ</Text>
         <Box style={styles.line}></Box>
-        <Text style={styles.text}>CNPJ: 33.0001.460/0001-93</Text>
+        <Text style={styles.text}>CNPJ: 15.841.526/0001-71</Text>
       </Box>
 
       <Box style={styles.box}>
@@ -18,7 +18,7 @@ export function Contribute() {
           resizeMode='contain'
           style={styles.image}
         />
-        <Text style={styles.text}>Chave CNPJ: 33.0001.460/0001-93</Text>
+        <Text style={styles.text}>Chave CNPJ: 15.841.526/0001-71</Text>
       </Box>
 
       <Box style={styles.box}>
@@ -28,8 +28,8 @@ export function Contribute() {
           resizeMode='cover'
           style={styles.image}
         />
-        <Text style={styles.text}>341 - Agência: 0680</Text>
-        <Text style={styles.text}>Conta Corrente: 27350-5</Text>
+        <Text style={styles.text}>Agência: 0163</Text>
+        <Text style={styles.text}>Conta Corrente: 13016080-7</Text>
       </Box>
     </View>
   );
