@@ -42,18 +42,8 @@ export function SlideVideo({ title, data }:any) {
                   <FontAwesome5 name="play" color={THEME.colors.white} size={40} style={styles.playIcon}/>
                 </Box>
                 <Box style={styles.description}>
-                  <Text
-                  style={styles.titleVideo}
-                    numberOfLines={1}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text
-                  style={styles.authorVideo}
-                    numberOfLines={1}
-                  >
-                    {item.author}
-                  </Text>
+                  <Text style={styles.titleVideo} numberOfLines={1}>{item.title}</Text>
+                  <Text style={styles.authorVideo} numberOfLines={1}>{item.author}</Text>
                 </Box>
               </View>
             </TouchableWithoutFeedback>
@@ -69,8 +59,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   title: {
-    fontSize: THEME.fontSizes.subTitle,
-    lineHeight: THEME.fontSizes.subTitle,
+    fontSize: THEME.fontSizes.md,
+    lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: 600,
     color: THEME.colors.white,
@@ -106,8 +96,8 @@ const styles = StyleSheet.create({
     width: imageW - 10,
   },
   titleVideo: {
-    fontSize: THEME.fontSizes.text,
-    lineHeight: THEME.fontSizes.text,
+    fontSize: THEME.fontSizes.sm,
+    lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: 600,
     color: THEME.colors.white,
@@ -115,8 +105,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   authorVideo: {
-    fontSize: THEME.fontSizes.subText,
-    lineHeight: THEME.fontSizes.subText,
+    fontSize: THEME.fontSizes.sm - 3,
+    lineHeight: THEME.fontSizes.sm - 3,
     fontFamily: 'InterTight_400Regular',
     fontWeight: 400,
     color: THEME.colors.gray[200],
