@@ -1,8 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
-
 import { THEME } from "../styles/theme";
-
 import VideosRoutes from "./videos.routes";
 import ScheduleRoutes from "./schedule.routes";
 import DashboardRoutes from "./dashboard.routes";

@@ -1,8 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { THEME } from "../styles/theme";
 import { Contribute } from "../screens/Contribute/pages/Contribute";
+import { Dimensions } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
+const { width } = Dimensions.get('screen');
 
 export default function ContributeRoutes() {
 	return (
@@ -22,6 +24,8 @@ export default function ContributeRoutes() {
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 				opacity: .7,
+				width: width * 0.55,
+				textAlign: 'center',
 			},
 		}}>
 			<Screen

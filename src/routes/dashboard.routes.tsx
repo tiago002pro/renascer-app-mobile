@@ -2,19 +2,16 @@ import { Button, Icon, IconButton, Image, Text, View } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-
 import { useAuth } from "../contexts/auth";
-
 import { Dashboard } from "../screens/Dashboard";
 import { WatchVideo } from "../screens/Videos/pages/WatchVideo";
-
 import ProfileRoutes from "./profile.routes";
-
 import { returnBtn } from "../components/ReturnBtn";
-
 import { THEME } from "../styles/theme";
+import { Dimensions } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
+const { width } = Dimensions.get('screen');
 
 export default function DashboardRoutes() {
 	const navigation:any = useNavigation();
@@ -34,10 +31,20 @@ export default function DashboardRoutes() {
 			headerStyle: {
 				backgroundColor: THEME.colors.header,
 			},
-			headerTintColor: THEME.colors.white,
 			headerTitleAlign: 'center',
+			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
+			headerTitleStyle: {
+				color: THEME.colors.white,
+				fontFamily: 'InterTight_600SemiBold',
+				fontWeight: 600,
+				textTransform: 'capitalize',
+				fontSize: THEME.fontSizes.md,
+				opacity: .7,
+				width: width * 0.55,
+				textAlign: 'center',
+			},
 		}}>
 			<Screen
 				name="Dashboard"
