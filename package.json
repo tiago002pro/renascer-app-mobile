@@ -12,7 +12,7 @@
     "@expo-google-fonts/inter-tight": "^0.2.3",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/bottom-tabs": "^6.5.14",
-    "@react-navigation/native": "^6.1.12",
+    "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.23",
     "@rneui/themed": "^4.0.0-rc.8",
     "axios": "^1.6.7",
@@ -26,7 +26,7 @@
     "firebase": "^10.8.1",
     "jwt-decode": "^3.1.2",
     "moment": "^2.30.1",
-    "native-base": "^3.4.28",
+    "native-base": "^2.15.2",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-flash-message": "^0.4.2",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@types/react": "~18.2.79",
-    "typescript": "^5.1.3"
+    "typescript": "~5.3.3"
   },
   "private": true
 }
