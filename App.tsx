@@ -15,7 +15,10 @@ import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
   useEffect(() => {
-    LogBox.ignoreLogs(['In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.']);
+    LogBox.ignoreLogs([
+      'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',
+      'Non-serializable values were found in the navigation state',
+    ]);
   }, []);
 
   const [fontsLoaded, fontError] = useFonts({

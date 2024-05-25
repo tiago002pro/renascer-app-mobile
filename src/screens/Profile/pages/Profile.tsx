@@ -35,7 +35,7 @@ export function Profile() {
   }, [load, navigation])
 
   
-  if (!person || !person?.profileImage) {
+  if (!person) {
     return <Loading/>;
   }
 

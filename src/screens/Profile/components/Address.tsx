@@ -3,19 +3,17 @@ import { StyleSheet } from "react-native";
 import { Box, View } from "native-base";
 import { Masks } from "react-native-mask-input";
 import { ActivityIndicator } from "react-native-paper";
-
 import AddressService from "../service/AddressService";
-
 import InputTextComponent from "../../../components/InputText";
-
 import { THEME } from "../../../styles/theme";
 
 interface AddressProps {
   address?:any;
   setAddress?:any;
+  errors?:any;
 }
 
-export function Address({ address, setAddress }:AddressProps) {
+export function Address({ address, setAddress, errors }:AddressProps) {
   const [showDataAddress, setShowDataAddress] = useState(address?.zipCode ? true : false);
   const [loading, setLoading] = useState(false);
 
@@ -82,6 +80,7 @@ export function Address({ address, setAddress }:AddressProps) {
           label={'País'}
           valiable={address?.country}
           setValiable={setCountry}
+          error={errors?.country}
         />
       </Box>
 
@@ -92,6 +91,7 @@ export function Address({ address, setAddress }:AddressProps) {
           setValiable={setZipCode}
           mask={Masks.ZIP_CODE}
           type={'numeric'}
+          error={errors?.zipCode}
         />
       </Box>
 
@@ -109,6 +109,7 @@ export function Address({ address, setAddress }:AddressProps) {
               label={'Endereço'}
               valiable={address?.publicPlace}
               setValiable={setPublicPlace}
+              error={errors?.publicPlace}
             />
           </Box>
 
@@ -118,6 +119,7 @@ export function Address({ address, setAddress }:AddressProps) {
                 label={'Nº'}
                 valiable={address?.number}
                 setValiable={setNumber}
+                error={errors?.number}
               />
             </Box>
 
@@ -126,6 +128,7 @@ export function Address({ address, setAddress }:AddressProps) {
                 label={'Complemento'}
                 valiable={address?.complement}
                 setValiable={setComplement}
+                error={false}
               />
             </Box>
           </Box>
@@ -135,6 +138,7 @@ export function Address({ address, setAddress }:AddressProps) {
               label={'Bairro'}
               valiable={address?.neighborhood}
               setValiable={setNeighborhood}
+              error={errors?.neighborhood}
             />
           </Box>
 
@@ -144,6 +148,7 @@ export function Address({ address, setAddress }:AddressProps) {
                 label={'Cidade'}
                 valiable={address?.city}
                 setValiable={setCity}
+                error={errors?.city}
               />
             </Box>
 
@@ -152,6 +157,7 @@ export function Address({ address, setAddress }:AddressProps) {
                 label={'UF'}
                 valiable={address?.state}
                 setValiable={setState}
+                error={errors?.state}
               />
             </Box>
           </Box>

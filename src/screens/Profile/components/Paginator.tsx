@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
   dot: {
     height: 5,
     borderRadius: 3,
-    backgroundColor: THEME.colors.white,
+    backgroundColor: THEME.colors.primary,
   },
 });
