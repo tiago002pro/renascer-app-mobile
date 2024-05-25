@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     marginBottom: 10,
   },
   loading: {

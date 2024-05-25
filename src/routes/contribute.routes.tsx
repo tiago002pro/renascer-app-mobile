@@ -20,7 +20,7 @@ export default function ContributeRoutes() {
 			headerTitleStyle: {
 				color: THEME.colors.white,
 				fontFamily: 'InterTight_600SemiBold',
-				fontWeight: 600,
+				fontWeight: '600',
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 				opacity: .7,

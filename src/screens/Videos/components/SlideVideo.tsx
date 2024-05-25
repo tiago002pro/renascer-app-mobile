@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
   },
   videoContainer: {
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
     textTransform: 'capitalize',
     marginBottom: 5,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.sm - 3,
     lineHeight: THEME.fontSizes.sm - 3,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     color: THEME.colors.gray[200],
     textTransform: 'capitalize',
   }

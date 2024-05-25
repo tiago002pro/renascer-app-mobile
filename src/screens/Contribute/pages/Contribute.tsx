@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     color: THEME.colors.white,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
   },
   image: {
     height: 50,

@@ -44,7 +44,7 @@ export default function SelectComponent({ options, label, valiable, setValiable 
             _text={{
               color: THEME.colors.backgroud,
               fontFamily: 'InterTight_400Regular',
-              fontWeight: 400,
+              fontWeight: '400',
               fontSize: THEME.fontSizes.md,
             }}
           />

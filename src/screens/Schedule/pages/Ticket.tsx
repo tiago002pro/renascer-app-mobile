@@ -173,7 +173,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
   },
   subtitle: {
     fontSize: THEME.fontSizes.subTitle,
@@ -181,14 +181,14 @@ export const styles = StyleSheet.create({
     color: THEME.colors.white,
     marginBottom: 10,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
   },
   text: {
     fontSize: THEME.fontSizes.text,
     lineHeight: THEME.fontSizes.text + 2,
     color: THEME.colors.white,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
   },
   date: {
     fontSize: THEME.fontSizes.text,
@@ -196,7 +196,7 @@ export const styles = StyleSheet.create({
     color: THEME.colors.white,
     marginTop: 5,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
   },
   information: {
     display: 'flex',

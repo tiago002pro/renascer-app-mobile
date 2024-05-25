@@ -38,7 +38,7 @@ export default function DashboardRoutes() {
 			headerTitleStyle: {
 				color: THEME.colors.white,
 				fontFamily: 'InterTight_600SemiBold',
-				fontWeight: 600,
+				fontWeight: '600',
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
 				opacity: .7,
@@ -67,7 +67,7 @@ export default function DashboardRoutes() {
 								textTransform={'uppercase'}
 								fontSize={12}
 								fontFamily={'InterTight_500Medium'}
-								fontWeight={500}
+								fontWeight={'500'}
 							>
 								Igreja Renascer
 							</Text>
@@ -93,7 +93,7 @@ export default function DashboardRoutes() {
 								}}
 								_text={{
 									fontFamily: 'InterTight_500Medium',
-									fontWeight: 500,
+									fontWeight: '500',
 									color: THEME.colors.primary,
 									textTransform: 'uppercase',
 									fontSize: 12,

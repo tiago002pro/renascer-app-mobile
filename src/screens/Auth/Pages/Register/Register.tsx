@@ -89,7 +89,7 @@ export default function Register() {
           zIndex={1}
           _text={{
             fontFamily: 'InterTight_600SemiBold',
-            fontWeight: 600,
+            fontWeight: '600',
           }}
         >
           Fechar
@@ -173,7 +173,7 @@ export default function Register() {
               _text={{
                 color: THEME.colors.primary,
                 fontFamily: 'InterTight_600SemiBold',
-                fontWeight: 600,
+                fontWeight: '600',
                 fontSize: THEME.fontSizes.sm,
                 lineHeight: THEME.fontSizes.sm,
               }}
@@ -208,14 +208,14 @@ export const styles = StyleSheet.create({
   },
   login: {
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
   },
   TermsOfUse: {
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     color: THEME.colors.font,
     fontSize: THEME.fontSizes.md,
     marginLeft: 10,

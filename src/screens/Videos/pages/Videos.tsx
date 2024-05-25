@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.title,
     lineHeight: THEME.fontSizes.title,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
   },
   slide: {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
   }
 });

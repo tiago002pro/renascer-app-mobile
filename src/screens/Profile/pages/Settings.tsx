@@ -171,7 +171,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     color: THEME.colors.white,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
   },
   profile: {
     display: 'flex',
@@ -185,7 +185,7 @@ export const styles = StyleSheet.create({
   name: {
     color: THEME.colors.white,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
   },

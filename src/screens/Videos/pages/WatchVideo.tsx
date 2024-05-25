@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     marginBottom: 15,
     textTransform: 'uppercase',
   },
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     marginBottom: 15,
   },
   description: {
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     textAlign: 'justify'
   }
 });

@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: THEME.fontSizes.md,
   },
   icon: {

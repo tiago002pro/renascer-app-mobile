@@ -210,7 +210,7 @@ export const styles = StyleSheet.create({
   name: {
     color: '#FFF',
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     marginBottom: 5,
@@ -218,7 +218,7 @@ export const styles = StyleSheet.create({
   email: {
     color: THEME.colors.primary,
     fontFamily: 'InterTight_300Light',
-    fontWeight: 300,
+    fontWeight: '300',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
   },
@@ -253,7 +253,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.font,
   },
   arrowArea: {
@@ -282,7 +282,7 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     marginBottom: 5,
   },
   value: {
@@ -290,7 +290,7 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     marginBottom: 5,
   },
 })

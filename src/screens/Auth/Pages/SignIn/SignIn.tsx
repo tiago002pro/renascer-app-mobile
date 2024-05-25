@@ -109,7 +109,7 @@ export default function SignIn() {
             _text={{
               color: THEME.colors.primary,
               fontFamily: 'InterTight_600SemiBold',
-              fontWeight: 600,
+              fontWeight: '600',
               fontSize: THEME.fontSizes.sm,
               lineHeight: THEME.fontSizes.sm,
             }}
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   forgotPassword: {
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   register: {
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,

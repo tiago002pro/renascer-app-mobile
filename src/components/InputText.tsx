@@ -45,6 +45,6 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     height: 39,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
   },
 })

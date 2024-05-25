@@ -116,7 +116,7 @@ export function ScheduleList() {
           }
           color={THEME.colors.white}
           fontFamily={'InterTight_600SemiBold'}
-          fontWeight={600}
+          fontWeight={'600'}
           fontSize={THEME.fontSizes.md}
           borderColor={THEME.colors.header}
           bg={THEME.colors.header}
@@ -131,7 +131,7 @@ export function ScheduleList() {
                 _text={{
                   color: THEME.colors.backgroud,
                   fontFamily: 'InterTight_400Regular',
-                  fontWeight: 400,
+                  fontWeight: '400',
                   fontSize: THEME.fontSizes.md,
                 }}
               />
@@ -203,7 +203,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: THEME.fontSizes.md,
     color: THEME.colors.white
   },
@@ -217,7 +217,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
     paddingBottom: 10,
   },
@@ -225,7 +225,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_300Light',
-    fontWeight: 300,
+    fontWeight: '300',
     color: THEME.colors.white,
     textAlign:'center',
   },
@@ -254,7 +254,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_500Medium',
-    fontWeight: 500,
+    fontWeight: '500',
   },
   dayWeek: {
     color: THEME.colors.primary,
@@ -262,13 +262,13 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.sm - 3,
     textTransform: 'uppercase',
     fontFamily: 'InterTight_500Medium',
-    fontWeight: 500,
+    fontWeight: '500',
   },
   label: {
     color: THEME.colors.font,
     fontSize: THEME.fontSizes.sm,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     textTransform: 'uppercase',
   }
 })

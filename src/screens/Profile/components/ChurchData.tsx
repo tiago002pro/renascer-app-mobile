@@ -160,7 +160,7 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.white,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     marginBottom: 5,
   }
 })

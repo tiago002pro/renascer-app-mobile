@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   text: {
     color: THEME.colors.white,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: THEME.fontSizes.subTitle,
     lineHeight: THEME.fontSizes.subTitle,
     textTransform: 'uppercase',
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   author: {
     color: THEME.colors.white,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: THEME.fontSizes.subText,
     lineHeight: THEME.fontSizes.subText,
     textTransform: 'capitalize',
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.title,
     lineHeight: THEME.fontSizes.title,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
     marginBottom: 10,
   },

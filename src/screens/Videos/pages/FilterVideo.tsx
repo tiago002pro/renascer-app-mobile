@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.text,
     lineHeight: THEME.fontSizes.text,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
     color: THEME.colors.white,
     textTransform: 'capitalize',
     marginBottom: 5,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.subText,
     lineHeight: THEME.fontSizes.subText,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
     color: THEME.colors.gray[200],
     textTransform: 'capitalize',
   }

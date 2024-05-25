@@ -53,13 +53,13 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.md + 5,
     color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
-    fontWeight: 600,
+    fontWeight: '600',
   },
   value: {
     fontSize: THEME.fontSizes.sm,
     lineHeight: THEME.fontSizes.sm * 2,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
-    fontWeight: 400,
+    fontWeight: '400',
   },
 })
