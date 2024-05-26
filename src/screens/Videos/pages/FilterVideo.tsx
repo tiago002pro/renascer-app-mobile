@@ -31,7 +31,7 @@ export function FilterVideo() {
     <View style={styles.container}>
       <Box style={styles.inputSerch}>
         <InputTextIcon
-          placeholder={"Search"}
+          placeholder={"Buscar"}
           icon={"search"}
           autoCapitalize={false}
           value={search}
