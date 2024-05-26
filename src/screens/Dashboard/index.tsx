@@ -86,7 +86,7 @@ export function Dashboard() {
           <Box style={styles.themeYear}>
             <Text style={styles.title}>Destaques</Text>
             <Image
-              source={require('../../../assets/images/TEMA_ANO.png')}
+              source={{uri: 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2FTEMA_ANO.png?alt=media&token=ef454aa0-6494-4165-8ace-04c2b71e2d0c'}}
               alt={"Tema do ano"}
               style={styles.image}
             />
