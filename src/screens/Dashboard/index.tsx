@@ -3,11 +3,8 @@ import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Image, ScrollView, Text, View } from "native-base";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-
 import VideoService from "../Videos/service/VideoService";
-
 import { SlideVideo } from "../Videos/components/SlideVideo";
-
 import { THEME } from "../../styles/theme";
 import { ActivityIndicator } from "react-native-paper";
 
