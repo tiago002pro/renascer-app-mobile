@@ -56,15 +56,15 @@ export function Videos() {
 
             <Box style={styles.slide}>
               <SlideVideo
-                title={"Conferências"}
-                data={conference}
+                title={"Adicionados recentemente"}
+                data={recent}
               />
             </Box>
 
             <Box style={styles.slide}>
               <SlideVideo
-                title={"Adicionados recentemente"}
-                data={recent}
+                title={"Conferências"}
+                data={conference}
               />
             </Box>
           </View>

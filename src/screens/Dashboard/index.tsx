@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: THEME.colors.primary,
   },
   playIcon: {
     position: 'absolute',

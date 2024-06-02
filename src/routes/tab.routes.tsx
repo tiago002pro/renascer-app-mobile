@@ -61,7 +61,7 @@ export default function TabRoutes() {
         component={ScheduleRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="event" color={color} size={size} />,
-          tabBarLabel: "Agenda",
+          tabBarLabel: "Eventos",
           headerShown: false,
         }}
       />

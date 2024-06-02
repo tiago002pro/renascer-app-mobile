@@ -74,7 +74,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.white,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   without: {
     flex: 1,

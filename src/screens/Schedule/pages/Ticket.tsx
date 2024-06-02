@@ -1,35 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import React from "react";
+import { Dimensions, Linking, StyleSheet } from "react-native";
 import { Box, Image, Text, VStack, View } from "native-base";
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import moment from 'moment';
-
 import { THEME } from "../../../styles/theme";
+import ButtonComponent from "../../../components/ButtonComponent";
 
 const { width, height } = Dimensions.get('screen');
 const withDescription = (width - THEME.sizes.paddingPage * 2);
 
 export function Ticket({ route }:any) {
   const { ticket } = route.params;
+
+  function openLink(link:string) {
+    Linking.openURL(link)
+  }
   
-  const [dateFirst, setDateFirst] = useState('');
-  const [dateSecound, setDateSecound] = useState('');
-
-  useEffect(() => {
-    function changeFormatDateFirst() {
-      const startDate: string = moment(ticket.startDate).format('DD [de] MMMM, [das] h[h]mm [às]');
-      const endTime: string = moment(ticket.endDate).format(' h[h]mm.');
-      setDateFirst(startDate + endTime);
-    }
-
-    function changeFormatDateSecound() {
-      const date: string = moment(ticket.startDate).format('[Dia] DD.MM, dddd, [às] h[h]mm.');
-      setDateSecound(date);
-    }
-
-    changeFormatDateFirst()
-    changeFormatDateSecound()
-  }, [])
+  function getDate(date:any, format:string):string {
+    return moment(date, 'YYYY-MM-DD HH:mm:ss').format(format)
+  }
 
   return(
     <VStack style={styles.container}>
@@ -55,7 +44,7 @@ export function Ticket({ route }:any) {
             </Box>
             <Box style={styles.info}>
               <Text style={styles.text}>
-                {dateFirst}
+                {getDate(ticket.startDate, 'DD [de] MMMM H[h]mm')}
               </Text>
 
               {/* <Button
@@ -120,27 +109,22 @@ export function Ticket({ route }:any) {
               <Text style={styles.text}>
                 {ticket.description}
               </Text>
-              <Text style={styles.date}>
-                {dateSecound}
-              </Text>
             </Box>
           </Box>
 
         </View>
       </View>
-      {/* {ticket.registration ? 
+      {ticket.registration ? 
         <VStack style={styles.footer}>
           <ButtonComponent
-            children={"Ingressos"}
-            bg={'yellow.400'}
+            label={"Fazer iscrição"}
+            bg={THEME.colors.primary}
             color={THEME.colors.backgroud}
-            bntFunction={() => {}}
-            textTransform={'capitalize'}
-            w={'100%'}
+            bntFunction={() => openLink(ticket.link)}
           />
         </VStack>
         : null
-      } */}
+      }
     </VStack>
   );
 }

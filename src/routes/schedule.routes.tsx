@@ -37,14 +37,14 @@ export default function ScheduleRoutes() {
 			},
 		}}>
 			<Screen
-				name="ScheduleList"
-				component={ScheduleList}
+				name="Schedule"
+				component={Schedule}
 				options={{
-					headerTitle: 'Agenda',
+					headerTitle: 'Eventos',
 					headerLeft: returnBtn,
 					headerRight: () =>
 					<IconButton
-						onPress={() => navigation.navigate('Schedule')}
+						onPress={() => navigation.navigate('ScheduleList')}
 						icon={ <Icon as={MaterialCommunityIcons} name="calendar-blank"/> }
 						borderRadius={'full'}
 						_icon={{ color: '#FFF', size: 6, opacity: .7 }}
@@ -58,8 +58,8 @@ export default function ScheduleRoutes() {
 			/>
 
 			<Screen
-				name="Schedule"
-				component={Schedule}
+				name="ScheduleList"
+				component={ScheduleList}
 				options={{
 					headerTitle: 'Eventos',
 					headerLeft: returnBtn,

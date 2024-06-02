@@ -3,7 +3,6 @@ import { Dimensions, StyleSheet } from "react-native";
 import { Box, FlatList, Icon, Select, Text, VStack, View } from "native-base";
 import moment from "moment";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import ScheduleService from "../service/ScheduleService";
 import { Schedule, ScheduleDTO } from "../../../interfaces/Schedule.interface";
 import { THEME } from "../../../styles/theme";
@@ -43,16 +42,8 @@ export function ScheduleList() {
     setSchedules(result)
   }
 
-  function getDate(date:any):string {
-    return moment(new Date(date)).format('DD')
-  }
-
-  function getDayWeek(date:any):string {
-    return moment(new Date(date)).format('ddd')
-  }
-
-  function getTime(date:any):string {
-    return moment(new Date(date)).format('LT')
+  function getDate(date:any, format:string):string {
+    return moment(date, 'YYYY-MM-DD HH:mm:ss').format(format)
   }
 
   function getMonth(m:string):string {
@@ -161,16 +152,16 @@ export function ScheduleList() {
                           <Box style={styles.areaDate}>
                             <Box style={styles.circleDate}>
                               <Text style={styles.date}>
-                                {getDate(item.startDate)}
+                                {getDate(item.startDate, 'DD')}
                               </Text>
                             </Box>
                       
                             <Text style={styles.dayWeek}>
-                              {getDayWeek(item.startDate)}
+                              {getDate(item.startDate, 'ddd')}
                             </Text>
                           </Box>
                           <Text style={styles.label}>
-                            {item.title + ' às ' + getTime(item.startDate)} 
+                            {item.title + ' às ' + getDate(item.startDate, 'LT')} 
                           </Text>
                         </Box>
                       )

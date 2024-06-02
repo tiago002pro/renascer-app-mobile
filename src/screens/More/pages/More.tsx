@@ -1,7 +1,7 @@
 import { Box, Icon, Image, Text, View } from "native-base";
 import { THEME } from "../../../styles/theme";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons, MaterialIcons, Entypo } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../../contexts/auth";
 import { useEffect, useState } from "react";
@@ -28,6 +28,10 @@ export function More() {
     onInit()
   }, [load, navigation]) 
 
+  function goScheduleList():void {
+		navigation.navigate('ScheduleRoutes', {screen: 'ScheduleList'});
+  }
+
   function goSchedule():void {
 		navigation.navigate('ScheduleRoutes', {screen: 'Schedule'});
   }
@@ -35,8 +39,16 @@ export function More() {
   const options = [
     {
       id: '1',
-      vectorIcon: Entypo,
-      icon: 'text-document-inverted',
+      vectorIcon: MaterialCommunityIcons,
+      icon: 'calendar-blank',
+      colorIcon: THEME.colors.primary,
+      label: 'Agenda',
+      action: goScheduleList,
+    },
+    {
+      id: '2',
+      vectorIcon: MaterialIcons,
+      icon: 'event',
       colorIcon: THEME.colors.primary,
       label: 'Eventos',
       action: goSchedule,

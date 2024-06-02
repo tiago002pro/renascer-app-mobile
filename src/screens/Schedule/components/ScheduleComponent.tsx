@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Box, Image, Text } from "native-base";
 import moment from "moment";
@@ -9,7 +8,6 @@ const { width: screenWidth } = Dimensions.get('window');
 
 export default function ScheduleComponent({ item }:any) {
   const navigation: any = useNavigation()
-  const [date, setDate] = useState('');
 
   function goTicket(ticket:any):void {
     navigation.navigate('Ticket', {
@@ -17,13 +15,9 @@ export default function ScheduleComponent({ item }:any) {
     });
   }
 
-  useEffect(() => {
-    function changeFormatDate() {
-      const date: string = moment(item.startDate).format('ddd, DD MMM [•] h[h]mm');
-      setDate(date);
-    }
-    changeFormatDate()
-  }, [])
+  function getDate(date:any):string {
+    return moment(date, 'YYYY-MM-DD HH:mm:ss').format('ddd, DD MMM [•] H[h]mm')
+  }
 
   return (
     <TouchableWithoutFeedback onPress={() => goTicket(item)}>
@@ -47,7 +41,7 @@ export default function ScheduleComponent({ item }:any) {
 
         <Box style={styles.description}>
           <Box style={styles.data}>
-            <Text style={styles.date}>{date}</Text>
+            <Text style={styles.date}>{getDate(item.startDate)}</Text>
             <Text style={styles.title}>{item.title}</Text>
           </Box>
 

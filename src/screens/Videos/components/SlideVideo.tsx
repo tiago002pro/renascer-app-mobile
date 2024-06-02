@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: THEME.colors.primary,
     borderRadius: 15,
   },
   image: {
