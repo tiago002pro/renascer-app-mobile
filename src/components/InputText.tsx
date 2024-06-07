@@ -42,6 +42,7 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
             onSurfaceVariant: error ? 'red' : '#FFF'
           }
         }}
+        autoCapitalize={'none'}
         render={props => 
           <MaskInput
             {...props}

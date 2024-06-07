@@ -4,7 +4,7 @@
     "slug": "renascer-app-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/adaptive-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -19,6 +19,7 @@
       "bundleIdentifier": "com.tiagodev002pro.renascerappmobile"
     },
     "android": {
+      "googleServiceFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1d1f21"
@@ -30,7 +31,7 @@
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/adaptive-icon.png"
     },
     "extra": {
       "eas": {
@@ -47,7 +48,15 @@
           "ios": {}
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/adaptive-icon.png",
+          "color": "#ffffff",
+          "sounds": ["./assets/sounds/marimba-bloop.mp3"]
+        }
+      ]
     ]
   }
 }

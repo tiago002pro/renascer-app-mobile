@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Box, FormControl, Icon, Input, Pressable } from "native-base";
+import { FormControl, Icon, Input, Pressable } from "native-base";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { THEME } from "../styles/theme";
 import { useState } from "react";
@@ -63,7 +63,7 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
             selectionColor: THEME.colors.primary,
           }
         }}
-        autoCapitalize={autoCapitalize ? "sentences" : "none"}
+        autoCapitalize={autoCapitalize ? 'words' : "none"}
       />
       {
         error ? 

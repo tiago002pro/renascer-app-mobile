@@ -2,14 +2,13 @@ import { useState } from "react";
 import { Alert, StyleSheet } from "react-native";
 import { Box, Button, Text, VStack, View } from "native-base";
 import { Switch } from "@rneui/themed";
-
 import ButtonComponent from "../../../../components/ButtonComponent";
 import InputTextIcon from "../../../../components/InputTextIcon";
-
 import { THEME } from "../../../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
 import { doRegister } from "../../Service/auth";
 import WebView from "react-native-webview";
+import { NotificationService } from "../../../../services/notification.service";
 
 export default function Register() {
   const navigation:any = useNavigation();
@@ -68,9 +67,10 @@ export default function Register() {
       if (!valid) {
         setInvalidLogin(true);
       } else {
-        const result = await doRegister({name, login, password, role})
+        const expoToken = await NotificationService.getExpoNotificationToken()
+        const result = await doRegister({name, login, password, role, expoToken})
         if (result) {
-          navigation.replace('SignIn')
+          navigation.navigate('SignIn', { email: login })
         } else {
           console.log("Erro");
         }

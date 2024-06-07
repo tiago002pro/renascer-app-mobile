@@ -10,6 +10,15 @@ import Loading from './src/screens/Loading';
 import { THEME } from './src/styles/theme';
 import { AuthProvider } from './src/contexts/auth';
 import FlashMessage from 'react-native-flash-message';
+import * as Notifications from 'expo-notifications';
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
 
 export default function App() {
   useEffect(() => {

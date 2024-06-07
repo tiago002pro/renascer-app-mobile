@@ -11,10 +11,10 @@ import { THEME } from "../../../../styles/theme";
 
 const { height } = Dimensions.get('screen');
 
-export default function SignIn() {
+export default function SignIn({ route }:any) {
   const navigation:any = useNavigation();
   const {signIn} = useAuth();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(route?.params?.email ? route?.params?.email : '');
   const [password, setPassword] = useState('');
   const [signInError, setSignInError] = useState(false);
   const [disabledBtn, setDisabledBtn] = useState(true);

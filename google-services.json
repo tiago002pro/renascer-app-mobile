@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "135230168657",
+    "project_id": "renascer-app",
+    "storage_bucket": "renascer-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135230168657:android:15756847af3135b95ee270",
+        "android_client_info": {
+          "package_name": "renascer.app.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135230168657-jh05hkh3a0087hmjp17gd6d51khvcr0d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv4NiINVBHVzhXZKV7e_BsEg52_o50p0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135230168657-jh05hkh3a0087hmjp17gd6d51khvcr0d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

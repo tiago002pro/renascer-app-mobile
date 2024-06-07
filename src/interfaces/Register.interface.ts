@@ -4,4 +4,5 @@ export interface RegisterUser {
   password?: string;
   phone?: string;
   role?: string;
+  expoToken?: string;
 }
