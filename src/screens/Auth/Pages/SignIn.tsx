@@ -2,12 +2,10 @@ import { useState } from "react";
 import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Button, Image, Text, VStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
-
-import InputTextIcon from "../../../../components/InputTextIcon";
-import ButtonComponent from "../../../../components/ButtonComponent";
-
-import { useAuth } from "../../../../contexts/auth";
-import { THEME } from "../../../../styles/theme";
+import { useAuth } from "../../../contexts/auth";
+import InputTextIcon from "../../../components/InputTextIcon";
+import ButtonComponent from "../../../components/ButtonComponent";
+import { THEME } from "../../../styles/theme";
 
 const { height } = Dimensions.get('screen');
 

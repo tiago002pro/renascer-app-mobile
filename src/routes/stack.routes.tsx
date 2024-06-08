@@ -1,8 +1,8 @@
 import { Dimensions } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabRoutes from "./tab.routes";
-import SignIn from "../screens/Auth/Pages/SignIn/SignIn";
-import Register from "../screens/Auth/Pages/Register/Register";
+import SignIn from "../screens/Auth/Pages/SignIn";
+import Register from "../screens/Auth/Pages/Register";
 import RecoverPassword from "../screens/Auth/Pages/RecoverPassword";
 import { returnBtn } from "../components/ReturnBtn";
 import { THEME } from "../styles/theme";

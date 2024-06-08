@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Alert, StyleSheet } from "react-native";
 import { Box, Button, Text, VStack, View } from "native-base";
 import { Switch } from "@rneui/themed";
-import ButtonComponent from "../../../../components/ButtonComponent";
-import InputTextIcon from "../../../../components/InputTextIcon";
-import { THEME } from "../../../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
-import { doRegister } from "../../Service/auth";
 import WebView from "react-native-webview";
-import { NotificationService } from "../../../../services/notification.service";
+import { NotificationService } from "../../../services/notification.service";
+import { doRegister } from "../Service/auth";
+import { THEME } from "../../../styles/theme";
+import InputTextIcon from "../../../components/InputTextIcon";
+import ButtonComponent from "../../../components/ButtonComponent";
 
 export default function Register() {
   const navigation:any = useNavigation();
