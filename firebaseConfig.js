@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
+// Optionally import the services that you want to use
+// import {...} from "firebase/auth";
+// import {...} from "firebase/database";
+// import {...} from "firebase/firestore";
+// import {...} from "firebase/functions";
+// import {...} from "firebase/storage";
+
+// Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCPfmI-EojOJLAS7w6w5Zn6_WMHgfqLmFg",
   authDomain: "renascer-app.firebaseapp.com",
@@ -11,7 +19,5 @@ const firebaseConfig = {
   measurementId: "G-2GNS28C5KB"
 };
 
-// if (getApps().length === 0) {
-  export const app = initializeApp(firebaseConfig);
-  export const storage = getStorage(app);
-// }
+const app = initializeApp(firebaseConfig);
+export const storage = getStorage(app);
