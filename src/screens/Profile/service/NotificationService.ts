@@ -10,6 +10,16 @@ class NotificationService {
       return []
     }
   }
+
+  public async readNotification(id:number) {
+    try {
+      const result = await api.put(`/api/notification/read/${id}`)
+      return result.data
+    } catch(error) {
+      console.log("error", error);
+      return []
+    }
+  }
 }
 
 export default new NotificationService();
