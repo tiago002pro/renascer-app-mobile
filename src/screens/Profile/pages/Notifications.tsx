@@ -13,12 +13,12 @@ export function Notifications() {
   const [modalVisible, setModalVisible] = useState(false);
   const [itemModal, setItemModal] = useState({}) as any;
 
+  async function getAllNotifications() {
+    const result:any = await NotificationService.getAllNotifications()
+    setnotificationsList(result)
+  }
+
   useEffect(() => {
-    async function getAllNotifications() {
-      const result:any = await NotificationService.getAllNotifications()
-      setnotificationsList(result)
-    }
-    
     getAllNotifications()
   }, [])
 
@@ -27,18 +27,11 @@ export function Notifications() {
     setItemModal(item)
   }
 
-  async function readNotification(notification:any) {
-    if (notification.read) {
-      await NotificationService.readNotification(notification.id).then((response) => {
-        const newList = notificationsList.map((item:any) => {
-          if (item.id === notification.id) {
-            return { ...item, read: response.read };
-          }
-          return item;
-        })
-        setnotificationsList(newList)
-      })
+  async function readNotification() {
+    if (!itemModal.read) {
+      await NotificationService.readNotification(itemModal.id)
     }
+    getAllNotifications()
     setModalVisible(!modalVisible)
   }
 
@@ -71,7 +64,7 @@ export function Notifications() {
       />
 
       <Modal
-        animationType='slide'
+        animationType='none'
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -79,13 +72,10 @@ export function Notifications() {
         }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Text style={[styles.date, {marginBottom: 20}]}>Enviado às {formatDate(itemModal.date, 'H:mm [em] DD/MM/YYYY')}</Text>
-            <Text style={styles.title}>{itemModal.title}</Text>
-            <Text style={styles.description}>{itemModal.description}</Text>
-              <ButtonComponent
-                label="OK"
-                bntFunction={() => readNotification(itemModal)}
-              />
+              <Text style={[styles.date, {marginBottom: 20}]}>Enviado às {formatDate(itemModal.date, 'H:mm [em] DD/MM/YYYY')}</Text>
+              <Text style={styles.title}>{itemModal.title}</Text>
+              <Text style={styles.description}>{itemModal.description}</Text>
+              <ButtonComponent label="OK" bntFunction={readNotification}/>
             </View>
           </View>
       </Modal>

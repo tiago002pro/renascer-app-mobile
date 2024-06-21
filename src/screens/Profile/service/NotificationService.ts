@@ -20,6 +20,16 @@ class NotificationService {
       return []
     }
   }
+
+  public async checkIfThereAreNotifications() {
+    try {
+      const result = await api.get(`/api/notification/check-if-there-are-notifications`)
+      return result.data
+    } catch(error) {
+      console.log("error", error);
+      return []
+    }
+  }
 }
 
 export default new NotificationService();
