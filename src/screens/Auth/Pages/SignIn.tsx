@@ -3,54 +3,45 @@ import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Button, Image, Text, VStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../../contexts/auth";
+import { THEME } from "../../../styles/theme";
 import InputTextIcon from "../../../components/InputTextIcon";
 import ButtonComponent from "../../../components/ButtonComponent";
-import { THEME } from "../../../styles/theme";
-
 const { height } = Dimensions.get('screen');
+// let logo = require('./../../../../assets/images/logo-cor-2.png')
+const logo = 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2Flogo-cor-2.png?alt=media&token=0277a234-2f18-41d7-9b54-a1afe7c35d7c';
 
 export default function SignIn({ route }:any) {
+  const { signIn } = useAuth();
+
   const navigation:any = useNavigation();
-  const {signIn} = useAuth();
-  const [email, setEmail] = useState(route?.params?.email ? route?.params?.email : '');
-  const [password, setPassword] = useState('');
-  const [signInError, setSignInError] = useState(false);
-  const [disabledBtn, setDisabledBtn] = useState(true);
+  const validator = require('validator');
 
-  function onChangeEmail(email:string) {
-    (email.length > 1) && (password.length > 1) ? setDisabledBtn(false) : setDisabledBtn(true)
-    setEmail(email);
-  }
+  const [email, setEmail] = useState<string>(route?.params?.email ? route?.params?.email : '');
+  const [password, setPassword] = useState<string>('');
+  const [validEmail, setValidEmail] = useState<boolean>(true);
+  const [validPassword, setValidPassword] = useState<boolean>(true);
 
-  function onChangePassword(password:string) {
-    (password.length > 1) && (email.length > 1) ? setDisabledBtn(false) : setDisabledBtn(true)
-    setPassword(password);
-  }
+  function onChangeEmail(email:string) { setEmail(email); }
+  function onChangePassword(password:string) { setPassword(password); }
 
   async function handleSignIn() {
+    const valid = validator.isEmail(email);
+    setValidEmail(valid)
+    if (!valid) { return }
+
     const success = await signIn(email, password);
-    
-    if (success) {
-      setSignInError(false)
-      navigation.navigate('TabRoutes', {screen:'DashboardRoutes'});
-    } else {
-      setSignInError(true)
-    }
+    if (success) { navigation.navigate('TabRoutes', {screen:'DashboardRoutes'}); }
+    else { setValidPassword(false) }
   }
 
-  function handleRegister() {
-    navigation.navigate('Register')
-  }
-
-  function goToRecoverPassword() {
-    navigation.navigate('RecoverPassword')
-  }
+  function handleRegister() { navigation.navigate('Register'); }
+  function goToRecoverPassword() { navigation.navigate('RecoverPassword'); }
 
   return (
     <VStack style={styles.container}>
       <Box style={styles.containerLogo}>
         <Image
-          source={require("'./../../../../../assets/images/logo-cor-2.png")}
+          source={{uri: logo}}
           alt="logo"
           style={styles.logo}
           resizeMode='contain'
@@ -66,8 +57,9 @@ export default function SignIn({ route }:any) {
             autoCapitalize={false}
             value={email}
             onChangeText={onChangeEmail}
-            show={true}
-            error={false}
+            isPassword={true}
+            error={!validEmail}
+            errorMessage={"Email inválido"}
           />
         </Box>
 
@@ -79,22 +71,19 @@ export default function SignIn({ route }:any) {
             autoCapitalize={false}
             value={password}
             onChangeText={onChangePassword}
-            show={false}
-            error={signInError}
+            error={!validPassword}
             errorMessage={"Senha inválida"}
           />
         </Box>
 
         <TouchableWithoutFeedback onPress={goToRecoverPassword}>
-          <Text style={styles.forgotPassword}>
-            Esqueci a senha
-          </Text>
+          <Text style={styles.forgotPassword}>Esqueci a senha</Text>
         </TouchableWithoutFeedback>
        
         <ButtonComponent
           label={'Entrar'}
           bntFunction={handleSignIn}
-          isDisabled={disabledBtn}
+          isDisabled={!(email.length > 0 && password.length > 0)}
           color={THEME.colors.header}
         />
 
@@ -131,7 +120,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    height: (height * .2) / 2,
+    height: (height * .2) / 1.5,
+    width: '100%',
   },
   containerData: {
     height: height * .85,
@@ -148,14 +138,6 @@ const styles = StyleSheet.create({
     color: THEME.colors.white,
     marginBottom: 20,
     textAlign: 'right',
-  },
-  label: {
-    fontFamily: 'InterTight_400Regular',
-    fontWeight: '400',
-    fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
-    color: THEME.colors.white,
-    marginBottom: 5,
   },
   footerArea: {
     display: 'flex',
