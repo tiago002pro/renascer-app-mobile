@@ -1,81 +1,68 @@
 import { useState } from "react";
-import { Alert, StyleSheet } from "react-native";
-import { Box, Button, Text, VStack, View } from "native-base";
+import { Alert, Modal, StyleSheet } from "react-native";
+import { Box, Button, FormControl, Input, Text, VStack, View } from "native-base";
 import { Switch } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import WebView from "react-native-webview";
 import { NotificationService } from "../../../services/notification.service";
-import { doRegister } from "../Service/auth";
 import { THEME } from "../../../styles/theme";
+import WebView from "react-native-webview";
 import InputTextIcon from "../../../components/InputTextIcon";
 import ButtonComponent from "../../../components/ButtonComponent";
+import AuthService from "../Service/AuthService";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Register() {
   const navigation:any = useNavigation();
   const validator = require('validator');
 
-  const [role] = useState('USER');
-  const [name, setName] = useState('');
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [disabledBtn, setDisabledBtn] = useState(true);
-  const [invalidLogin, setInvalidLogin] = useState(false);
+  const [role] = useState<string>('USER');
+  const [name, setName] = useState<string>('');
+  const [login, setLogin] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [validEmail, setValidEmail] = useState<boolean>(true);
 
-  const [agreeTermsOfUse, setAgreeTermsOfUse] = useState(false);
-  const [seeAgreeTermsOfUse, setSeeAgreeTermsOfUse] = useState(false);
+  const [agreeTermsOfUse, setAgreeTermsOfUse] = useState<boolean>(false);
+  const [seeAgreeTermsOfUse, setSeeAgreeTermsOfUse] = useState<boolean>(false);
 
-  function onChangeName(name:string) {
-    (
-      (name.length > 1)
-        && (login.length > 1)
-        && (password.length > 1)
-    ) ? setDisabledBtn(false) : setDisabledBtn(true)
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [codeEmailValidation, setCodeEmailValidation] = useState<string>('');
+  const [codeValidation, setCodeValidation] = useState<string>('');
+  const [inputModalError, setInputModalError] = useState<boolean>(false);
 
-    setName(name);
-  }
-
-  function onChangeLogin(login:string) {
-    (
-      (name.length > 1)
-        && (login.length > 1)
-        && (password.length > 1)
-    ) ? setDisabledBtn(false) : setDisabledBtn(true)
-
-    setLogin(login);
-    setInvalidLogin(false);
-  }
-
-  function onChangePassword(password:string) {
-    (
-      (name.length > 1)
-        && (login.length > 1)
-        && (password.length > 1)
-    ) ? setDisabledBtn(false) : setDisabledBtn(true)
-
-    setPassword(password);
-  }
+  function onChangeName(name:string) { setName(name); }
+  function onChangeLogin(login:string) { setLogin(login); }
+  function onChangePassword(password:string) { setPassword(password); }
 
   async function register() {
-    const valid = validator.isEmail(login);
+    const valid = validator.isEmail(login); 
+    setValidEmail(valid);
+    if (!valid) { return }
 
     if (!agreeTermsOfUse) {
-      Alert.alert(
-        'Atenção',
-        'Por favor, aceite os termos e condições para continuar'
-      )
-    } else {
-      if (!valid) {
-        setInvalidLogin(true);
-      } else {
-        const expoToken = await NotificationService.getExpoNotificationToken()
-        const result = await doRegister({name, login, password, role, expoToken})
-        if (result) {
-          navigation.navigate('SignIn', { email: login })
-        } else {
-          console.log("Erro");
-        }
-      }
+      Alert.alert('Atenção', 'Por favor, aceite os termos e condições para continuar')
+      return
     }
+
+    setModalVisible(true)
+    const codeEmailValidation = await AuthService.checkEmail(login)
+    setCodeEmailValidation(codeEmailValidation)
+  }
+
+  async function doRegister() {
+    if (codeEmailValidation.toString() === codeValidation.toString()) {
+      setModalVisible(false)
+      const expoToken = await NotificationService.getExpoNotificationToken()
+      await AuthService.doRegister({name, login, password, role, expoToken})
+      navigation.navigate('SignIn', { email: login })
+    } else {
+      setInputModalError(true)
+    }
+  }
+
+  function closeModal() {
+    setModalVisible(false);
+    setInputModalError(false);
+    setCodeValidation('')
   }
 
   return(
@@ -87,10 +74,7 @@ export default function Register() {
           style={{right: THEME.sizes.paddingPage * 2, top: THEME.sizes.paddingPage * 2}}
           position={'absolute'}
           zIndex={1}
-          _text={{
-            fontFamily: 'InterTight_600SemiBold',
-            fontWeight: '600',
-          }}
+          _text={{ fontFamily: 'InterTight_600SemiBold', fontWeight: '600', }}
         >
           Fechar
         </Button>
@@ -109,7 +93,6 @@ export default function Register() {
           <Box style={styles.data}>
             <InputTextIcon
               placeholder={"Nome e sobrenome"}
-              show={true}
               icon={"user"}
               autoCapitalize={true}
               value={name}
@@ -121,12 +104,12 @@ export default function Register() {
           <Box style={styles.data}>
             <InputTextIcon
               placeholder={"E-mail"}
-              show={true}
+              inputRightElement={true}
               icon={"mail"}
               autoCapitalize={false}
               value={login}
               onChangeText={onChangeLogin}
-              error={invalidLogin}
+              error={!validEmail}
               errorMessage={"E-mail inválido"}
             />
           </Box>
@@ -134,7 +117,7 @@ export default function Register() {
           <Box style={styles.data}>
             <InputTextIcon
               placeholder={"Senha"}
-              show={false}
+              isPassword={true}
               icon={"lock"}
               autoCapitalize={false}
               value={password}
@@ -149,10 +132,7 @@ export default function Register() {
               onValueChange={setAgreeTermsOfUse}
               color={THEME.colors.primary}
             />
-            <Text
-              style={styles.TermsOfUse}
-              onPress={() => setSeeAgreeTermsOfUse(!seeAgreeTermsOfUse)}
-            >
+            <Text style={styles.TermsOfUse} onPress={() => setSeeAgreeTermsOfUse(!seeAgreeTermsOfUse)}>
               Li e aceito os termos de uso
             </Text>
           </Box>
@@ -160,7 +140,6 @@ export default function Register() {
           <ButtonComponent
             label={'Cadastrar'}
             bntFunction={register}
-            isDisabled={disabledBtn}
             color={THEME.colors.header}
           />
 
@@ -183,6 +162,58 @@ export default function Register() {
           </Box>
         </View>
       )}
+
+      <Modal
+        animationType='none'
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Box style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Insira o código enviado no seu email</Text>
+            </Box>
+
+            <Box style={styles.modalContent}>
+              <FormControl
+                isInvalid={inputModalError}
+              >
+              <Input
+                value={codeValidation}
+                onChangeText={setCodeValidation}
+                style={styles.modalInput}
+                maxLength={4}
+                keyboardType={'numeric'}
+                autoFocus={true}
+                _focus={{ backgroundColor: 'transparent', borderColor: inputModalError ? THEME.colors.red[500] : THEME.colors.white }}
+              />
+
+                <FormControl.ErrorMessage position={'absolute'} bottom={-20} leftIcon={<MaterialIcons name={"error"} size={15} color={THEME.colors.red[400]} />}>
+                  Código inválido
+                </FormControl.ErrorMessage>
+              </FormControl>
+            </Box>
+
+            <Box style={styles.modalFooter}>
+              <ButtonComponent
+                label="Confirmar"
+                bntFunction={doRegister}
+                color={THEME.colors.backgroud}
+              />
+
+              <ButtonComponent
+                label="Fechar"
+                bntFunction={closeModal}
+                color={THEME.colors.white}
+                bg={THEME.colors.gray[500]}
+              />
+            </Box>
+          </View>
+        </View>
+      </Modal>
     </VStack>
   );
 }
@@ -219,5 +250,46 @@ export const styles = StyleSheet.create({
     color: THEME.colors.font,
     fontSize: THEME.fontSizes.md,
     marginLeft: 10,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    marginTop: '-50%',
+  },
+  modalView: {
+    width: '85%',
+    backgroundColor: THEME.colors.gray[800],
+    borderRadius: 10,
+    padding: THEME.sizes.paddingPage * 2,
+  },
+  modalHeader: {
+    display: 'flex',
+    marginBottom: 30,
+  },
+  modalTitle: {
+    fontFamily: 'InterTight_700Bold',
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    fontSize: THEME.fontSizes.sm,
+    color: THEME.colors.white,
+  },
+  modalInput: {
+    borderColor: THEME.colors.white,
+    color: THEME.colors.white,
+    fontSize: 30,
+    textAlign: 'center',
+    fontFamily: 'InterTight_700Bold',
+    fontWeight: '700',
+    letterSpacing: 5,
+  },
+  modalContent: {
+    marginBottom: 30,
+  },
+  modalFooter: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   }
 })

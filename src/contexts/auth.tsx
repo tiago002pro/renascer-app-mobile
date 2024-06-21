@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "../services/api";
-import { doLogin } from "../screens/Auth/Service/auth";
 import { User } from "../interfaces/User.interface";
+import AuthService from "../screens/Auth/Service/AuthService";
 
 interface AuthContextData {
   signed:boolean;
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: any) => {
 
   async function signIn(email:string, password:string) {
     try {
-      const response = await doLogin(email, password)
+      const response = await AuthService.doLogin(email, password)
       setUser(response.user);
       api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
       await AsyncStorage.setItem('@RNAuth:token', response.token);

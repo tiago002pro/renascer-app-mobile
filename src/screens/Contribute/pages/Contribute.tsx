@@ -2,6 +2,12 @@ import { Box, Image, Text, View } from "native-base";
 import { StyleSheet } from "react-native";
 import { THEME } from "../../../styles/theme";
 
+// let logoPix = require('./../../../../assets/images/pix.png')
+// let logoSantander = require('./../../../../assets/images/santander.png')
+const logoPix = 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2Fpix.png?alt=media&token=a489a84e-25af-4571-804e-01fb97ba5bcb';
+const logoSantander = 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2Fsantander.png?alt=media&token=3726c813-80a4-49f4-afab-fd356cc7c4db';
+
+
 export function Contribute() {
   return(
     <View style={styles.container}>
@@ -14,7 +20,7 @@ export function Contribute() {
       <Box style={styles.box}>
         <Image
           alt="pix"
-          source={require('./../../../../assets/images/pix.png')}
+          source={{uri: logoPix}}
           resizeMode='contain'
           style={styles.image}
         />
@@ -24,7 +30,7 @@ export function Contribute() {
       <Box style={styles.box}>
         <Image
           alt="santander"
-          source={require('./../../../../assets/images/santander.png')}
+          source={{uri: logoSantander}}
           resizeMode='cover'
           style={styles.image}
         />

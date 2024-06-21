@@ -7,17 +7,17 @@ import { useState } from "react";
 interface InputProps {
   label?:string;
   placeholder?:string;
-  show?:boolean;
+  isPassword?:boolean;
   icon?:any;
   autoCapitalize?:boolean;
   value?:string;
-  onChangeText?: (text: string) => void;
+  onChangeText?:(text: string) => void;
   error?:boolean;
   errorMessage?:string;
 }
 
-export default function InputTextIcon({ label, placeholder, show, icon, autoCapitalize, value, onChangeText, error, errorMessage }:InputProps):JSX.Element {
-  const [showPassword, setShowPassword] = useState(show);
+export default function InputTextIcon({ label, placeholder, isPassword, icon, autoCapitalize, value, onChangeText, error, errorMessage }:InputProps):JSX.Element {
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <FormControl
@@ -31,7 +31,7 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
         onChangeText={onChangeText}
         placeholder={placeholder}
         value={value}
-        type={showPassword ? 'text' : 'password'}
+        type={isPassword ? 'password' : 'text'}
         style={styles.input}
         InputLeftElement = {
           <Icon
@@ -46,7 +46,10 @@ export default function InputTextIcon({ label, placeholder, show, icon, autoCapi
         }
         InputRightElement={
           <Pressable onPress={() => setShowPassword(!showPassword)}>
-            {!show ? <Icon as={<MaterialIcons name={showPassword ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" /> : null}
+            {
+              isPassword ? <Icon as={<MaterialIcons name={showPassword ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
+              : <Icon as={<MaterialIcons name={"visibility"} />} size={5} mr="2" color="muted.400" />
+            }
           </Pressable>
         }
         color={THEME.colors.white}
