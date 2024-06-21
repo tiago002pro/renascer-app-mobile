@@ -8,16 +8,20 @@ import { Settings } from "../screens/Profile/pages/Settings";
 import { EditProfile } from "../screens/Profile/pages/EditProfile";
 import { DeleteProdile } from "../screens/Profile/pages/DeleteProfile";
 import { Edit } from "../screens/Profile/pages/Edit";
-import { returnBtn } from "../components/ReturnBtn";
 import { CloseBtn } from "../components/CloseBtn";
 import { THEME } from "../styles/theme";
 import { Notifications } from "../screens/Profile/pages/Notifications";
+import { useAuth } from "../contexts/auth";
+import { useState } from "react";
+import { returnBtn } from "../components/ReturnBtn";
 
 const { Navigator, Screen } = createStackNavigator();
 const { width } = Dimensions.get('screen');
 
 export default function ProfileRoutes() {
 	const navigation:any = useNavigation();
+	const { signed } = useAuth();
+	const [hasNotification, setHasNotification] = useState<boolean>(false);
 
 	return (
 		<Navigator screenOptions={{
@@ -49,11 +53,14 @@ export default function ProfileRoutes() {
 					headerRight: () =>
 						<Box flexDirection={'row'}>
 							<Box >
-								<MaterialIcons name="circle" color={THEME.colors.primary} size={15}
-									style={{
-										position: 'absolute', right: 7, top: 5, zIndex: 1
-									}}
-								/>
+								{
+									hasNotification ?
+										<MaterialIcons name="circle" color={THEME.colors.primary} size={15}
+											style={{ position: 'absolute', right: 7, top: 5, zIndex: 1 }}
+										/>
+									:
+										null
+								}
 								<IconButton
 									onPress={() => navigation.navigate('Notifications')}
 									icon={ <Icon as={Ionicons} name="notifications"/> }
