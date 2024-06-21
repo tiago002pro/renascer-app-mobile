@@ -31,25 +31,12 @@ export default function InputTextIcon({ label, placeholder, isPassword, icon, au
         onChangeText={onChangeText}
         placeholder={placeholder}
         value={value}
-        type={isPassword ? 'password' : 'text'}
+        type={isPassword && !showPassword ? 'password' : 'text'}
         style={styles.input}
-        InputLeftElement = {
-          <Icon
-            as = {
-              <Feather
-                name={icon}
-                style={styles.icon}
-                color={THEME.colors.gray[400]}
-              />
-            }
-          />
-        }
+        InputLeftElement = { <Icon as = { <Feather name={icon} style={styles.icon} color={THEME.colors.gray[400]}/> }/>}
         InputRightElement={
           <Pressable onPress={() => setShowPassword(!showPassword)}>
-            {
-              isPassword ? <Icon as={<MaterialIcons name={showPassword ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
-              : <Icon as={<MaterialIcons name={"visibility"} />} size={5} mr="2" color="muted.400" />
-            }
+            { isPassword? <Icon as={<MaterialIcons name={!showPassword ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" /> : null }
           </Pressable>
         }
         color={THEME.colors.white}

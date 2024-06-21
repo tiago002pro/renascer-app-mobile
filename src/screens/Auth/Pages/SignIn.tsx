@@ -57,7 +57,6 @@ export default function SignIn({ route }:any) {
             autoCapitalize={false}
             value={email}
             onChangeText={onChangeEmail}
-            isPassword={true}
             error={!validEmail}
             errorMessage={"Email inválido"}
           />
@@ -71,6 +70,7 @@ export default function SignIn({ route }:any) {
             autoCapitalize={false}
             value={password}
             onChangeText={onChangePassword}
+            isPassword={true}
             error={!validPassword}
             errorMessage={"Senha inválida"}
           />

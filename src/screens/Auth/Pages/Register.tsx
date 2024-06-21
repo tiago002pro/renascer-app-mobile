@@ -104,7 +104,6 @@ export default function Register() {
           <Box style={styles.data}>
             <InputTextIcon
               placeholder={"E-mail"}
-              inputRightElement={true}
               icon={"mail"}
               autoCapitalize={false}
               value={login}
@@ -117,12 +116,11 @@ export default function Register() {
           <Box style={styles.data}>
             <InputTextIcon
               placeholder={"Senha"}
-              isPassword={true}
               icon={"lock"}
               autoCapitalize={false}
               value={password}
               onChangeText={onChangePassword}
-              error={false}
+              isPassword={true}
             />
           </Box>
 
