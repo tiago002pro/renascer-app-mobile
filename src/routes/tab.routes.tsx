@@ -6,6 +6,7 @@ import ScheduleRoutes from "./schedule.routes";
 import DashboardRoutes from "./dashboard.routes";
 import MoreRoutes from "./more.routes";
 import ContributeRoutes from "./contribute.routes";
+import { NotificationTeste } from "../screens/Dashboard/Teste";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -82,6 +83,16 @@ export default function TabRoutes() {
         options={{
           tabBarIcon: ({ color, size }) => <Feather name="more-horizontal" color={color} size={size} />,
           tabBarLabel: "Mais",
+          headerShown: false,
+        }}
+      />
+
+      <Screen
+        name="NotificationTeste"
+        component={NotificationTeste}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="notifications" color={color} size={size} />,
+          tabBarLabel: "Notificações",
           headerShown: false,
         }}
       />
