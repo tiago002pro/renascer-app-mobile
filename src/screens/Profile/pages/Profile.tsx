@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
-import { Animated, StyleSheet, TouchableOpacity } from "react-native";
-import { Box, VStack, Image, Text, Icon, View, ScrollView } from "native-base";
+import { Animated, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { Box, VStack, Text, Icon, View, ScrollView } from "native-base";
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
 import { DataAccordion } from "../helper/DataAccordion";
 import { THEME } from "../../../styles/theme";
 import data from '../helper/DataProfile';
 import Loading from "../../Loading";
+import { OpenCamera } from "../components/OpenCamera";
+import { ActivityIndicator } from "react-native-paper";
+
+const {width, height} = Dimensions.get('screen')
 
 export function Profile() {
   const navigation:any = useNavigation();
@@ -16,6 +20,7 @@ export function Profile() {
   const [person, setPerson] = useState(null) as any;
   const [currentSection, setCurrentSection] = useState(null) as any;
   const [load, setLoad] = useState(false);
+  const [loadImage, setLoadImage] = useState(false);
 
   async function getUser() {
     const data = await UserService.loadUser(parseInt(user.id))
@@ -41,29 +46,19 @@ export function Profile() {
 
   return (
     <VStack style={styles.container}>
+      {loadImage?
+        <Box w={width} h={height} zIndex={1} position={'absolute'} justifyContent={'center'} alignItems={'center'} mt={-20}>
+          <Box w={150} h={100} bg={THEME.colors.gray[700]} justifyContent={'center'} borderRadius={10}>
+            <ActivityIndicator size={"large"} color={THEME.colors.primary}/>
+          </Box>
+        </Box>
+        : null
+      }
       <ScrollView>
         <Box style={styles.containerProfile}>
           <Box style={styles.profile}>
             <Box style={styles.box}>
-              <Box style={styles.imgContainer}>
-                {person?.profileImage ? 
-                  <Image
-                    source={{uri: person?.profileImage}}
-                    alt="User"
-                    style={styles.image}
-                  />
-                  :
-                  <Box style={styles.imgContainer}>
-                    <Box style={styles.circle}></Box>
-                    <Ionicons
-                      name="person-circle-outline"
-                      size={180}
-                      style={styles.icon}
-                      color={THEME.colors.primary}
-                    />
-                  </Box>
-                }
-              </Box>
+              <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoadImage} />
             </Box>
           </Box>
             
@@ -173,34 +168,6 @@ export const styles = StyleSheet.create({
   },
   box: {
     marginBottom: 15,
-  },
-  imgContainer: {
-    width: 200,
-    height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  circle: {
-    borderRadius: 132,
-    width: 132,
-    height: 132,
-    borderWidth: 5,
-    borderColor: THEME.colors.header,
-    zIndex: 999999,
-    position: 'absolute'
-  },
-  icon: {
-    zIndex: 0,
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 140,
-    height: 140,
-    borderRadius: 140,
-    borderWidth: 2,
-    borderColor: THEME.colors.primary,
   },
   textArea: {
     display: 'flex',

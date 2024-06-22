@@ -1,30 +1,18 @@
 import { useEffect, useState } from "react";
-import { Alert, Dimensions, Linking, StyleSheet, TouchableOpacity } from "react-native";
-import { Box, Icon, IconButton, Image, Text, View } from "native-base";
-import { Ionicons, MaterialIcons, Entypo } from "@expo/vector-icons";
-import * as ImagePicker from 'expo-image-picker';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { showMessage } from "react-native-flash-message";
-import { ActivityIndicator } from "react-native-paper";
-
+import { Alert, Linking, StyleSheet, TouchableOpacity } from "react-native";
+import { Box, Icon, Image, Text, View } from "native-base";
+import { Ionicons, Entypo } from "@expo/vector-icons";
 import { useAuth } from "../../../contexts/auth";
-import { storage } from "../../../../firebaseConfig";
-
 import UserService from "../service/UserService";
-import PersonService from "../service/PersonService";
-
 import { THEME } from "../../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
-
-const {width, height} = Dimensions.get('screen')
 
 export function Settings() {
   const navigation:any = useNavigation();
   const {signOut, user} = useAuth() as any;
 
-  const [person, setPerson] = useState(null);
+  const [person, setPerson] = useState(null) as any;
   const [load, setLoad] = useState(false);
-  const [loadImage, setLoadImage] = useState(false);
 
   useEffect(() => {
     function onInit() {
@@ -101,30 +89,35 @@ export function Settings() {
     navigation.goBack()
 		navigation.navigate('DashboardRoutes', {screen: 'Dashboard'});
   }
-  
 
   return (
     <View style={styles.container}>
-      {loadImage?
-        <Box flex={1} w={width} h={height} position={'absolute'} zIndex={1} justifyContent={'center'} alignContent={'center'} alignItems={'center'}>
-          <ActivityIndicator size={"large"} color={THEME.colors.primary} style={{bottom: '20%'}}/>
-        </Box>
-        : null
-      }
-
-      <TouchableOpacity
-        key={'0'}
-        style={styles.option}
-        activeOpacity={.8}
-      >
+      <Box style={styles.option}>
         <Box style={styles.profile}>
-          <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoadImage} />
-
+          <Box style={styles.imgContainer}>
+            {person?.profileImage ? 
+              <Image
+                source={{uri: person?.profileImage}}
+                alt="User"
+                style={styles.image}
+              />
+              :
+              <Box style={styles.imgContainer}>
+                <Box style={styles.circle}></Box>
+                <Ionicons
+                  name="person-circle-outline"
+                  size={180}
+                  style={styles.icon}
+                  color={THEME.colors.primary}
+                />
+              </Box>
+            }
+          </Box>
           <Box style={styles.textArea}>
             <Text style={styles.name}>{user?.name}</Text>
           </Box>
         </Box>
-      </TouchableOpacity>
+      </Box>
 
       {options.map(({id, vectorIcon, icon, colorIcon, label, action}) => {
         return (
@@ -177,171 +170,6 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
   },
-  textArea: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  name: {
-    color: THEME.colors.white,
-    fontFamily: 'InterTight_600SemiBold',
-    fontWeight: '600',
-    fontSize: THEME.fontSizes.md,
-  },
-})
-
-function OpenCamera({ person, setPerson, setLoadImage }:any) {
-  function setProfileImage(image:any) { setPerson({...person, profileImage: image}) }
-  
-  function handleImageUser() {
-    Alert.alert(
-      "Selecione",
-      "Informe de onde vecê quer pegar a foto",
-      [
-        {
-          text: "Cancelar",
-          style: "cancel",
-        },
-        {
-          text: "Galeria",
-          onPress: async () => await pickImageFromGalery(setLoadImage),
-          style: 'default'
-        },
-        {
-          text: "Câmera",
-          onPress: async () => await pickImageFromCamera(setLoadImage),
-          style: 'default'
-        },
-      ],
-      {
-        cancelable: true,
-      },
-    )
-  }
-
-  const pickImageFromGalery = async (setLoadImage:Function) => {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (status !== "granted") {
-      showMessage({
-        message: "São necessárias permissões da galeria",
-        type: "warning",
-      })
-    } else {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-  
-      if (!result.canceled) {
-        uploadImageFirebase(result.assets[0].uri, setLoadImage)
-      }
-    }
-  }
-
-  const pickImageFromCamera = async (setLoadImage:Function) => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    
-    if (status !== "granted") {
-      showMessage({
-        message: "São necessárias permissões da câmera",
-        type: "warning",
-      })
-      await ImagePicker.requestCameraPermissionsAsync()
-    } else {
-      let result = await ImagePicker.launchCameraAsync({
-        cameraType: ImagePicker.CameraType.front,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-        base64: true
-      });
-  
-      if (!result.canceled) {
-        uploadImageFirebase(result.assets[0].uri, setLoadImage)
-      }
-    }
-  }
-
-  const uploadImageFirebase = async (file:any, setLoadImage:Function) => {
-    try {
-      setLoadImage(true);
-      const response = await fetch(file);
-      const blob = await response.blob();
-      const storageRef  = ref(storage, `users/${person.id}`);
-      
-      uploadBytesResumable(storageRef, blob).then((snapshot) => getDownloadURL(snapshot.ref).then(async (downloadURL:any) => {
-        setProfileImage(downloadURL)
-        person.profileImage = downloadURL
-        
-        await PersonService.update(person).then(() => {
-          showMessage({
-            message: "Foto do perfil atualizada com sucesso!",
-            type: "success",
-          })
-          setLoadImage(false)
-        }).catch(() => {
-          showMessage({
-            message: "Algo deu errado",
-            type: "warning",
-          })
-          setLoadImage(false)
-        })
-      }))
-    } catch(e) {
-      showMessage({
-        message: "Erro ao carregar a imagem",
-        type: "warning",
-      })
-    }
-  }
-  
-  return (
-    <View style={stylesOpenCamera.container}>
-      <Box style={stylesOpenCamera.imgContainer}>
-        {person?.profileImage ?
-          <Image
-            resizeMode="cover"
-            style={stylesOpenCamera.img}
-            source={{uri: person?.profileImage}}
-            alt="user"
-          />
-          :
-          <Box style={stylesOpenCamera.imgContainer}>
-            <Box style={stylesOpenCamera.circle}></Box>
-            <Ionicons
-              name="person-circle-outline"
-              size={100}
-              style={stylesOpenCamera.icon}
-              color={THEME.colors.primary}
-            />
-          </Box>
-        }
-      </Box>
-
-      <Box position={'absolute'} bottom={0} right={0}>
-        <IconButton
-          onPress={handleImageUser}
-          padding={3}
-          backgroundColor={THEME.colors.backgroud}
-          icon={<Icon as={MaterialIcons} name="add-a-photo"/>}
-          borderRadius={'full'}
-          _icon={{
-            color: THEME.colors.white,
-            size: 4
-          }}
-        />
-      </Box>
-    </View>
-  );
-}
-
-export const stylesOpenCamera = StyleSheet.create({
-  container: {
-    marginRight: THEME.sizes.paddingPage * 2,
-  },
   imgContainer: {
     width: 100,
     height: 100,
@@ -356,19 +184,31 @@ export const stylesOpenCamera = StyleSheet.create({
     borderWidth: 5,
     borderColor: THEME.colors.header,
     zIndex: 999999,
-    position: 'absolute'
+    position: 'absolute',
   },
   icon: {
-    width: 100,
-    height: 100,
     zIndex: 0,
-    position: 'absolute'
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  img: {
+  image: {
     width: 95,
     height: 95,
     borderRadius: 95,
     borderWidth: 2,
     borderColor: THEME.colors.primary,
-  }
+  },
+  textArea: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 20,
+  },
+  name: {
+    color: THEME.colors.white,
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: '600',
+    fontSize: THEME.fontSizes.md,
+  },
 })
