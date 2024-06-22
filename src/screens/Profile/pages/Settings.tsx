@@ -291,7 +291,6 @@ function OpenCamera({ person, setPerson, setLoadImage }:any) {
         })
       }))
     } catch(e) {
-      console.log("error", e);
       showMessage({
         message: "Erro ao carregar a imagem",
         type: "warning",

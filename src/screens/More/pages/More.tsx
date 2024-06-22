@@ -29,11 +29,11 @@ export function More() {
   }, [load, navigation]) 
 
   function goScheduleList():void {
-		navigation.navigate('ScheduleRoutes', {screen: 'ScheduleList'});
+		navigation.navigate('ScheduleList');
   }
 
   function goSchedule():void {
-		navigation.navigate('ScheduleRoutes', {screen: 'Schedule'});
+		navigation.navigate('Schedule');
   }
 
   const options = [

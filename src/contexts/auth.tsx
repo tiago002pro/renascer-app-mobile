@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }: any) => {
       await AsyncStorage.setItem('@RNAuth:user', JSON.stringify(response.user));
       return true
     } catch (e) {
-      console.log("Error", e);
       return false
     }
   }
