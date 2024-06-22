@@ -6,8 +6,7 @@ class UserService {
       const result = await api.get(`/api/user/${id}`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 
@@ -16,8 +15,7 @@ class UserService {
       const result = await api.delete(`/api/user/${id}`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 }

@@ -6,8 +6,7 @@ class VideoService {
       const result = await api.get(`/api/video/all`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
   
@@ -16,8 +15,7 @@ class VideoService {
       const result = await api.get(`/auth/all-videos-by-category/${category}`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 
@@ -26,8 +24,7 @@ class VideoService {
       const result = await api.get(`/auth/latest-videos`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 
@@ -36,8 +33,7 @@ class VideoService {
       const result = await api.get(`/auth/search-videos?search=${search}`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 }

@@ -6,8 +6,7 @@ class PersonService {
       const result = await api.put(`/api/person/save`, person)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 
@@ -16,8 +15,7 @@ class PersonService {
       const result = await api.put(`/api/person/update/${person.id}`, person)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 }

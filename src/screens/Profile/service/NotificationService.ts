@@ -6,8 +6,7 @@ class NotificationService {
       const result = await api.get(`/api/notification/all`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return []
+      throw new Error();
     }
   }
 
@@ -16,8 +15,7 @@ class NotificationService {
       const result = await api.put(`/api/notification/read/${id}`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return []
+      throw new Error();
     }
   }
 
@@ -26,8 +24,7 @@ class NotificationService {
       const result = await api.get(`/api/notification/check-if-there-are-notifications`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return []
+      throw new Error();
     }
   }
 }

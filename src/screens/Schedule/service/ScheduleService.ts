@@ -6,8 +6,7 @@ class ScheduleService {
       const result = await api.get(`/api/schedule/all`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return []
+      throw new Error();
     }
   }
   
@@ -16,8 +15,7 @@ class ScheduleService {
       const result = await api.get(`/auth/all-schedule-valid-deadline`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 
@@ -26,8 +24,7 @@ class ScheduleService {
       const result = await api.post(`/auth/all-schedule/by-date?startDate=${startDate}`)
       return result.data
     } catch(error) {
-      console.log("error", error);
-      return null
+      throw new Error();
     }
   }
 }
