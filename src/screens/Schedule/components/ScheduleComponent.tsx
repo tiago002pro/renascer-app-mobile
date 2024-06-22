@@ -42,13 +42,13 @@ export default function ScheduleComponent({ item }:any) {
         <Box style={styles.description}>
           <Box style={styles.data}>
             <Text style={styles.date}>{getDate(item.startDate)}</Text>
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.title} numberOfLines={2}>{item.title}</Text>
           </Box>
 
           {item.registration ? 
             <Box style={styles.registrationArea}>
               <Box style={styles.registration}>
-                <Text style={styles.registrationText}>Incrições abertas</Text>
+                <Text style={styles.registrationText}>Inscrições abertas</Text>
               </Box>
             </Box> 
             : null
@@ -88,7 +88,6 @@ export const styles = StyleSheet.create({
   whithOutImageText: {
     color: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.md + 2,
-    lineHeight: THEME.fontSizes.md + 2,
     fontFamily: 'InterTight_800ExtraBold',
     fontWeight: '800',
   },
@@ -104,14 +103,14 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.sm - 3,
     lineHeight: THEME.fontSizes.sm - 3,
     textTransform: 'uppercase',
-    marginBottom: 10,
+    marginBottom: 2,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
   },
   title: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
+    lineHeight:THEME.fontSizes.md + 2,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
   },

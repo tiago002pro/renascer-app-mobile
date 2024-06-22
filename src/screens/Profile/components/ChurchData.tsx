@@ -157,7 +157,7 @@ export const styles = StyleSheet.create({
   },
   label: {
     fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
+    lineHeight: THEME.fontSizes.lg + 5,
     color: THEME.colors.white,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',

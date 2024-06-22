@@ -46,6 +46,7 @@ export function BasicData({ person, setPerson, scrollTo }:BasicDataProps) {
             label={'Nome Completo'}
             valiable={person?.name}
             setValiable={setName}
+            autoCapitalize={true}
           />
         </Box>
 

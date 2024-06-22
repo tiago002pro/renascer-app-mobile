@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.subTitle,
-    lineHeight: THEME.fontSizes.subTitle,
     textTransform: 'uppercase',
     marginBottom: 10,
   },
@@ -143,7 +142,6 @@ const styles = StyleSheet.create({
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     fontSize: THEME.fontSizes.subText,
-    lineHeight: THEME.fontSizes.subText,
     textTransform: 'capitalize',
   },
   latestVideos: {
@@ -165,7 +163,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: THEME.fontSizes.title,
-    lineHeight: THEME.fontSizes.title,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.white,

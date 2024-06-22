@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.white,

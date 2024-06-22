@@ -12,9 +12,10 @@ interface InputProps {
   onChange?: (variable: any) => void;
   mask?: any;
   error?:boolean;
+  autoCapitalize?:boolean;
 }
 
-export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask, error }: InputProps) {
+export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask, error, autoCapitalize }: InputProps) {
   return (
     <FormControl
       isInvalid={error}
@@ -42,7 +43,7 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
             onSurfaceVariant: error ? 'red' : '#FFF'
           }
         }}
-        autoCapitalize={'none'}
+        autoCapitalize={autoCapitalize ? 'words' : 'none'}
         render={props => 
           <MaskInput
             {...props}

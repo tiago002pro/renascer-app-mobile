@@ -187,7 +187,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
   },
 })
 

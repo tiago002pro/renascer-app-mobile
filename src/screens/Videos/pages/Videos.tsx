@@ -90,13 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
     padding: THEME.sizes.paddingPage,
   },
-  title: {
-    fontSize: THEME.fontSizes.title,
-    lineHeight: THEME.fontSizes.title,
-    fontFamily: 'InterTight_600SemiBold',
-    fontWeight: '600',
-    color: THEME.colors.white,
-  },
   slide: {
     marginBottom: 40
   },
@@ -107,7 +100,6 @@ const styles = StyleSheet.create({
   },
   withoutText: {
     fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.white,

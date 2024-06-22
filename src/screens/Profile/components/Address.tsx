@@ -27,7 +27,7 @@ export function Address({ address, setAddress, errors }:AddressProps) {
   function setComplement(complement:any) { setAddress({...address, complement: complement}) }
   function setNeighborhood(neighborhood:any) { setAddress({...address, neighborhood: neighborhood}) }
   function setCity(city:any) { setAddress({...address, city: city}) }
-  function setState(state:any) { setAddress({...address, state: state}) }
+  function setState(state:any) { setAddress({...address, state: state.toUpperCase()}) }
 
   async function validateZipCode(zipCode:string) {
     if (zipCode) {
@@ -81,6 +81,7 @@ export function Address({ address, setAddress, errors }:AddressProps) {
           valiable={address?.country}
           setValiable={setCountry}
           error={errors?.country}
+          autoCapitalize={true}
         />
       </Box>
 
@@ -110,6 +111,7 @@ export function Address({ address, setAddress, errors }:AddressProps) {
               valiable={address?.publicPlace}
               setValiable={setPublicPlace}
               error={errors?.publicPlace}
+              autoCapitalize={true}
             />
           </Box>
 
@@ -139,6 +141,7 @@ export function Address({ address, setAddress, errors }:AddressProps) {
               valiable={address?.neighborhood}
               setValiable={setNeighborhood}
               error={errors?.neighborhood}
+              autoCapitalize={true}
             />
           </Box>
 
@@ -149,6 +152,7 @@ export function Address({ address, setAddress, errors }:AddressProps) {
                 valiable={address?.city}
                 setValiable={setCity}
                 error={errors?.city}
+                autoCapitalize={true}
               />
             </Box>
 

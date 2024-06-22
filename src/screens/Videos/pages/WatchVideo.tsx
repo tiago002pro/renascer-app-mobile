@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg + 5,
     color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
@@ -74,7 +73,6 @@ const styles = StyleSheet.create({
   },
   speaker: {
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',

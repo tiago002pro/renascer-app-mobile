@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
   },
   titleVideo: {
     fontSize: THEME.fontSizes.text,
-    lineHeight: THEME.fontSizes.text,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.white,
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
   },
   authorVideo: {
     fontSize: THEME.fontSizes.subText,
-    lineHeight: THEME.fontSizes.subText,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     color: THEME.colors.gray[200],

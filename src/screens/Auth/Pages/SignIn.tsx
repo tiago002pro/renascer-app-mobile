@@ -12,12 +12,12 @@ const logo = 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.c
 
 export default function SignIn({ route }:any) {
   const { signIn } = useAuth();
-
   const navigation:any = useNavigation();
   const validator = require('validator');
 
-  const [email, setEmail] = useState<string>(route?.params?.email ? route?.params?.email : '');
+  const [email, setEmail] = useState<string>(route?.params?.email);
   const [password, setPassword] = useState<string>('');
+  
   const [validEmail, setValidEmail] = useState<boolean>(true);
   const [validPassword, setValidPassword] = useState<boolean>(true);
 
@@ -83,7 +83,7 @@ export default function SignIn({ route }:any) {
         <ButtonComponent
           label={'Entrar'}
           bntFunction={handleSignIn}
-          isDisabled={!(email.length > 0 && password.length > 0)}
+          isDisabled={!(email && email.length > 0 && password.length > 0)}
           color={THEME.colors.header}
         />
 
@@ -98,7 +98,6 @@ export default function SignIn({ route }:any) {
               fontFamily: 'InterTight_600SemiBold',
               fontWeight: '600',
               fontSize: THEME.fontSizes.sm,
-              lineHeight: THEME.fontSizes.sm,
             }}
           >
             Cadastre-se
@@ -131,10 +130,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   forgotPassword: {
-    fontFamily: 'InterTight_400Regular',
-    fontWeight: '400',
+    fontFamily: 'InterTight_700Bold',
+    fontWeight: '700',
     fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
     marginBottom: 20,
     textAlign: 'right',
@@ -153,7 +151,6 @@ const styles = StyleSheet.create({
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.white,
   }
 });

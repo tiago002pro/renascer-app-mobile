@@ -212,7 +212,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
     marginBottom: 5,
   },
   email: {
@@ -220,7 +219,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_300Light',
     fontWeight: '300',
     fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
   },
   accordion: {
     width: '100%',
@@ -251,7 +249,6 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.font,
@@ -272,14 +269,13 @@ export const styles = StyleSheet.create({
     display: 'flex',
     marginBottom: 20,
     borderWidth: 1,
-    borderBottomColor: THEME.colors.font,
+    borderBottomColor: THEME.colors.gray[600],
     borderTopColor: 'transparent',
     borderLeftColor: 'transparent',
     borderRightColor: 'transparent',
   },
   label: {
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
@@ -287,7 +283,6 @@ export const styles = StyleSheet.create({
   },
   value: {
     fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
     color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',

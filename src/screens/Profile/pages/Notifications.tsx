@@ -92,13 +92,12 @@ export const styles = StyleSheet.create({
     padding: THEME.sizes.paddingPage,
     marginTop: 20,
     borderBottomWidth: 1,
-    borderColor: THEME.colors.header,
+    borderColor: THEME.colors.gray[600],
   },
   title: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
-    fontFamily: 'InterTight_400Regular',
+    fontFamily: 'InterTight_700Bold',
     fontWeight: '700',
     marginBottom: 20,
     textTransform: 'uppercase',
@@ -106,7 +105,6 @@ export const styles = StyleSheet.create({
   description: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     marginBottom: 20,
@@ -114,7 +112,6 @@ export const styles = StyleSheet.create({
   date: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
   },

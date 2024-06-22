@@ -201,12 +201,10 @@ export const styles = StyleSheet.create({
   selectIcon: {
     padding: THEME.sizes.paddingPage + 5,
     fontSize: THEME.fontSizes.lg,
-    lineHeight: THEME.fontSizes.lg,
     color: THEME.colors.primary,
   },
   title: {
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     color: THEME.colors.white,
@@ -214,7 +212,6 @@ export const styles = StyleSheet.create({
   },
   withoutEvent: {
     fontSize: THEME.fontSizes.sm,
-    lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_300Light',
     fontWeight: '300',
     color: THEME.colors.white,

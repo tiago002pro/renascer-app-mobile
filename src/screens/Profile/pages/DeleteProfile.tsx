@@ -69,7 +69,6 @@ export const styles = StyleSheet.create({
   title: {
     color: THEME.colors.white,
     fontSize: THEME.fontSizes.md,
-    lineHeight: THEME.fontSizes.md,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     marginBottom: 10,
