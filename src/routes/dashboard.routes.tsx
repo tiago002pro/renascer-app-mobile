@@ -13,8 +13,7 @@ import { useState } from "react";
 
 const { Navigator, Screen } = createStackNavigator();
 const { width } = Dimensions.get('screen');
-// let logo = require('./../../assets/images/logo.png')
-const logo = 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2Flogo.png?alt=media&token=c478da25-765a-4d8e-a733-76a04b8c21ec';
+let logo = require('./../../assets/images/logo.png')
 
 export default function DashboardRoutes() {
 	const navigation:any = useNavigation();
@@ -62,7 +61,7 @@ export default function DashboardRoutes() {
 							flexDirection={'row'}
 						>
 							<Image
-								source={{uri: logo}}
+								source={logo}
 								alt="logo"
 								style={{ width: 30, height: 30, marginRight: 10 }}
 							/>

@@ -7,15 +7,14 @@ import { THEME } from "../../../styles/theme";
 import InputTextIcon from "../../../components/InputTextIcon";
 import ButtonComponent from "../../../components/ButtonComponent";
 const { height } = Dimensions.get('screen');
-// let logo = require('./../../../../assets/images/logo-cor-2.png')
-const logo = 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2Flogo-cor-2.png?alt=media&token=0277a234-2f18-41d7-9b54-a1afe7c35d7c';
+let logo = require('./../../../../assets/images/logo-cor-2.png')
 
 export default function SignIn({ route }:any) {
   const { signIn } = useAuth();
   const navigation:any = useNavigation();
   const validator = require('validator');
 
-  const [email, setEmail] = useState<string>(route?.params?.email);
+  const [email, setEmail] = useState<string>(route?.params?.email ? route?.params?.email : '');
   const [password, setPassword] = useState<string>('');
   
   const [validEmail, setValidEmail] = useState<boolean>(true);
@@ -41,7 +40,7 @@ export default function SignIn({ route }:any) {
     <VStack style={styles.container}>
       <Box style={styles.containerLogo}>
         <Image
-          source={{uri: logo}}
+          source={logo}
           alt="logo"
           style={styles.logo}
           resizeMode='contain'

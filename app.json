@@ -19,7 +19,6 @@
       "bundleIdentifier": "com.tiagodev002pro.renascerappmobile"
     },
     "android": {
-      "googleServiceFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1d1f21"
@@ -53,10 +52,10 @@
         "expo-notifications",
         {
           "icon": "./assets/adaptive-icon.png",
-          "color": "#ffffff",
-          "sounds": ["./assets/sounds/marimba-bloop.mp3"]
+          "color": "#ffffff"
         }
-      ]
+      ],
+      "expo-router"
     ]
   }
 }

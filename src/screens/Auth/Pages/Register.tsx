@@ -50,7 +50,7 @@ export default function Register() {
 
   async function doRegister() {
     if (codeEmailValidation.toString() === codeValidation.toString()) {
-      setModalVisible(false)
+      closeModal()
       const expoToken = await NotificationService.getExpoNotificationToken()
       await AuthService.doRegister({name, login, password, role, expoToken})
       navigation.navigate('SignIn', { email: login })
