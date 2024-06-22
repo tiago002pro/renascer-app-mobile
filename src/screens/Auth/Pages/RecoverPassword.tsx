@@ -4,13 +4,10 @@ import { Box, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { showMessage } from "react-native-flash-message";
 import { ActivityIndicator } from "react-native-paper";
-
-import UserService from "../../Profile/service/UserService";
-
 import InputTextComponent from "../../../components/InputText";
 import ButtonComponent from "../../../components/ButtonComponent";
-
 import { THEME } from "../../../styles/theme";
+import AuthService from "../Service/AuthService";
 
 export default function RecoverPassword() {
   const navigation:any = useNavigation();
@@ -19,7 +16,7 @@ export default function RecoverPassword() {
 
   async function recoverPassword() {
     setLoading(true);
-    UserService.recoverPassword(email).then(() => {
+    AuthService.recoverPassword(email).then(() => {
       showMessage({ message: "Confirme seu e-mail para recuperar sua senha", type: "success" })
       setLoading(false);
       navigation.navigate('SignIn');

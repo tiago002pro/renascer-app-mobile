@@ -20,16 +20,6 @@ class UserService {
       return null
     }
   }
-
-  public async recoverPassword(email:any):Promise<any> {
-    try {
-      const result = await api.post(`/api/user/recover-password/${email}`)
-      return result.data
-    } catch(error) {
-      console.log("error", error);
-      return null
-    }
-  }
 }
 
 export default new UserService();

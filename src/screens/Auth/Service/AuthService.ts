@@ -75,6 +75,14 @@ class AuthService {
       throw new Error();
     }
   }
+
+  public async recoverPassword(email:any):Promise<void> {
+    try {
+      await api.post(`/auth/recover-password/${email}`)
+    } catch(error) {
+      throw new Error();
+    }
+  }
 }
 
 export default new AuthService();
