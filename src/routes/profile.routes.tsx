@@ -14,6 +14,7 @@ import { Notifications } from "../screens/Profile/pages/Notifications";
 import { useAuth } from "../contexts/auth";
 import { useState } from "react";
 import { returnBtn } from "../components/ReturnBtn";
+import { ChangePassword } from "../screens/Profile/pages/ChangePassword";
 
 const { Navigator, Screen } = createStackNavigator();
 const { width } = Dimensions.get('screen');
@@ -135,6 +136,15 @@ export default function ProfileRoutes() {
 				component={Notifications}
 				options={{
 					headerTitle: 'Notificações',
+					headerLeft: returnBtn,
+				}}
+			/>
+
+			<Screen
+				name="ChangePassword"
+				component={ChangePassword}
+				options={{
+					headerTitle: 'Alterar senha',
 					headerLeft: returnBtn,
 				}}
 			/>

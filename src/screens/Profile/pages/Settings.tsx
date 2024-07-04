@@ -34,13 +34,21 @@ export function Settings() {
     {
       id: '1',
       vectorIcon: Entypo,
+      icon: 'lock',
+      colorIcon: THEME.colors.primary,
+      label: 'Alterar senha',
+      action: goChangePassword,
+    },
+    {
+      id: '2',
+      vectorIcon: Entypo,
       icon: 'text-document-inverted',
       colorIcon: THEME.colors.primary,
       label: 'Política de privacidade',
       action: goPrivacyPolicy,
     },
     {
-      id: '2',
+      id: '3',
       vectorIcon: Entypo,
       icon: 'trash',
       colorIcon: THEME.colors.red[500],
@@ -48,7 +56,7 @@ export function Settings() {
       action: goDeleteAccount,
     },
     {
-      id: '3',
+      id: '4',
       vectorIcon: Entypo,
       icon: 'log-out',
       colorIcon: THEME.colors.red[500],
@@ -56,6 +64,10 @@ export function Settings() {
       action: alertOut,
     },
   ]
+
+  function goChangePassword():void {
+		navigation.navigate('ChangePassword');
+  }
 
   function goPrivacyPolicy():void {
 		Linking.openURL("https://igrejarenacer.blogspot.com/2024/03/terms-conditions-para-idioma-portugues.html");
@@ -106,7 +118,7 @@ export function Settings() {
                 <Box style={styles.circle}></Box>
                 <Ionicons
                   name="person-circle-outline"
-                  size={180}
+                  size={100}
                   style={styles.icon}
                   color={THEME.colors.primary}
                 />
@@ -114,7 +126,8 @@ export function Settings() {
             }
           </Box>
           <Box style={styles.textArea}>
-            <Text style={styles.name}>{user?.name}</Text>
+            <Text style={styles.name}>{person?.name}</Text>
+            <Text style={styles.email}>{user?.email}</Text>
           </Box>
         </Box>
       </Box>
@@ -160,12 +173,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
   },
-  label: {
-    fontSize: THEME.fontSizes.md,
-    color: THEME.colors.white,
-    fontFamily: 'InterTight_400Regular',
-    fontWeight: '400',
-  },
+
   profile: {
     display: 'flex',
     flexDirection: 'row',
@@ -202,13 +210,25 @@ export const styles = StyleSheet.create({
   textArea: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 20,
+    marginLeft: 10,
   },
   name: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.md,
+  },
+  email: {
+    color: THEME.colors.font,
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: '400',
+    fontSize: THEME.fontSizes.sm,
+  },
+  label: {
+    fontSize: THEME.fontSizes.md,
+    color: THEME.colors.font,
+    fontFamily: 'InterTight_500Medium',
+    fontWeight: '500',
+    letterSpacing: 1,
   },
 })

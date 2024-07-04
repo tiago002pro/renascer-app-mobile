@@ -3,6 +3,7 @@ import { TextInput } from "react-native-paper";
 import MaskInput from "react-native-mask-input";
 import { THEME } from "../styles/theme";
 import { FormControl } from "native-base";
+import { useState } from "react";
 
 interface InputProps {
   label?: string;
@@ -13,9 +14,12 @@ interface InputProps {
   mask?: any;
   error?:boolean;
   autoCapitalize?:boolean;
+  isPassword?:boolean;
 }
 
-export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask, error, autoCapitalize }: InputProps) {
+export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask, error, autoCapitalize, isPassword }: InputProps) {
+  const [showPassword, setShowPassword] = useState<boolean>(isPassword || false);
+
   return (
     <FormControl
       isInvalid={error}
@@ -44,11 +48,15 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
           }
         }}
         autoCapitalize={autoCapitalize ? 'words' : 'none'}
+        secureTextEntry={showPassword}
         render={props => 
           <MaskInput
             {...props}
             mask={mask}
           />
+        }
+        right={
+          <TextInput.Icon color={error ? THEME.colors.red[500] : THEME.colors.white} icon={showPassword ? "eye" : !showPassword ? "eye-off" : ""} onPress={() => setShowPassword(!showPassword)} />
         }
       />
     </FormControl>
@@ -62,7 +70,6 @@ export const styles = StyleSheet.create({
   input: {
     backgroundColor: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.md,
-    height: 39,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
   },
