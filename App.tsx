@@ -25,6 +25,7 @@ export default function App() {
     LogBox.ignoreLogs([
       'In React 18, SSRProvider is not necessary and is a noop. You can remove it from your app.',
       'Non-serializable values were found in the navigation state',
+      'Warning: TextInput.Icon: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.',
     ]);
   }, []);
 

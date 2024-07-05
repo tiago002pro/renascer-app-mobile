@@ -19,6 +19,11 @@ interface InputProps {
 
 export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask, error, autoCapitalize, isPassword }: InputProps) {
   const [showPassword, setShowPassword] = useState<boolean>(isPassword || false);
+  const rightElement = <TextInput.Icon
+    color={error ? THEME.colors.red[500] : THEME.colors.white}
+    icon={showPassword ? "eye" : !showPassword ? "eye-off" : ""}
+    onPress={() => setShowPassword(!showPassword)}
+  />
 
   return (
     <FormControl
@@ -55,9 +60,7 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
             mask={mask}
           />
         }
-        right={
-          <TextInput.Icon color={error ? THEME.colors.red[500] : THEME.colors.white} icon={showPassword ? "eye" : !showPassword ? "eye-off" : ""} onPress={() => setShowPassword(!showPassword)} />
-        }
+        right={isPassword ? rightElement : null}
       />
     </FormControl>
   );
