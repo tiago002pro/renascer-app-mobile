@@ -173,7 +173,6 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
   },
-
   profile: {
     display: 'flex',
     flexDirection: 'row',
@@ -219,7 +218,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
   },
   email: {
-    color: THEME.colors.font,
+    color: THEME.colors.primary,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
@@ -229,6 +228,5 @@ export const styles = StyleSheet.create({
     color: THEME.colors.font,
     fontFamily: 'InterTight_500Medium',
     fontWeight: '500',
-    letterSpacing: 1,
   },
 })

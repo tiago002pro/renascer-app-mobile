@@ -152,6 +152,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title,
     color: THEME.colors.white,
     marginTop: 20,
     marginBottom: 20,

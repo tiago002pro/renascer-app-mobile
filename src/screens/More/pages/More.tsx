@@ -29,11 +29,11 @@ export function More() {
   }, [load, navigation]) 
 
   function goScheduleList():void {
-		navigation.navigate('ScheduleList');
+    navigation.navigate('ScheduleRoutes', {screen: 'ScheduleList'})
   }
 
   function goSchedule():void {
-		navigation.navigate('Schedule');
+    navigation.navigate('ScheduleRoutes', {screen: 'Schedule'})
   }
 
   const options = [
@@ -58,34 +58,34 @@ export function More() {
   return(
     <View style={styles.container}>
       {signed ?
+      <Box style={styles.option}>
         <Box style={styles.profile}>
-          <Box style={styles.box}>
-            <Box style={styles.imgContainer}>
-              {person?.profileImage ?
-                <Image
-                  resizeMode="cover"
-                  style={styles.img}
-                  source={{uri: person?.profileImage}}
-                  alt="User"
+          <Box style={styles.imgContainer}>
+            {person?.profileImage ?
+              <Image
+                source={{uri: person?.profileImage}}
+                alt="User"
+                style={styles.image}
+              />
+              :
+              <Box style={styles.imgContainer}>
+                <Box style={styles.circle}></Box>
+                <Ionicons
+                  name="person-circle-outline"
+                  size={100}
+                  style={styles.icon}
+                  color={THEME.colors.primary}
                 />
-                :
-                <Box style={styles.imgContainer}>
-                  <Box style={styles.circle}></Box>
-                  <Ionicons
-                    name="person-circle-outline"
-                    size={100}
-                    style={styles.icon}
-                    color={THEME.colors.primary}
-                  />
-                </Box>
-              }
-            </Box>
+              </Box>
+            }
           </Box>
 
           <Box style={styles.textArea}>
-            <Text style={styles.name}>{user?.name}</Text>
+            <Text style={styles.name}>{person?.name}</Text>
+            <Text style={styles.email}>{user?.email}</Text>
           </Box>
         </Box>
+      </Box>
         :
         null
       }
@@ -131,16 +131,19 @@ export const styles = StyleSheet.create({
     padding: THEME.sizes.paddingPage,
     backgroundColor: THEME.colors.backgroud,
   },
+  option: {
+    width: '100%',
+    backgroundColor: THEME.colors.header,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: THEME.sizes.paddingPage,
+    borderRadius: 10,
+    padding: 15,
+  },
   profile: {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: THEME.colors.header,
-    borderRadius: 10,
-    padding: THEME.sizes.paddingPage,
-    marginBottom: 10,
-  },
-  box: {
-    marginRight: THEME.sizes.paddingPage
   },
   imgContainer: {
     width: 100,
@@ -150,53 +153,48 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   circle: {
-    borderRadius: 72,
-    width: 72,
-    height: 72,
+    borderRadius: 74,
+    width: 74,
+    height: 74,
     borderWidth: 5,
     borderColor: THEME.colors.header,
     zIndex: 999999,
-    position: 'absolute'
+    position: 'absolute',
   },
   icon: {
-    width: 100,
-    height: 100,
     zIndex: 0,
-    position: 'absolute'
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  img: {
+  image: {
     width: 95,
     height: 95,
     borderRadius: 95,
     borderWidth: 2,
     borderColor: THEME.colors.primary,
   },
-  option: {
-    width: '100%',
-    backgroundColor: THEME.colors.header,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: THEME.sizes.paddingPage,
-    borderRadius: 10,
-    padding: 15,
-  },
-  label: {
-    fontSize: THEME.fontSizes.md,
-    color: THEME.colors.white,
-    fontFamily: 'InterTight_400Regular',
-    fontWeight: '400',
-  },
   textArea: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    marginLeft: 10,
   },
   name: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.md,
+  },
+  email: {
+    color: THEME.colors.primary,
+    fontFamily: 'InterTight_400Regular',
+    fontWeight: '400',
+    fontSize: THEME.fontSizes.sm,
+  },
+  label: {
+    fontSize: THEME.fontSizes.md,
+    color: THEME.colors.font,
+    fontFamily: 'InterTight_500Medium',
+    fontWeight: '500',
   },
 });

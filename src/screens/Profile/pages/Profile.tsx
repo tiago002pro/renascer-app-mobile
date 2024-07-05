@@ -63,8 +63,8 @@ export function Profile() {
           </Box>
             
           <Box style={styles.textArea}>
-            <Text style={styles.name}>{user?.name}</Text>
-            <Text style={styles.email}>{user?.email}</Text>
+            <Text style={styles.name}>{person?.name}</Text>
+            <Text style={styles.email}>{person?.email}</Text>
           </Box>
         </Box>
 
@@ -179,7 +179,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.lg,
-    marginBottom: 5,
   },
   email: {
     color: THEME.colors.primary,
