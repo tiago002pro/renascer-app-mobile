@@ -22,16 +22,14 @@ export default function ScheduleRoutes() {
 				backgroundColor: THEME.colors.header,
 			},
 			headerTitleAlign: 'center',
-			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
 			headerTitleStyle: {
-				color: THEME.colors.white,
+				color: THEME.colors.font,
 				fontFamily: 'InterTight_600SemiBold',
 				fontWeight: '600',
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
-				opacity: .7,
 				width: width * 0.55,
 				textAlign: 'center',
 			},
@@ -41,16 +39,15 @@ export default function ScheduleRoutes() {
 				component={Schedule}
 				options={{
 					headerTitle: 'Eventos',
-					headerLeft: returnBtn,
 					headerRight: () =>
 					<IconButton
-						onPress={() => navigation.navigate('ScheduleList')}
+						onPress={() => navigation.navigate('ScheduleRoutes', {screen: 'ScheduleList'})}
 						icon={ <Icon as={MaterialCommunityIcons} name="calendar-blank"/> }
 						borderRadius={'full'}
-						_icon={{ color: '#FFF', size: 6, opacity: .7 }}
+						_icon={{ color: THEME.colors.font, size: 6 }}
 						_pressed={{
 							backgroundColor: THEME.colors.primary,
-							_icon: { color: THEME.colors.backgroud, opacity: 1 }
+							_icon: { color: THEME.colors.backgroud }
 						}}
 						style={{marginRight: THEME.sizes.paddingPage * 2}}
 					/>,

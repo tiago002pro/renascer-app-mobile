@@ -11,7 +11,6 @@ import { Edit } from "../screens/Profile/pages/Edit";
 import { CloseBtn } from "../components/CloseBtn";
 import { THEME } from "../styles/theme";
 import { Notifications } from "../screens/Profile/pages/Notifications";
-import { useAuth } from "../contexts/auth";
 import { useState } from "react";
 import { returnBtn } from "../components/ReturnBtn";
 import { ChangePassword } from "../screens/Profile/pages/ChangePassword";
@@ -21,7 +20,6 @@ const { width } = Dimensions.get('screen');
 
 export default function ProfileRoutes() {
 	const navigation:any = useNavigation();
-	const { signed } = useAuth();
 	const [hasNotification, setHasNotification] = useState<boolean>(false);
 
 	return (
@@ -35,12 +33,11 @@ export default function ProfileRoutes() {
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
 			headerTitleStyle: {
-				color: THEME.colors.white,
+				color: THEME.colors.font,
 				fontFamily: 'InterTight_600SemiBold',
 				fontWeight: '600',
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
-				opacity: .7,
 				width: width * 0.55,
 				textAlign: 'center',
 			},
@@ -66,10 +63,10 @@ export default function ProfileRoutes() {
 									onPress={() => navigation.navigate('Notifications')}
 									icon={ <Icon as={Ionicons} name="notifications"/> }
 									borderRadius={'full'}
-									_icon={{ color: '#FFF', size: 6, opacity: .7 }}
+									_icon={{ color: THEME.colors.font, size: 6 }}
 									_pressed={{
 										backgroundColor: THEME.colors.primary,
-										_icon: { color: THEME.colors.backgroud, opacity: 1 }
+										_icon: { color: THEME.colors.backgroud }
 									}}
 								/>
 							</Box>
@@ -79,10 +76,10 @@ export default function ProfileRoutes() {
 									onPress={() => navigation.navigate('Settings')}
 									icon={ <Icon as={Ionicons} name="settings-sharp"/> }
 									borderRadius={'full'}
-									_icon={{ color: '#FFF', size: 6, opacity: .7 }}
+									_icon={{ color: THEME.colors.font, size: 6 }}
 									_pressed={{
 										backgroundColor: THEME.colors.primary,
-										_icon: { color: THEME.colors.backgroud, opacity: 1 }
+										_icon: { color: THEME.colors.backgroud }
 									}}
 									style={{marginRight: THEME.sizes.paddingPage * 2}}
 								/>

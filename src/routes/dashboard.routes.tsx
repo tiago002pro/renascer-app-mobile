@@ -39,12 +39,11 @@ export default function DashboardRoutes() {
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
 			headerTitleStyle: {
-				color: THEME.colors.white,
+				color: THEME.colors.font,
 				fontFamily: 'InterTight_600SemiBold',
 				fontWeight: '600',
 				textTransform: 'capitalize',
 				fontSize: THEME.fontSizes.md,
-				opacity: .7,
 				width: width * 0.55,
 				textAlign: 'center',
 			},
@@ -120,10 +119,10 @@ export default function DashboardRoutes() {
 									onPress={goProfile}
 									icon={ <Icon as={Ionicons} name="person-circle"/> }
 									borderRadius={'full'}
-									_icon={{ color: THEME.colors.white, size: 6, opacity: .7 }}
+									_icon={{ color: THEME.colors.font, size: 6 }}
 									_pressed={{
 										backgroundColor: THEME.colors.primary,
-										_icon: { color: THEME.colors.backgroud, opacity: 1 }
+										_icon: { color: THEME.colors.backgroud }
 									}}
 								/>
 							</Box>
