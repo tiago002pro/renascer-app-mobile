@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { THEME } from "../../../styles/theme";
 
 let logoPix = require('./../../../../assets/images/pix.png')
-let logoSantander = require('./../../../../assets/images/santander.png')
+let logoSicoob = require('./../../../../assets/images/sicoob.png')
 
 export function Contribute() {
   return(
@@ -21,18 +21,18 @@ export function Contribute() {
           resizeMode='contain'
           style={styles.image}
         />
-        <Text style={styles.text}>Chave CNPJ: 15.841.526/0001-71</Text>
+        <Text style={styles.text}>Chave pix: 15.841.526/0001-71</Text>
       </Box>
 
       <Box style={styles.box}>
         <Image
-          alt="santander"
-          source={logoSantander}
-          resizeMode='cover'
+          alt="Sicoob"
+          source={logoSicoob}
+          resizeMode='contain'
           style={styles.image}
         />
-        <Text style={styles.text}>Agência: 0163</Text>
-        <Text style={styles.text}>Conta Corrente: 13016080-7</Text>
+        <Text style={styles.text}>Cooperativa: 4340</Text>
+        <Text style={styles.text}>Conta Corrente: 155.246-5</Text>
       </Box>
     </View>
   );
@@ -67,8 +67,8 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
   image: {
-    height: 50,
+    height: 40,
     width: '100%',
-    marginBottom: 5,
+    marginBottom: 20,
   }
 });
