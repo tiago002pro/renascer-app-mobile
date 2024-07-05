@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alert, Linking, StyleSheet, TouchableOpacity } from "react-native";
 import { Box, Icon, Image, Text, View } from "native-base";
-import { Ionicons, Entypo } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
 import { THEME } from "../../../styles/theme";
@@ -33,32 +33,32 @@ export function Settings() {
   const options = [
     {
       id: '1',
-      vectorIcon: Entypo,
-      icon: 'lock',
+      vectorIcon: MaterialCommunityIcons,
+      icon: 'lock-reset',
       colorIcon: THEME.colors.primary,
       label: 'Alterar senha',
       action: goChangePassword,
     },
     {
       id: '2',
-      vectorIcon: Entypo,
-      icon: 'text-document-inverted',
+      vectorIcon: MaterialCommunityIcons,
+      icon: 'file-document-outline',
       colorIcon: THEME.colors.primary,
       label: 'Política de privacidade',
       action: goPrivacyPolicy,
     },
     {
       id: '3',
-      vectorIcon: Entypo,
-      icon: 'trash',
+      vectorIcon: MaterialCommunityIcons,
+      icon: 'account-off-outline',
       colorIcon: THEME.colors.red[500],
       label: 'Excluir conta',
       action: goDeleteAccount,
     },
     {
       id: '4',
-      vectorIcon: Entypo,
-      icon: 'log-out',
+      vectorIcon: MaterialCommunityIcons,
+      icon: 'logout',
       colorIcon: THEME.colors.red[500],
       label: 'Sair',
       action: alertOut,
