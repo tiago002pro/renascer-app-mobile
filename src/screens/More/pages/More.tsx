@@ -137,6 +137,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginBottom: THEME.sizes.paddingPage,
     borderRadius: 10,
     padding: 15,
