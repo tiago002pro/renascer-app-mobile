@@ -82,7 +82,7 @@ export function BasicData({ person, setPerson, scrollTo }:BasicDataProps) {
         <Button
           onPress={scrollTo}
           backgroundColor={THEME.colors.gray[500]}
-          _text={{ color: THEME.colors.white, fontWeight: 'bold' }}
+          _text={{ color: THEME.colors.font, fontWeight: 'bold' }}
         >
           Próximo
         </Button>

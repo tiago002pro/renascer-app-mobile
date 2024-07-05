@@ -153,7 +153,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: THEME.fontSizes.title,
     lineHeight: THEME.fontSizes.title,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     marginTop: 20,
     marginBottom: 20,
     fontFamily: 'InterTight_600SemiBold',
@@ -161,20 +161,20 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: THEME.fontSizes.subTitle,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     marginBottom: 10,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
   },
   text: {
     fontSize: THEME.fontSizes.text,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
   },
   date: {
     fontSize: THEME.fontSizes.text,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     marginTop: 5,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',

@@ -175,7 +175,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    color: '#FFF',
+    color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.lg,
@@ -225,7 +225,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   arrowIcon: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   },
   component: {
     width: '100%',

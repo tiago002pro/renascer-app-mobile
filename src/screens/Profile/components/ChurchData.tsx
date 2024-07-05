@@ -126,7 +126,7 @@ export function ChurchData({ person, setPerson, save }:ChurchDataProps) {
           <Button
             onPress={save}
             backgroundColor={THEME.colors.gray[500]}
-            _text={{ color: THEME.colors.white, fontWeight: 'bold' }}
+            _text={{ color: THEME.colors.font, fontWeight: 'bold' }}
           >
             Salvar
           </Button>
@@ -158,7 +158,7 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg + 5,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     marginBottom: 5,

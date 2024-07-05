@@ -39,7 +39,7 @@ export default function InputTextIcon({ label, placeholder, isPassword, icon, au
             { isPassword? <Icon as={<MaterialIcons name={!showPassword ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" /> : null }
           </Pressable>
         }
-        color={THEME.colors.white}
+        color={THEME.colors.font}
         borderColor={THEME.colors.header}
         bg={THEME.colors.header}
         selectionColor={THEME.colors.primary}

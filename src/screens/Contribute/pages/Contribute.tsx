@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontSize: THEME.fontSizes.md,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
   },

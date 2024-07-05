@@ -105,7 +105,7 @@ export function ScheduleList() {
               }
             />
           }
-          color={THEME.colors.white}
+          color={THEME.colors.font}
           fontFamily={'InterTight_600SemiBold'}
           fontWeight={'600'}
           fontSize={THEME.fontSizes.md}
@@ -196,7 +196,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.md,
-    color: THEME.colors.white
+    color: THEME.colors.font
   },
   selectIcon: {
     padding: THEME.sizes.paddingPage + 5,
@@ -207,14 +207,14 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     paddingBottom: 10,
   },
   withoutEvent: {
     fontSize: THEME.fontSizes.sm,
     fontFamily: 'InterTight_300Light',
     fontWeight: '300',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     textAlign:'center',
   },
   section: {

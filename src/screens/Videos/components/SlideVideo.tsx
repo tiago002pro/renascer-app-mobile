@@ -39,7 +39,7 @@ export function SlideVideo({ title, data }:any) {
                     style={styles.image}
                     key={item.id.toString()}
                   />
-                  <FontAwesome5 name="play" color={THEME.colors.white} size={40} style={styles.playIcon}/>
+                  <FontAwesome5 name="play" color={THEME.colors.font} size={40} style={styles.playIcon}/>
                 </Box>
                 <Box style={styles.description}>
                   <Text style={styles.titleVideo} numberOfLines={1}>{item.title}</Text>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   },
   videoContainer: {
     width: imageW,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.sm,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     textTransform: 'capitalize',
     marginBottom: 5,
   },

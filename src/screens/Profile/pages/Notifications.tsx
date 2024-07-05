@@ -55,7 +55,7 @@ export function Notifications() {
                 {
                   item.read
                   ? <Ionicons name="checkmark-done-sharp" color={THEME.colors.primary} size={30}/>
-                  : <Ionicons name="checkmark-sharp" color={THEME.colors.white} size={30} style={{opacity: .7}} />
+                  : <Ionicons name="checkmark-sharp" color={THEME.colors.font} size={30} style={{opacity: .7}} />
                 }
               </Box>
             </View>
@@ -75,7 +75,7 @@ export function Notifications() {
               <Text style={[styles.date, {marginBottom: 20}]}>Enviado às {formatDate(itemModal.date, 'H:mm [em] DD/MM/YYYY')}</Text>
               <Text style={styles.title}>{itemModal.title}</Text>
               <Text style={styles.description}>{itemModal.description}</Text>
-              <ButtonComponent label="OK" bntFunction={readNotification}/>
+              <ButtonComponent label="OK" color={THEME.colors.backgroud} bntFunction={readNotification}/>
             </View>
           </View>
       </Modal>
@@ -89,28 +89,28 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.colors.backgroud,
   },
   item: {
-    padding: THEME.sizes.paddingPage,
-    marginTop: 20,
+    padding: THEME.sizes.paddingPage * 2,
     borderBottomWidth: 1,
     borderColor: THEME.colors.gray[600],
   },
   title: {
-    color: THEME.colors.white,
-    fontSize: THEME.fontSizes.lg,
+    color: THEME.colors.font,
+    fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title + 5,
     fontFamily: 'InterTight_700Bold',
     fontWeight: '700',
-    marginBottom: 20,
+    marginBottom: THEME.sizes.paddingPage,
     textTransform: 'uppercase',
   },
   description: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontSize: THEME.fontSizes.md,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
-    marginBottom: 20,
+    marginBottom: THEME.sizes.paddingPage,
   },
   date: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontSize: THEME.fontSizes.sm,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',

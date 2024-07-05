@@ -102,7 +102,7 @@ export function More() {
               <Icon
                 as={vectorIcon}
                 name={icon}
-                color={colorIcon ? colorIcon : THEME.colors.white}
+                color={colorIcon ? colorIcon : THEME.colors.font}
                 size={5}
                 mr={2}
               />

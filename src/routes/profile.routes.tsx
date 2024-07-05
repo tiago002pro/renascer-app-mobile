@@ -28,7 +28,7 @@ export default function ProfileRoutes() {
 			headerStyle: {
 				backgroundColor: THEME.colors.header,
 			},
-			headerTintColor: THEME.colors.white,
+			headerTintColor: THEME.colors.font,
 			headerTitleAlign: 'center',
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,

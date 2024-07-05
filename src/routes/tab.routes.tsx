@@ -23,7 +23,7 @@ export default function TabRoutes() {
         height: 90
       },
       tabBarInactiveTintColor: THEME.colors.font, 
-      tabBarActiveTintColor: THEME.colors.font,
+      tabBarActiveTintColor: THEME.colors.primary,
       tabBarLabelStyle: {
         marginTop: -15,
         marginBottom: 5,

@@ -108,7 +108,7 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
   },
   title: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontSize: THEME.fontSizes.md,
     lineHeight:THEME.fontSizes.md + 2,
     fontFamily: 'InterTight_600SemiBold',

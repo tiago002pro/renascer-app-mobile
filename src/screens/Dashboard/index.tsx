@@ -53,7 +53,7 @@ export function Dashboard() {
                     h={'full'}
                     style={{objectFit: 'cover'}}
                   />
-                  <FontAwesome5 name="play" color={THEME.colors.white} size={70} style={styles.playIcon}/>
+                  <FontAwesome5 name="play" color={THEME.colors.font} size={70} style={styles.playIcon}/>
                 </Box>
               </TouchableWithoutFeedback>
 
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   text: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.subTitle,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   author: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     fontSize: THEME.fontSizes.subText,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.title,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     marginBottom: 10,
   },
   loading: {

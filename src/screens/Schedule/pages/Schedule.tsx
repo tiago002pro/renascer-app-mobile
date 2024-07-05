@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.title,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     marginBottom: 10,
   },
   without: {
@@ -86,6 +86,6 @@ export const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.lg,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   }
 })

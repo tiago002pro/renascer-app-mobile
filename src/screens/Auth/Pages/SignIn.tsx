@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: 'InterTight_700Bold',
     fontWeight: '700',
     fontSize: THEME.fontSizes.sm,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     marginBottom: 20,
     textAlign: 'right',
   },
@@ -150,6 +150,6 @@ const styles = StyleSheet.create({
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   }
 });

@@ -35,7 +35,7 @@ export default function DashboardRoutes() {
 				backgroundColor: THEME.colors.header,
 			},
 			headerTitleAlign: 'center',
-			headerTintColor: THEME.colors.white,
+			headerTintColor: THEME.colors.font,
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
 			headerTitleStyle: {
@@ -65,7 +65,7 @@ export default function DashboardRoutes() {
 								style={{ width: 30, height: 30, marginRight: 10 }}
 							/>
 							<Text
-								color={THEME.colors.white}
+								color={THEME.colors.font}
 								textTransform={'uppercase'}
 								fontSize={12}
 								fontFamily={'InterTight_500Medium'}

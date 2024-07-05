@@ -20,7 +20,7 @@ interface InputProps {
 export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask, error, autoCapitalize, isPassword }: InputProps) {
   const [showPassword, setShowPassword] = useState<boolean>(isPassword || false);
   const rightElement = <TextInput.Icon
-    color={error ? THEME.colors.red[500] : THEME.colors.white}
+    color={error ? THEME.colors.red[500] : THEME.colors.font}
     icon={showPassword ? "eye" : !showPassword ? "eye-off" : ""}
     onPress={() => setShowPassword(!showPassword)}
   />
@@ -39,17 +39,17 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
         mode='outlined'
         keyboardType={type ? type : 'default'}
         style={styles.input}
-        textColor={error ? 'red' : '#FFF'}
+        textColor={error ? 'red' : THEME.colors.font}
         outlineStyle={{
-          borderColor: error ? 'red' : '#FFF',
+          borderColor: error ? 'red' : THEME.colors.font,
         }}
-        cursorColor={'#FFF'}
+        cursorColor={THEME.colors.font}
         theme={{
           colors: {
-            placeholder: error ? 'red' : '#FFF',
-            text: error ? 'red' : '#FFF',
-            primary: error ? 'red' : '#FFF',
-            onSurfaceVariant: error ? 'red' : '#FFF'
+            placeholder: error ? 'red' : THEME.colors.font,
+            text: error ? 'red' : THEME.colors.font,
+            primary: error ? 'red' : THEME.colors.font,
+            onSurfaceVariant: error ? 'red' : THEME.colors.font
           }
         }}
         autoCapitalize={autoCapitalize ? 'words' : 'none'}

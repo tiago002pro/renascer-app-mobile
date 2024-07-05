@@ -14,7 +14,7 @@ export const CloseBtn = () => {
         }
         borderRadius={'full'}
         _icon={{
-          color: THEME.colors.white,
+          color: THEME.colors.font,
           size: 6,
           opacity: .7
         }}

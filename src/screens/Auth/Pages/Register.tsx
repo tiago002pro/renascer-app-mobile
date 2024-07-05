@@ -185,7 +185,7 @@ export default function Register() {
                 maxLength={4}
                 keyboardType={'numeric'}
                 autoFocus={true}
-                _focus={{ backgroundColor: 'transparent', borderColor: inputModalError ? THEME.colors.red[500] : THEME.colors.white }}
+                _focus={{ backgroundColor: 'transparent', borderColor: inputModalError ? THEME.colors.red[500] : THEME.colors.font }}
               />
 
                 <FormControl.ErrorMessage position={'absolute'} bottom={-20} leftIcon={<MaterialIcons name={"error"} size={15} color={THEME.colors.red[400]} />}>
@@ -204,7 +204,7 @@ export default function Register() {
               <ButtonComponent
                 label="Fechar"
                 bntFunction={closeModal}
-                color={THEME.colors.white}
+                color={THEME.colors.font}
                 bg={THEME.colors.gray[500]}
               />
             </Box>
@@ -238,7 +238,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'InterTight_400Regular',
     fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   },
   TermsOfUse: {
     fontFamily: 'InterTight_400Regular',
@@ -269,11 +269,11 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     textTransform: 'uppercase',
     fontSize: THEME.fontSizes.sm,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   },
   modalInput: {
-    borderColor: THEME.colors.white,
-    color: THEME.colors.white,
+    borderColor: THEME.colors.font,
+    color: THEME.colors.font,
     fontSize: 30,
     textAlign: 'center',
     fontFamily: 'InterTight_700Bold',

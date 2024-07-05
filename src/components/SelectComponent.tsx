@@ -29,11 +29,11 @@ export default function SelectComponent({ options, label, valiable, setValiable 
         onValueChange={setValiable}
         height={39}
         borderRadius={5}
-        borderColor={'#FFF'}
+        borderColor={THEME.colors.font}
         borderWidth={1}
-        color={'#FFF'}
+        color={THEME.colors.font}
         fontSize={'md'}
-        dropdownIcon={<MaterialIcons name="keyboard-arrow-down" color={'#FFF'} size={30} />}
+        dropdownIcon={<MaterialIcons name="keyboard-arrow-down" color={THEME.colors.font} size={30} />}
       >
         {options?.map(item => {
           return <Select.Item

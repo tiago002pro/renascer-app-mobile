@@ -40,7 +40,7 @@ export function SlideVideoFeatured({ title, data }:any) {
                     style={styles.image}
                     key={item.id.toString()}
                   />
-                  <FontAwesome5 name="play" color={THEME.colors.white} size={70} style={styles.playIcon}/>
+                  <FontAwesome5 name="play" color={THEME.colors.font} size={70} style={styles.playIcon}/>
                 </Box>
                 <Box style={styles.description}>
                   <Text
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     lineHeight: THEME.fontSizes.title,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   },
   videoContainer: {
     width: imageW,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.text,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     textTransform: 'capitalize',
     marginBottom: 5,
   },

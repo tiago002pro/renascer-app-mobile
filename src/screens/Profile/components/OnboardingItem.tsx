@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
     fontSize: THEME.fontSizes.lg,
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     textTransform: 'capitalize',
   },
 });

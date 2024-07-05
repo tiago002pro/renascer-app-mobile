@@ -36,7 +36,6 @@ export function FilterVideo() {
           autoCapitalize={false}
           value={search}
           onChangeText={onChangeSearch}
-          show={true}
           error={false}
         />
       </Box>
@@ -108,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.text,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     textTransform: 'capitalize',
     marginBottom: 5,
   },

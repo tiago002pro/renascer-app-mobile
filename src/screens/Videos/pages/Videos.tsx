@@ -102,6 +102,6 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.lg,
     fontFamily: 'InterTight_600SemiBold',
     fontWeight: '600',
-    color: THEME.colors.white,
+    color: THEME.colors.font,
   }
 });

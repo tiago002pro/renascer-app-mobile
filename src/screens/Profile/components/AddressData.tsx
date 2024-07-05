@@ -166,7 +166,7 @@ export function AddressData({ address, setAddress, scrollTo }:AddressDataProps) 
         <Button
           onPress={scrollTo}
           backgroundColor={THEME.colors.gray[500]}
-          _text={{ color: THEME.colors.white, fontWeight: 'bold' }}
+          _text={{ color: THEME.colors.font, fontWeight: 'bold' }}
         >
           Próximo
         </Button>
@@ -192,7 +192,7 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   label: {
-    color: THEME.colors.white,
+    color: THEME.colors.font,
     fontSize: THEME.fontSizes.sm,
     marginBottom: 2,
   },
