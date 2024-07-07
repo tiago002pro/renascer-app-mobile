@@ -27,7 +27,7 @@ export function Address({ address, setAddress, errors }:AddressProps) {
   function setComplement(complement:any) { setAddress({...address, complement: complement}) }
   function setNeighborhood(neighborhood:any) { setAddress({...address, neighborhood: neighborhood}) }
   function setCity(city:any) { setAddress({...address, city: city}) }
-  function setState(state:any) { setAddress({...address, state: state.toUpperCase()}) }
+  function setState(state:any) { setAddress({...address, state: state ? state.toUpperCase() : state}) }
 
   async function validateZipCode(zipCode:string) {
     if (zipCode) {

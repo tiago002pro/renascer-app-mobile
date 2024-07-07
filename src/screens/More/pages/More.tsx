@@ -28,12 +28,16 @@ export function More() {
     onInit()
   }, [load, navigation]) 
 
-  function goScheduleList():void {
+  function goToScheduleList():void {
     navigation.navigate('ScheduleRoutes', {screen: 'ScheduleList'})
   }
 
-  function goSchedule():void {
+  function goToSchedule():void {
     navigation.navigate('ScheduleRoutes', {screen: 'Schedule'})
+  }
+
+  function goToNotifications():void {
+    navigation.navigate('ProfileRoutes', {screen: 'Notifications'})
   }
 
   const options = [
@@ -43,7 +47,7 @@ export function More() {
       icon: 'calendar-blank',
       colorIcon: THEME.colors.primary,
       label: 'Agenda',
-      action: goScheduleList,
+      action: goToScheduleList,
     },
     {
       id: '2',
@@ -51,7 +55,15 @@ export function More() {
       icon: 'event',
       colorIcon: THEME.colors.primary,
       label: 'Eventos',
-      action: goSchedule,
+      action: goToSchedule,
+    },
+    {
+      id: '3',
+      vectorIcon: Ionicons,
+      icon: 'notifications',
+      colorIcon: THEME.colors.primary,
+      label: 'Notificações',
+      action: goToNotifications,
     },
   ]
 
