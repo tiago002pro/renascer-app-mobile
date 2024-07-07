@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Image, ScrollView, Text, View } from "native-base";
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import VideoService from "../Videos/service/VideoService";
 import { SlideVideo } from "../Videos/components/SlideVideo";
 import { THEME } from "../../styles/theme";
@@ -13,6 +13,7 @@ const heightBannerImg = width * .56;
 
 export function Dashboard() {
   const navigation:any = useNavigation();
+  const isFocused = useIsFocused();
   const [latestVideos, setLatestVideos] = useState(null) as any;
   const [lastVideo, setLastVideo] = useState(null) as any;
   const [loadingVideos, setLoadingVideos] = useState(false);
@@ -28,7 +29,7 @@ export function Dashboard() {
       }
     }
     getLatest()
-  }, [])
+  }, [isFocused])
 
   async function goWathVideo(video:any):Promise<void> {
     navigation.navigate('WatchVideo', {
