@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../../contexts/auth";
 import { useEffect, useState } from "react";
 import UserService from "../../Profile/service/UserService";
+import { showMessage } from "react-native-flash-message";
 
 export function More() {
   const navigation:any = useNavigation();
@@ -37,7 +38,11 @@ export function More() {
   }
 
   function goToNotifications():void {
-    navigation.navigate('ProfileRoutes', {screen: 'Notifications'})
+    if (signed) {
+      navigation.navigate('ProfileRoutes', {screen: 'Notifications'})
+    } else {
+      showMessage({ message: "É necessário fazer o login para ter acesso!", type: 'default'})
+    }
   }
 
   const options = [
