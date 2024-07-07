@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Animated, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import { Box, VStack, Text, Icon, View, ScrollView } from "native-base";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
@@ -11,36 +11,46 @@ import data from '../helper/DataProfile';
 import Loading from "../../Loading";
 import { OpenCamera } from "../components/OpenCamera";
 import { ActivityIndicator } from "react-native-paper";
+import NotificationService from "../service/NotificationService";
 
 const {width, height} = Dimensions.get('screen')
 
 export function Profile() {
   const navigation:any = useNavigation();
+  const isFocused = useIsFocused();
   const { user } = useAuth() as any;
   const [person, setPerson] = useState(null) as any;
   const [currentSection, setCurrentSection] = useState(null) as any;
-  const [load, setLoad] = useState(false);
   const [loadImage, setLoadImage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  async function getUser() {
-    const data = await UserService.loadUser(parseInt(user.id))
-    setPerson(data?.person)
-  }
+  useEffect(() => {
+    async function getUser() {
+      setLoading(true)
+      const data = await UserService.loadUser(parseInt(user.id))
+      setPerson(data?.person)
+      setLoading(false)
+    }
+
+    async function checkIfThereAreNotifications() {
+      setLoading(true)
+      if (user && user.id) {
+        NotificationService.checkIfThereAreNotifications(user.id).then((reponse) => {
+          navigation.setParams({ hasNotification: reponse });
+        })
+      }
+      setLoading(false)
+    }
+    
+    getUser()
+    checkIfThereAreNotifications()
+  }, [isFocused, navigation])
 
   function goToEdit(item:any):void {
     navigation.navigate('Edit', { item: item, data: person, })
   }
-
-  useEffect(() => {
-    function onInit() {
-      navigation.addListener('focus', () => setLoad(!load))
-      getUser()
-    }
-    onInit()
-  }, [load, navigation])
-
   
-  if (!person) {
+  if (loading) {
     return <Loading/>;
   }
 

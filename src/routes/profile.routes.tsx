@@ -11,7 +11,6 @@ import { Edit } from "../screens/Profile/pages/Edit";
 import { CloseBtn } from "../components/CloseBtn";
 import { THEME } from "../styles/theme";
 import { Notifications } from "../screens/Profile/pages/Notifications";
-import { useState } from "react";
 import { returnBtn } from "../components/ReturnBtn";
 import { ChangePassword } from "../screens/Profile/pages/ChangePassword";
 
@@ -20,7 +19,6 @@ const { width } = Dimensions.get('screen');
 
 export default function ProfileRoutes() {
 	const navigation:any = useNavigation();
-	const [hasNotification, setHasNotification] = useState<boolean>(false);
 
 	return (
 		<Navigator screenOptions={{
@@ -46,13 +44,13 @@ export default function ProfileRoutes() {
 			<Screen
 				name="Profile"
 				component={Profile}
-				options={{
+				options={({ route }:any) => ({
 					headerTitle: 'Meu Perfil',
 					headerRight: () =>
 						<Box flexDirection={'row'}>
 							<Box >
 								{
-									hasNotification ?
+									route?.params?.hasNotification ?
 										<MaterialIcons name="circle" color={THEME.colors.primary} size={15}
 											style={{ position: 'absolute', right: 7, top: 5, zIndex: 1 }}
 										/>
@@ -87,7 +85,7 @@ export default function ProfileRoutes() {
 						</Box>
 					,
 					headerLeft: returnBtn
-				}}
+				})}
 			/>
 
 			<Screen

@@ -33,8 +33,8 @@ export function Notifications() {
   async function readNotification() {
     if (!itemModal.read) {
       await NotificationService.readNotification(itemModal.id)
+      await getAllNotifications()
     }
-    await getAllNotifications()
     setModalVisible(!modalVisible)
   }
 

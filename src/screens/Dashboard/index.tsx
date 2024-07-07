@@ -7,19 +7,25 @@ import VideoService from "../Videos/service/VideoService";
 import { SlideVideo } from "../Videos/components/SlideVideo";
 import { THEME } from "../../styles/theme";
 import { ActivityIndicator } from "react-native-paper";
+import NotificationService from "../Profile/service/NotificationService";
+import { useAuth } from "../../contexts/auth";
+import Loading from "../Loading";
 
 const { width, height } = Dimensions.get('screen');
 const heightBannerImg = width * .56;
 
 export function Dashboard() {
+  const { user } = useAuth() as any;
   const navigation:any = useNavigation();
   const isFocused = useIsFocused();
   const [latestVideos, setLatestVideos] = useState(null) as any;
   const [lastVideo, setLastVideo] = useState(null) as any;
   const [loadingVideos, setLoadingVideos] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getLatest() {
+      setLoading(true)
       const result:any[] = await VideoService.getLatest()
       if (result && result.length > 0) {
         setLastVideo(result[0])
@@ -27,14 +33,31 @@ export function Dashboard() {
         setLatestVideos(result)
         setLoadingVideos(true)
       }
+      setLoading(false)
     }
+
+    async function checkIfThereAreNotifications() {
+      setLoading(true)
+      if (user && user.id) {
+        NotificationService.checkIfThereAreNotifications(user.id).then((reponse) => {
+          navigation.setParams({ hasNotification: reponse });
+        })
+      }
+      setLoading(false)
+    }
+
     getLatest()
-  }, [isFocused])
+    checkIfThereAreNotifications()
+  }, [isFocused, navigation])
 
   async function goWathVideo(video:any):Promise<void> {
     navigation.navigate('WatchVideo', {
       video: video
     });
+  }
+
+  if (loading) {
+    return <Loading/>;
   }
 
   return (

@@ -5,30 +5,24 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../service/UserService";
 import { THEME } from "../../../styles/theme";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 
 export function Settings() {
   const navigation:any = useNavigation();
+  const isFocused = useIsFocused();
   const {signOut, user} = useAuth() as any;
-
   const [person, setPerson] = useState(null) as any;
-  const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    function onInit() {
-      navigation.addListener('focus', () => setLoad(!load))
-      getUser()
-    }
-
-    onInit()
-  }, [load, navigation])
-
-  async function getUser() {
-    if (!!load) {
+    async function getUser() {
       const data = await UserService.loadUser(parseInt(user.id))
       setPerson(data?.person)
     }
-  }
+
+    getUser()
+  }, [isFocused, navigation])
+
+
 
   const options = [
     {

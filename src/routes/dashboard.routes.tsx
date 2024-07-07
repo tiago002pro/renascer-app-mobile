@@ -9,7 +9,6 @@ import ProfileRoutes from "./profile.routes";
 import { returnBtn } from "../components/ReturnBtn";
 import { THEME } from "../styles/theme";
 import { Dimensions } from "react-native";
-import { useState } from "react";
 
 const { Navigator, Screen } = createStackNavigator();
 const { width } = Dimensions.get('screen');
@@ -18,7 +17,6 @@ let logo = require('./../../assets/images/logo.png')
 export default function DashboardRoutes() {
 	const navigation:any = useNavigation();
 	const { signed } = useAuth();
-	const [hasNotification, setHasNotification] = useState<boolean>(false);
 
 	function goSignIn():void {
 		navigation.navigate('SignIn');
@@ -51,9 +49,8 @@ export default function DashboardRoutes() {
 			<Screen
 				name="Dashboard"
 				component={Dashboard}
-				options={{
-					headerTitle: (
-						() =>
+				options={({ route }:any) => ({
+					headerTitle: (() =>
 						<View
 							justifyContent={'space-between'}
 							alignItems={'center'}
@@ -74,9 +71,8 @@ export default function DashboardRoutes() {
 								Igreja Renascer
 							</Text>
 						</View>
-				  	),
-					headerRight: (
-						() =>
+					),
+					headerRight: (() =>
 						(!signed ?
 							<Button
 								m={0}
@@ -105,10 +101,10 @@ export default function DashboardRoutes() {
 							>
 								Login
 							</Button>
-						:
+							:
 							<Box style={{ marginRight: THEME.sizes.paddingPage * 2 }}>
 								{
-									hasNotification ?
+									route?.params?.hasNotification ?
 										<MaterialIcons name="circle" color={THEME.colors.primary} size={15}
 											style={{ position: 'absolute', right: 7, top: 5, zIndex: 1 }}
 										/>
@@ -128,7 +124,7 @@ export default function DashboardRoutes() {
 							</Box>
 						)
 					)
-				}}
+				})}
 			/>
 
 			<Screen
