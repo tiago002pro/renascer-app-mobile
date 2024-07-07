@@ -14,13 +14,14 @@ export const Checkbox = ({ title, op, value, setValue }: any) => {
         borderRadius: 10,
         width: '100%',
         left: -10,
+        padding: 20,
       }}
       checkedColor={THEME.colors.font}
       textStyle={{
         color: THEME.colors.font,
         fontFamily: 'InterTight_500Medium',
         fontWeight: '500',
-        fontSize: THEME.fontSizes.md
+        fontSize: THEME.fontSizes.md,
       }}
     />
   );
