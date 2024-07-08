@@ -14,7 +14,7 @@ export default function SignIn({ route }:any) {
   const navigation:any = useNavigation();
   const validator = require('validator');
 
-  const [email, setEmail] = useState<string>(route?.params?.email ? route?.params?.email : '');
+  const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   
   const [validEmail, setValidEmail] = useState<boolean>(true);

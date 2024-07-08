@@ -20,12 +20,11 @@ export default function TabRoutes() {
       tabBarStyle: {
         backgroundColor: THEME.colors.tabBar,
         borderTopWidth: 0,
-        height: 90
       },
       tabBarInactiveTintColor: THEME.colors.font, 
       tabBarActiveTintColor: THEME.colors.primary,
       tabBarLabelStyle: {
-        marginTop: -15,
+        marginTop: -5,
         marginBottom: 5,
         fontFamily: 'InterTight_500Medium',
         fontWeight: '500',

@@ -53,7 +53,7 @@ export default function Register() {
       closeModal()
       const expoToken = await NotificationService.getExpoNotificationToken()
       await AuthService.doRegister({name, login, password, role, expoToken})
-      navigation.navigate('SignIn', { email: login })
+      navigation.navigate('SignIn')
     } else {
       setInputModalError(true)
     }
@@ -186,6 +186,7 @@ export default function Register() {
                 keyboardType={'numeric'}
                 autoFocus={true}
                 _focus={{ backgroundColor: 'transparent', borderColor: inputModalError ? THEME.colors.red[500] : THEME.colors.font }}
+                cursorColor={THEME.colors.font}
               />
 
                 <FormControl.ErrorMessage position={'absolute'} bottom={-20} leftIcon={<MaterialIcons name={"error"} size={15} color={THEME.colors.red[400]} />}>

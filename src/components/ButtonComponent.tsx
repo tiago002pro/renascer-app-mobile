@@ -23,7 +23,7 @@ export default function ButtonComponent({ label, color, bg, bntFunction, isDisab
       mt={2}
       _text={{
         fontSize: THEME.fontSizes.md,
-        color: color || THEME.colors.font,
+        color: color || THEME.colors.backgroud,
         fontFamily: 'InterTight_600SemiBold',
         fontWeight: '600',
       }}
