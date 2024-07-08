@@ -6,6 +6,7 @@ import ScheduleRoutes from "./schedule.routes";
 import DashboardRoutes from "./dashboard.routes";
 import MoreRoutes from "./more.routes";
 import ContributeRoutes from "./contribute.routes";
+import ExpoNotification from "../screens/Notification";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -82,6 +83,16 @@ export default function TabRoutes() {
         component={MoreRoutes}
         options={{
           tabBarIcon: ({ color, size, focused }) => <MaterialIcons name={focused ? "more" :  "more-horiz"} color={color} size={size} />,
+          tabBarLabel: "Mais",
+          headerShown: false,
+        }}
+      />
+
+      <Screen
+        name="ExpoNotification"
+        component={ExpoNotification}
+        options={{
+          tabBarIcon: ({ color, size, focused }) => <MaterialIcons name={focused ? "notifications-active" :  "notifications-none"} color={color} size={size} />,
           tabBarLabel: "Mais",
           headerShown: false,
         }}
