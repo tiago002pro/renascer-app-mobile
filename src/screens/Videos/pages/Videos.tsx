@@ -10,6 +10,7 @@ import Loading from "../../Loading";
 
 export function Videos() {
   const [featured , setFeatured] = useState([]);
+  const [trilhaMaturidade, setTrilhaMaturidade] = useState([]);
   const [conference, setConference] = useState([]);
   const [recent, setRecent] = useState([]);
 
@@ -19,26 +20,32 @@ export function Videos() {
       setFeatured(result)
     }
 
-    async function getRecentVideos() {
-      const result:any = await VideoService.getAllByCategory("ALL")
-      setRecent(result)
+    async function getTrilhaMaturidadeVideos() {
+      const result:any = await VideoService.getAllByCategory('TRILHA_DE_MATURIDADE')
+      setTrilhaMaturidade(result)
     }
 
     async function getConferenceVideos() {
       const result:any = await VideoService.getAllByCategory('CONFERENCE')
       setConference(result)
     }
+
+    async function getRecentVideos() {
+      const result:any = await VideoService.getAllByCategory("ALL")
+      setRecent(result)
+    }
     
     getLatest()
-    getRecentVideos()
     getConferenceVideos()
+    getTrilhaMaturidadeVideos()
+    getRecentVideos()
   }, [])
 
   function checkVideos():boolean {
-    return featured.length > 0 && conference.length > 0 && recent.length > 0
+    return featured.length > 0 && trilhaMaturidade.length > 0 && conference.length > 0 && recent.length > 0
   }
 
-  if (!featured || !conference || !recent) {
+  if (!featured || !trilhaMaturidade || !conference || !recent) {
     return <Loading/>;
   }
 
@@ -56,8 +63,8 @@ export function Videos() {
 
             <Box style={styles.slide}>
               <SlideVideo
-                title={"Adicionados recentemente"}
-                data={recent}
+                title={"Trilha de maturidade"}
+                data={trilhaMaturidade}
               />
             </Box>
 
@@ -65,6 +72,13 @@ export function Videos() {
               <SlideVideo
                 title={"Conferências"}
                 data={conference}
+              />
+            </Box>
+
+            <Box style={styles.slide}>
+              <SlideVideo
+                title={"Adicionados recentemente"}
+                data={recent}
               />
             </Box>
           </View>

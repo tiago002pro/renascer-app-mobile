@@ -28,6 +28,7 @@ export function SlideVideoFeatured({ title, data }:any) {
         <FlatList
           data={data}
           horizontal
+          initialNumToRender={4}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item:any) => item.id.toString()}
           renderItem={({item}:any) => {
