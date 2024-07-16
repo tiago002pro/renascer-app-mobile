@@ -15,8 +15,8 @@ const firebaseConfig = {
   projectId: "renascer-app",
   storageBucket: "renascer-app.appspot.com",
   messagingSenderId: "135230168657",
-  appId: "1:135230168657:web:4bd4cb0b5c423a185ee270",
-  measurementId: "G-2GNS28C5KB"
+  appId: "1:135230168657:web:48307d52fd49c6d35ee270",
+  measurementId: "G-Y0VG7SXETE"
 };
 
 const app = initializeApp(firebaseConfig);

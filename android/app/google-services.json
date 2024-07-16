@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:135230168657:android:15756847af3135b95ee270",
+        "mobilesdk_app_id": "1:135230168657:android:fe248d301f5617f15ee270",
         "android_client_info": {
-          "package_name": "renascer.app.mobile"
+          "package_name": "com.tiagodev002pro.renascerappmobile"
         }
       },
       "oauth_client": [

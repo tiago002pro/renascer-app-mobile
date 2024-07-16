@@ -88,7 +88,7 @@ export default function TabRoutes() {
         }}
       />
 
-      <Screen
+      {/* <Screen
         name="ExpoNotification"
         component={ExpoNotification}
         options={{
@@ -96,7 +96,7 @@ export default function TabRoutes() {
           tabBarLabel: "Mais",
           headerShown: false,
         }}
-      />
+      /> */}
     </Navigator>
   );
 }
