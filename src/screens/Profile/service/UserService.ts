@@ -1,9 +1,15 @@
 import api from "../../../services/api";
 
 class UserService {
+  private root!: string;
+
+  constructor() {
+    this.root = "/user"
+  }
+
   public async loadUser(id: number): Promise<any> {
     try {
-      const result = await api.get(`/api/user/${id}`)
+      const result = await api.get(this.root + `/${id}`)
       return result.data
     } catch(error) {
       throw new Error();
@@ -12,7 +18,7 @@ class UserService {
 
   public async delete(id:number):Promise<any> {
     try {
-      const result = await api.delete(`/api/user/${id}`)
+      const result = await api.delete(this.root +`/${id}`)
       return result.data
     } catch(error) {
       throw new Error();
@@ -21,7 +27,7 @@ class UserService {
 
   public async alterPassword(login:string, password:string, newPassword:string):Promise<any> {
     try {
-      const result = await api.put(`/api/user/alter-password`, { login, password, newPassword })
+      const result = await api.put(this.root + `/alter-password`, { login, password, newPassword })
       return result.data
     } catch(error) {
       throw new Error();

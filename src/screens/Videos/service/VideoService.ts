@@ -1,27 +1,15 @@
 import api from "../../../services/api";
 
 class VideoService {
-  async getAllVideos() {
-    try {
-      const result = await api.get(`/api/video/all`)
-      return result.data
-    } catch(error) {
-      throw new Error();
-    }
-  }
-  
-  async getAllByCategory(category:string) {
-    try {
-      const result = await api.get(`/auth/all-videos-by-category/${category}`)
-      return result.data
-    } catch(error) {
-      throw new Error();
-    }
+  private root!: string;
+
+  constructor() {
+    this.root = "/video"
   }
 
-  async getLatest() {
+  async getById(id:number) {
     try {
-      const result = await api.get(`/auth/latest-videos`)
+      const result = await api.get(this.root + `${id}`)
       return result.data
     } catch(error) {
       throw new Error();
@@ -30,7 +18,34 @@ class VideoService {
 
   async searchVideos(search:string) {
     try {
-      const result = await api.get(`/auth/search-videos?search=${search}`)
+      const result = await api.get(this.root + `/search-videos?search=${search}`)
+      return result.data
+    } catch(error) {
+      throw new Error();
+    }
+  }
+
+  async getLatest() {
+    try {
+      const result = await api.get(this.root + `/latest-videos`)
+      return result.data
+    } catch(error) {
+      throw new Error();
+    }
+  }
+
+  async getAllVideos() {
+    try {
+      const result = await api.get(this.root + `/video/all`)
+      return result.data
+    } catch(error) {
+      throw new Error();
+    }
+  }
+  
+  async getAllByCategory(category:string) {
+    try {
+      const result = await api.get(this.root + `/all-by-category/${category}`)
       return result.data
     } catch(error) {
       throw new Error();

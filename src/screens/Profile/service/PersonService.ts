@@ -1,18 +1,15 @@
 import api from "../../../services/api";
 
 class PersonService {
-  public async save(person:any) {
-    try {
-      const result = await api.put(`/api/person/save`, person)
-      return result.data
-    } catch(error) {
-      throw new Error();
-    }
+  private root!: string;
+
+  constructor() {
+    this.root = "/person"
   }
 
   public async update(person:any) {
     try {
-      const result = await api.put(`/api/person/update/${person.id}`, person)
+      const result = await api.put(this.root + `/update`, person)
       return result.data
     } catch(error) {
       throw new Error();

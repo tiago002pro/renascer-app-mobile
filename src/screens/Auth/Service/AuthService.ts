@@ -13,9 +13,15 @@ interface Response {
 }
 
 class AuthService {
+  private root!: string;
+
+  constructor() {
+    this.root = "/auth"
+  }
+
   public async doLogin(login:string, password:string):Promise<Response> {
     try {
-      const result = await api.post('/auth/login', { login, password })
+      const result = await api.post(this.root + '/login', { login, password })
       const tokenDecoded:any = jwtDecode(result.data.token)
   
       return {
@@ -40,7 +46,7 @@ class AuthService {
   public async doRegister(user:RegisterUser) {
     if (!user.name || !user.login || !user.password) return null
     try {
-      const result = await api.post('/auth/register', user)
+      const result = await api.post(this.root + '/register', user)
       return result.data
     } catch (error:any) {
       if (error.response?.status == '400') {
@@ -63,7 +69,7 @@ class AuthService {
 
   public async checkEmail(email:any):Promise<any> {
     try {
-      const result = await api.post(`/auth/check-email/${email}`)
+      const result = await api.post(this.root + `/check-email/${email}`)
       return result.data
     } catch(error) {
       showMessage({
@@ -78,7 +84,7 @@ class AuthService {
 
   public async recoverPassword(email:any):Promise<void> {
     try {
-      await api.post(`/auth/recover-password/${email}`)
+      await api.post(this.root + `/recover-password/${email}`)
     } catch(error) {
       throw new Error();
     }
