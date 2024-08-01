@@ -17,7 +17,7 @@ export function Ticket({ route }:any) {
   }
   
   function getDate(date:any, format:string):string {
-    return moment(date, 'YYYY-MM-DD HH:mm:ss').format(format)
+    return moment(new Date(date), 'YYYY-MM-DD HH:mm:ss').format(format)
   }
 
   return(

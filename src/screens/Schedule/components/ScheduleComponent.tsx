@@ -15,8 +15,8 @@ export default function ScheduleComponent({ item }:any) {
     });
   }
 
-  function getDate(date:any):string {
-    return moment(date, 'YYYY-MM-DD HH:mm:ss').format('ddd, DD MMM [•] H[h]mm')
+  function getDate(date:Date):string {
+    return moment(new Date(date), 'YYYY-MM-DD HH:mm:ss').format('ddd, DD MMM [•] H[h]mm')
   }
 
   return (

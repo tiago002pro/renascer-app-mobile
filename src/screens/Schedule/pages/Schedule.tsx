@@ -7,18 +7,6 @@ import ScheduleComponent from "../components/ScheduleComponent";
 import Loading from "../../Loading";
 import { THEME } from "../../../styles/theme";
 
-type Schedule = {
-  id: string,
-  title: string,
-  startDate: Date,
-  endDate: Date,
-  address: string,
-  description: string,
-  image: string,
-  registration: boolean,
-  deadline: Date,
-}
-
 export function Schedule() {
   const [schedules, setSchedules] = useState([]) as any[];
 

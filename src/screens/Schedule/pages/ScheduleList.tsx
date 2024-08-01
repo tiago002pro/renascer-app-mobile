@@ -43,7 +43,7 @@ export function ScheduleList() {
   }
 
   function getDate(date:any, format:string):string {
-    return moment(date, 'YYYY-MM-DD HH:mm:ss').format(format)
+    return moment(new Date(date), 'YYYY-MM-DD HH:mm:ss').format(format)
   }
 
   function getMonth(m:string):string {
