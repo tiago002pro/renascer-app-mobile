@@ -151,7 +151,8 @@ export default function Register() {
                 color: THEME.colors.primary,
                 fontFamily: 'InterTight_600SemiBold',
                 fontWeight: '600',
-                fontSize: THEME.fontSizes.sm,
+                fontSize: THEME.fontSizes.md,
+                lineHeight: 20,
               }}
             >
               Fazer Login
@@ -240,6 +241,7 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
     color: THEME.colors.font,
+    lineHeight: 20,
   },
   TermsOfUse: {
     fontFamily: 'InterTight_400Regular',

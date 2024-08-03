@@ -96,7 +96,8 @@ export default function SignIn({ route }:any) {
               color: THEME.colors.primary,
               fontFamily: 'InterTight_600SemiBold',
               fontWeight: '600',
-              fontSize: THEME.fontSizes.sm,
+              fontSize: THEME.fontSizes.md,
+              lineHeight: 20,
             }}
           >
             Cadastre-se
@@ -151,5 +152,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: THEME.fontSizes.sm,
     color: THEME.colors.font,
+    lineHeight: 20,
   }
 });
