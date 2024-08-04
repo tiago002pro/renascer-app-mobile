@@ -10,6 +10,7 @@ import InputTextIcon from "../../../components/InputTextIcon";
 import ButtonComponent from "../../../components/ButtonComponent";
 import AuthService from "../Service/AuthService";
 import { MaterialIcons } from "@expo/vector-icons";
+import { moderateScale } from 'react-native-size-matters';
 
 export default function Register() {
   const navigation:any = useNavigation();
@@ -124,11 +125,14 @@ export default function Register() {
             />
           </Box>
 
-          <Box style={[styles.data, {flexDirection: 'row', alignItems: 'center'}]}>
+          <Box style={[styles.data, {flexDirection: 'row', alignItems: 'center', marginTop:20, marginBottom: 20}]}>
             <Switch
               value={agreeTermsOfUse}
               onValueChange={setAgreeTermsOfUse}
               color={THEME.colors.primary}
+              ios_backgroundColor={THEME.colors.header}
+              thumbColor={THEME.colors.white}
+              style={[styles.switch, {transform: [{scaleX: moderateScale(1.3, 0.2) }, { scaleY: moderateScale(1.3, 0.2) }]}]}
             />
             <Text style={styles.TermsOfUse} onPress={() => setSeeAgreeTermsOfUse(!seeAgreeTermsOfUse)}>
               Li e aceito os termos de uso
@@ -290,5 +294,10 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  switch: {
+    padding: 0,
+    marginRight: 10,
+    marginLeft: THEME.sizes.paddingPage,
   }
 })
