@@ -13,6 +13,7 @@ import Loading from "../Loading";
 
 const { width, height } = Dimensions.get('screen');
 const heightBannerImg = width * .56;
+import temaAnoImage from './../../../assets/images/TEMA_ANO.jpg'
 
 export function Dashboard() {
   const { user } = useAuth() as any;
@@ -107,7 +108,7 @@ export function Dashboard() {
           <Box style={styles.themeYear}>
             <Text style={styles.title}>Destaques</Text>
             <Image
-              source={{uri: 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/images%2FTEMA_ANO.png?alt=media&token=ef454aa0-6494-4165-8ace-04c2b71e2d0c'}}
+              source={temaAnoImage}
               alt={"Tema do ano"}
               style={styles.image}
             />
