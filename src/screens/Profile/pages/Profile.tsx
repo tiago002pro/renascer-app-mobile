@@ -8,7 +8,6 @@ import UserService from "../service/UserService";
 import { DataAccordion } from "../helper/DataAccordion";
 import { THEME } from "../../../styles/theme";
 import data from '../helper/DataProfile';
-import Loading from "../../Loading";
 import { OpenCamera } from "../components/OpenCamera";
 import { ActivityIndicator } from "react-native-paper";
 import NotificationService from "../service/NotificationService";
@@ -21,54 +20,49 @@ export function Profile() {
   const { user } = useAuth() as any;
   const [person, setPerson] = useState(null) as any;
   const [currentSection, setCurrentSection] = useState(null) as any;
-  const [loadImage, setLoadImage] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)  as any;
 
   useEffect(() => {
-    async function getUser() {
-      setLoading(true)
-      const data = await UserService.loadUser(parseInt(user.id))
-      setPerson(data?.person)
+    setLoading(true)
+    setTimeout(() => {
       setLoading(false)
-    }
+    }, 2000);
 
-    async function checkIfThereAreNotifications() {
-      setLoading(true)
-      if (user && user.id) {
-        NotificationService.checkIfThereAreNotifications(user.id).then((reponse) => {
-          navigation.setParams({ hasNotification: reponse });
-        })
-      }
-      setLoading(false)
-    }
-    
     getUser()
     checkIfThereAreNotifications()
   }, [isFocused, navigation])
+
+  async function getUser() {
+    const data = await UserService.loadUser(parseInt(user.id))
+    setPerson(data?.person)
+  }
+
+  async function checkIfThereAreNotifications() {
+    if (user && user.id) {
+      NotificationService.checkIfThereAreNotifications(user.id).then((reponse) => {
+        navigation.setParams({ hasNotification: reponse });
+      })
+    }
+  }
 
   function goToEdit(item:any):void {
     navigation.navigate('Edit', { item: item, data: person, })
   }
   
-  if (loading) {
-    return <Loading/>;
-  }
-
   return (
     <VStack style={styles.container}>
-      {loadImage?
-        <Box w={width} h={height} zIndex={1} position={'absolute'} justifyContent={'center'} alignItems={'center'} mt={-20}>
-          <Box w={150} h={100} bg={THEME.colors.gray[700]} justifyContent={'center'} borderRadius={10}>
-            <ActivityIndicator size={"large"} color={THEME.colors.primary}/>
-          </Box>
+      {loading?
+        <Box w={width} h={height - 200} bg={THEME.colors.backgroud} justifyContent={'center'}>
+          <ActivityIndicator size={"large"} color={THEME.colors.primary}/>
         </Box>
         : null
       }
+
       <ScrollView>
         <Box style={styles.containerProfile}>
           <Box style={styles.profile}>
             <Box style={styles.box}>
-              <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoadImage} />
+              <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoading} />
             </Box>
           </Box>
             

@@ -99,12 +99,12 @@ export function OpenCamera({ person, setPerson, setLoadImage }:any) {
             message: "Foto do perfil atualizada com sucesso!",
             type: "success",
           })
-          setLoadImage(false)
         }).catch(() => {
           showMessage({
             message: "Algo deu errado",
             type: "warning",
           })
+        }).finally(() => {
           setLoadImage(false)
         })
       }))
