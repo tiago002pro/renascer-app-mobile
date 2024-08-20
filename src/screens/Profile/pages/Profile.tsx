@@ -61,9 +61,7 @@ export function Profile() {
       <ScrollView>
         <Box style={styles.containerProfile}>
           <Box style={styles.profile}>
-            <Box style={styles.box}>
-              <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoading} />
-            </Box>
+            <OpenCamera person={person} setPerson={setPerson} setLoadImage={setLoading} />
           </Box>
             
           <Box style={styles.textArea}>
@@ -169,9 +167,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
-  },
-  box: {
-    marginBottom: 15,
   },
   textArea: {
     display: 'flex',

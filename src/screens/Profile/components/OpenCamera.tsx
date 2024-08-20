@@ -1,5 +1,5 @@
 import { Box, Image, View } from "native-base";
-import { Alert, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Alert, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import { showMessage } from "react-native-flash-message";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../../firebaseConfig";
@@ -7,6 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { THEME } from "../../../styles/theme";
 import * as ImagePicker from 'expo-image-picker';
 import PersonService from "../service/PersonService";
+
+const widthScreen = Dimensions.get('screen').width - 100;
 
 export function OpenCamera({ person, setPerson, setLoadImage }:any) {
   function setProfileImage(image:any) { setPerson({...person, profileImage: image}) }
@@ -118,60 +120,43 @@ export function OpenCamera({ person, setPerson, setLoadImage }:any) {
   
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={handleImageUser} style={styles.imgContainer}>
-        {person?.profileImage ?
-          <Image
-            resizeMode="cover"
-            style={styles.image}
-            source={{uri: person?.profileImage}}
-            alt="user"
-          />
-          :
-          <Box style={styles.imgContainer}>
-            <Box style={styles.circle}></Box>
-            <Ionicons
-              name="person-circle-outline"
-              size={180}
-              style={styles.icon}
-              color={THEME.colors.primary}
-            />
-          </Box>
+      <TouchableOpacity onPress={handleImageUser} style={styles.imageContainer}>
+        <Box style={styles.circle}></Box>
+        <Ionicons
+          name="person-circle-outline"
+          size={widthScreen}
+          color={THEME.colors.primary}
+        />
+        {
+          person?.profileImage && <Image source={{uri: person?.profileImage}} resizeMode="cover" alt="Usuário" style={styles.userImage}/>
         }
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </View>
   );
 }
 
 export const styles = StyleSheet.create({
-  container: {
-    marginRight: THEME.sizes.paddingPage * 2,
-  },
-  imgContainer: {
-    width: 200,
-    height: 150,
+  container: {},
+  imageContainer: {
+    width: widthScreen,
+    height: widthScreen,
     justifyContent: 'center',
     alignItems: 'center',
   },
   circle: {
-    borderRadius: 132,
-    width: 132,
-    height: 132,
-    borderWidth: 5,
-    borderColor: THEME.colors.header,
+    borderRadius: widthScreen - widthScreen * .25,
+    width: widthScreen - widthScreen * .25,
+    height: widthScreen - widthScreen * .25,
+    borderWidth: widthScreen * .05,
+    borderColor: THEME.colors.backgroud,
+    zIndex: 9999,
+    position: 'absolute',
+  },
+  userImage: {
+    width: widthScreen - widthScreen * .30,
+    height: widthScreen - widthScreen * .30,
+    borderRadius: widthScreen - widthScreen * .30,
+    position: 'absolute',
     zIndex: 999999,
-    position: 'absolute',
-  },
-  icon: {
-    zIndex: 0,
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 140,
-    height: 140,
-    borderRadius: 140,
-    borderWidth: 2,
-    borderColor: THEME.colors.primary,
   }
 })
