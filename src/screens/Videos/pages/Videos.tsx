@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { Box, ScrollView, Text, VStack, View } from "native-base";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Box, ScrollView, VStack, View } from "native-base";
 import VideoService from "../service/VideoService";
 import { SlideVideoFeatured } from "../components/SlideVideoFeatured";
 import { SlideVideo } from "../components/SlideVideo";
@@ -11,6 +10,7 @@ import Loading from "../../Loading";
 export function Videos() {
   const [featured , setFeatured] = useState([]);
   const [trilhaMaturidade, setTrilhaMaturidade] = useState([]);
+  const [pentecostes, setPentecostes] = useState([]);
   const [conference, setConference] = useState([]);
   const [recent, setRecent] = useState([]);
 
@@ -23,6 +23,11 @@ export function Videos() {
     async function getTrilhaMaturidadeVideos() {
       const result:any = await VideoService.getAllByCategory('TRILHA_DE_MATURIDADE')
       setTrilhaMaturidade(result)
+    }
+
+    async function getPentecostesVideos() {
+      const result:any = await VideoService.getAllByCategory('PENTECOSTES')
+      setPentecostes(result)
     }
 
     async function getConferenceVideos() {
@@ -38,52 +43,72 @@ export function Videos() {
     getLatest()
     getConferenceVideos()
     getTrilhaMaturidadeVideos()
-    getRecentVideos()
+    // getRecentVideos()
+    getPentecostesVideos()
   }, [])
 
-  function checkVideos():boolean {
-    return featured.length > 0 && trilhaMaturidade.length > 0 && conference.length > 0 && recent.length > 0
-  }
-
-  if (!featured || !trilhaMaturidade || !conference || !recent) {
+  if (!featured || !trilhaMaturidade || !conference || !recent || !pentecostes) {
     return <Loading/>;
   }
 
   return (
     <VStack style={styles.container}>
-      {checkVideos() ?
+      {/* {checkVideos() ? */}
         <ScrollView>
           <View>
-            <Box style={styles.slide}>
-              <SlideVideoFeatured
-                title={"Em destaque"}
-                data={featured}
-              />
-            </Box>
+            {
+              featured && featured.length > 0 &&
+              <Box style={styles.slide}>
+                <SlideVideoFeatured
+                  title={"Em destaque"}
+                  data={featured}
+                />
+              </Box>
+            }
 
-            <Box style={styles.slide}>
-              <SlideVideo
-                title={"Trilha de maturidade"}
-                data={trilhaMaturidade}
-              />
-            </Box>
+            {
+              pentecostes && pentecostes.length > 0 &&
+              <Box style={styles.slide}>
+                <SlideVideo
+                  title={"Pentecostes"}
+                  data={pentecostes}
+                />
+              </Box>
+            }
 
-            <Box style={styles.slide}>
-              <SlideVideo
-                title={"Conferências"}
-                data={conference}
-              />
-            </Box>
+            {
+              trilhaMaturidade && trilhaMaturidade.length > 0 &&
+              <Box style={styles.slide}>
+                <SlideVideo
+                  title={"Trilha de maturidade"}
+                  data={trilhaMaturidade}
+                />
+              </Box>
+            }
 
-            <Box style={styles.slide}>
-              <SlideVideo
-                title={"Adicionados recentemente"}
-                data={recent}
-              />
-            </Box>
+            {
+              conference && conference.length > 0 &&
+              <Box style={styles.slide}>
+                <SlideVideo
+                  title={"Conferências"}
+                  data={conference}
+                />
+              </Box>
+            }
+
+            {
+              recent && recent.length > 0 &&
+              <Box style={styles.slide}>
+                <SlideVideo
+                  title={"Adicionados recentemente"}
+                  data={recent}
+                />
+              </Box>
+            }
+
           </View>
         </ScrollView>
-      :
+      {/* :
       <View style={styles.without}>
         <Box mb={3}>
           <FontAwesome5 name="video-slash" color={THEME.colors.primary} size={50}/>
@@ -92,8 +117,7 @@ export function Videos() {
           <Text style={[styles.withoutText, {marginBottom: 5}]}>Nenhum evento</Text>
           <Text style={styles.withoutText}>encontrado</Text>
         </Box>
-      </View>
-    }
+      </View> */}
     </VStack>
   );
 }
