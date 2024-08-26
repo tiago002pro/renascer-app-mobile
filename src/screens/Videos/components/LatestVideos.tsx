@@ -51,6 +51,8 @@ export function LatestVideos() {
         keyExtractor={(item:any) => item.id.toString()}
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
+        initialNumToRender={2}
+        showsHorizontalScrollIndicator={false}
         ListFooterComponent={loading &&
           <Box style={videoStyle.imageArea}>
             <ActivityIndicator size="large" color={THEME.colors.primary} />

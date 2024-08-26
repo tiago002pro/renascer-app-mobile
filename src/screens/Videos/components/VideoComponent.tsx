@@ -52,6 +52,7 @@ export function VideoComponent({ search }:any) {
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
         initialNumToRender={3}
+        showsHorizontalScrollIndicator={false}
         ListFooterComponent={loading &&
           <Box style={videoStyle.imageArea}>
             <ActivityIndicator size="large" color={THEME.colors.primary} />
