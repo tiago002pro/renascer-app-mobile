@@ -21,11 +21,20 @@ const searchList:SearchProps[] = [
     loading: false,
     page: 0,
     hasMore: true,
+    category: 'OTHERS',
+    label: 'Vídeos',
+  },
+  {
+    id: 2,
+    videos: [],
+    loading: false,
+    page: 0,
+    hasMore: true,
     category: 'PENTECOSTES',
     label: 'Pentecostes',
   },
   {
-    id: 2,
+    id: 3,
     videos: [],
     loading: false,
     page: 0,
@@ -34,7 +43,7 @@ const searchList:SearchProps[] = [
     label: 'Trilha de Maturidade',
   },
   {
-    id: 3,
+    id: 4,
     videos: [],
     loading: false,
     page: 0,
@@ -60,6 +69,7 @@ export default function VideoScreen() {
           </Box>
         )}
         keyExtractor={(item:any) => item.id.toString()}
+        showsVerticalScrollIndicator={false}
       />     
     </VStack>
   )
