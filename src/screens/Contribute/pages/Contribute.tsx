@@ -25,7 +25,7 @@ export function Contribute() {
 
       <TouchableOpacity style={styles.box} onPress={copyPix}>
         <Box style={styles.copyIcon}>
-          <MaterialIcons name="content-copy" color={THEME.colors.font} size={30}/>
+          <MaterialIcons name="content-copy" color={THEME.colors.font} size={20}/>
         </Box>
 
         <Image
