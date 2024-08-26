@@ -25,27 +25,27 @@ class VideoService {
     }
   }
 
-  async getLatest() {
+  async getLatest(page:number) {
     try {
-      const result = await api.get(this.root + `/latest-videos`)
-      return result.data
-    } catch(error) {
-      throw new Error();
-    }
-  }
-
-  async getAllVideos() {
-    try {
-      const result = await api.get(this.root + `/video/all`)
-      return result.data
+      const result = await api.get(this.root + `/latest-videos?page=${page}`)
+      return result.data.content
     } catch(error) {
       throw new Error();
     }
   }
   
-  async getAllByCategory(category:string) {
+  async getAllByCategory(category:string, page:number) {
     try {
-      const result = await api.get(this.root + `/all-by-category/${category}`)
+      const result = await api.get(this.root + `/all-by-category?category=${category}&page=${page}`)
+      return result.data.content
+    } catch(error) {
+      throw new Error();
+    }
+  }
+
+  async getLastVideo() {
+    try {
+      const result = await api.get(this.root + `/last-video`)
       return result.data
     } catch(error) {
       throw new Error();
