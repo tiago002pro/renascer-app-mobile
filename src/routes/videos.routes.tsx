@@ -2,12 +2,12 @@ import { Icon, IconButton } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
-import { Videos } from "../screens/Videos/pages/Videos";
 import { WatchVideo } from "../screens/Videos/pages/WatchVideo";
 import { THEME } from "../styles/theme";
 import { returnBtn } from "../components/ReturnBtn";
 import { FilterVideo } from "../screens/Videos/pages/FilterVideo";
 import { Dimensions } from "react-native";
+import VideoScreen from "../screens/Videos/pages/VideoScreen";
 
 const { Navigator, Screen } = createStackNavigator();
 const { width } = Dimensions.get('screen');
@@ -35,8 +35,8 @@ export default function VideosRoutes() {
 			},
 		}}>
 			<Screen
-				name="Palavras"
-				component={Videos}
+				name="VideoScreen"
+				component={VideoScreen}
 				options={{
 					headerTitle: 'Palavras',
 					headerRight: () =>

@@ -2,107 +2,60 @@ import { useEffect, useState } from "react";
 import { Dimensions, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Box, Image, ScrollView, Text, View } from "native-base";
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useIsFocused, useNavigation } from "@react-navigation/native";
-import VideoService from "../Videos/service/VideoService";
-import { SlideVideo } from "../Videos/components/SlideVideo";
+import { useNavigation } from "@react-navigation/native";
 import { THEME } from "../../styles/theme";
-import { ActivityIndicator } from "react-native-paper";
 import NotificationService from "../Profile/service/NotificationService";
 import { useAuth } from "../../contexts/auth";
-import Loading from "../Loading";
 
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 const heightBannerImg = width * .56;
+
 import temaAnoImage from './../../../assets/images/TEMA_ANO.jpg'
+import { SearchProps } from "../Videos/pages/VideoScreen";
+import { VideoComponent } from "../Videos/components/VideoComponent";
+import VideoService from "../Videos/service/VideoService";
+import { ActivityIndicator } from "react-native-paper";
+
+const search:SearchProps = {
+  id: 1,
+  videos: [],
+  loading: false,
+  page: 0,
+  hasMore: true,
+  category: '',
+  label: '',
+}
 
 export function Dashboard() {
   const { user } = useAuth() as any;
   const navigation:any = useNavigation();
-  const isFocused = useIsFocused();
-  const [latestVideos, setLatestVideos] = useState(null) as any;
   const [lastVideo, setLastVideo] = useState(null) as any;
-  const [loadingVideos, setLoadingVideos] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getLatest() {
-      setLoading(true)
-      const result:any[] = await VideoService.getLatest()
-      if (result && result.length > 0) {
-        setLastVideo(result[0])
-        result.shift()
-        setLatestVideos(result)
-        setLoadingVideos(true)
-      }
-      setLoading(false)
-    }
-
-    async function checkIfThereAreNotifications() {
-      setLoading(true)
-      if (user && user.id) {
-        NotificationService.checkIfThereAreNotifications(user.id).then((reponse) => {
-          navigation.setParams({ hasNotification: reponse });
-        })
-      }
-      setLoading(false)
-    }
-
-    getLatest()
+    loadLastVideo()
     checkIfThereAreNotifications()
-  }, [isFocused, navigation])
+  }, [])
 
-  async function goWathVideo(video:any):Promise<void> {
-    navigation.navigate('WatchVideo', {
-      video: video
-    });
+  async function loadLastVideo() {
+    const lastVideo = await VideoService.getLastVideo();
+    setLastVideo(lastVideo)
   }
 
-  if (loading) {
-    return <Loading/>;
+  async function checkIfThereAreNotifications() {
+    if (user && user.id) {
+      NotificationService.checkIfThereAreNotifications(user.id).then((reponse) => {
+        navigation.setParams({ hasNotification: reponse });
+      })
+    }
   }
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        {
-          loadingVideos ? 
-          <View style={styles.areaVideos}>
-            <Box style={styles.videoBanner}>
-              <TouchableWithoutFeedback onPress={() => goWathVideo(lastVideo)}>
-                <Box style={styles.imageArea}>
-                  <Image
-                    source={{uri: `https://img.youtube.com/vi/${lastVideo?.videoId}/0.jpg`}}
-                    alt={lastVideo?.title}
-                    key={lastVideo?.id.toString()}
-                    w={width}
-                    h={'full'}
-                    style={{objectFit: 'cover'}}
-                  />
-                  <FontAwesome5 name="play" color={THEME.colors.font} size={70} style={styles.playIcon}/>
-                </Box>
-              </TouchableWithoutFeedback>
-
-              <Box style={styles.titleVideo}>
-                <Text style={styles.text} numberOfLines={1}>
-                  {lastVideo?.title}
-                </Text>
-                <Text style={styles.author} numberOfLines={1}>
-                  {lastVideo?.author}
-                </Text>
-              </Box>
-            </Box>
-
-            <Box style={styles.latestVideos}>
-              <SlideVideo
-                data={latestVideos}
-              />
-            </Box>
-          </View>
-          :
-          <Box style={styles.loading}>
-            <ActivityIndicator size={"large"} color={THEME.colors.primary} />
-          </Box>
-        }
+        <View style={styles.areaVideos}>
+          <VideoBanner video={lastVideo} />
+          <VideoComponent search={search} />
+        </View>
 
         <View style={styles.view}>
           <Box style={styles.themeYear}>
@@ -129,7 +82,72 @@ const styles = StyleSheet.create({
   areaVideos: {
     marginBottom: 30,
   },
-  videoBanner: {
+  view: {
+    paddingLeft: THEME.sizes.paddingPage,
+    paddingRight: THEME.sizes.paddingPage,
+  },
+  themeYear: {
+    marginBottom: 30,
+  },
+  image: {
+    width: width - THEME.sizes.paddingPage * 2,
+    height: width * .55,
+    borderRadius: 5,
+    backgroundColor: THEME.colors.black,
+  },
+  title: {
+    fontSize: THEME.fontSizes.title,
+    lineHeight: THEME.fontSizes.title,
+    fontFamily: 'InterTight_600SemiBold',
+    fontWeight: '600',
+    color: THEME.colors.font,
+    marginBottom: 10,
+  },
+});
+
+function VideoBanner({ video }:any) {
+  const navigation:any = useNavigation();
+
+  async function goWathVideo(video:any):Promise<void> {
+    navigation.navigate('WatchVideo', {
+      video: video
+    });
+  }
+
+  return (
+    <View style={videoBannerStyles.container}>
+      {
+        video ? 
+        <Box>
+          <TouchableWithoutFeedback onPress={() => goWathVideo(video)}>
+            <Box style={videoBannerStyles.imageArea}>
+              <Image
+                source={{uri: `https://img.youtube.com/vi/${video?.videoId}/0.jpg`}}
+                alt={video?.title}
+                key={video?.id.toString()}
+                h={'full'}
+                style={videoBannerStyles.image}
+              />
+              <FontAwesome5 name="play" color={THEME.colors.font} size={70} style={videoBannerStyles.playIcon}/>
+            </Box>
+          </TouchableWithoutFeedback>
+
+          <Box style={videoBannerStyles.titleVideo}>
+            <Text style={videoBannerStyles.text} numberOfLines={1}>{video?.title}</Text>
+            <Text style={videoBannerStyles.author} numberOfLines={1}>{video?.author}</Text>
+          </Box>
+        </Box>
+        :
+        <Box style={videoBannerStyles.imageArea}>
+          <ActivityIndicator size="large" color={THEME.colors.primary} />
+        </Box>
+      }
+    </View>
+  );
+}
+
+const videoBannerStyles = StyleSheet.create({
+  container: {
     marginBottom: 5,
   },
   imageArea: {
@@ -138,6 +156,12 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: THEME.colors.header,
+  },
+  image: {
+    width,
+    objectFit: 'cover',
+    backgroundColor: THEME.colors.header,
   },
   playIcon: {
     position: 'absolute',
@@ -169,34 +193,4 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.subText,
     textTransform: 'capitalize',
   },
-  latestVideos: {
-    paddingLeft: THEME.sizes.paddingPage,
-    paddingRight: THEME.sizes.paddingPage,
-  },
-  view: {
-    paddingLeft: THEME.sizes.paddingPage,
-    paddingRight: THEME.sizes.paddingPage,
-  },
-  themeYear: {
-    marginBottom: 30,
-  },
-  image: {
-    width: width - THEME.sizes.paddingPage * 2,
-    height: width * .55,
-    borderRadius: 5,
-    backgroundColor: THEME.colors.black,
-  },
-  title: {
-    fontSize: THEME.fontSizes.title,
-    lineHeight: THEME.fontSizes.title,
-    fontFamily: 'InterTight_600SemiBold',
-    fontWeight: '600',
-    color: THEME.colors.font,
-    marginBottom: 10,
-  },
-  loading: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: height * .5,
-  }
 });
