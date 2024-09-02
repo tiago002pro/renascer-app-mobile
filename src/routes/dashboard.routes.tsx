@@ -52,14 +52,13 @@ export default function DashboardRoutes() {
 				options={({ route }:any) => ({
 					headerTitle: (() =>
 						<View
-							justifyContent={'space-between'}
 							alignItems={'center'}
 							flexDirection={'row'}
 						>
 							<Image
 								source={logo}
 								alt="logo"
-								style={{ width: 30, height: 30, marginRight: 10 }}
+								style={{ width: 30, height: 30,  marginRight: 5, resizeMode: 'contain'}}
 							/>
 							<Text
 								color={THEME.colors.font}

@@ -54,7 +54,9 @@ export function Dashboard() {
       <ScrollView>
         <View style={styles.areaVideos}>
           <VideoBanner video={lastVideo} />
-          <VideoComponent search={search} />
+          <Box style={styles.videoComponent}>
+            <VideoComponent search={search} />
+          </Box>
         </View>
 
         <View style={styles.view}>
@@ -81,6 +83,10 @@ const styles = StyleSheet.create({
   },
   areaVideos: {
     marginBottom: 30,
+  },
+  videoComponent: {
+    paddingLeft: THEME.sizes.paddingPage,
+    paddingRight: THEME.sizes.paddingPage,
   },
   view: {
     paddingLeft: THEME.sizes.paddingPage,
