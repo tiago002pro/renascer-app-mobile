@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../contexts/auth";
-import { Dashboard } from "../screens/Dashboard";
+import { Dashboard } from "../screens/Dashboard/Dashboard";
 import { WatchVideo } from "../screens/Videos/pages/WatchVideo";
 import ProfileRoutes from "./profile.routes";
 import { returnBtn } from "../components/ReturnBtn";
