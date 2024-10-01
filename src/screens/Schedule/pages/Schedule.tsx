@@ -4,7 +4,6 @@ import { Box, FlatList, Text, VStack, View } from "native-base";
 import { FontAwesome5 } from '@expo/vector-icons';
 import ScheduleService from "../service/ScheduleService";
 import ScheduleComponent from "../components/ScheduleComponent";
-import Loading from "../../Loading";
 import { THEME } from "../../../styles/theme";
 
 export function Schedule() {
@@ -17,10 +16,6 @@ export function Schedule() {
     }
     getSchedule()
   }, [])
-
-  if (!schedules) {
-    return <Loading/>;
-  }
 
   return (
     <VStack style={styles.container}>
