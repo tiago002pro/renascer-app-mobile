@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { THEME } from "../styles/theme";
-import VideosRoutes from "./videos.routes";
-import ScheduleRoutes from "./schedule.routes";
-import DashboardRoutes from "./dashboard.routes";
-import MoreRoutes from "./more.routes";
-import ContributeRoutes from "./contribute.routes";
+import VideosRoutes from "../screens/Tabs/Videos/routes/videos.routes";
+import ScheduleRoutes from "../screens/Tabs/Schedule/routes/schedule.routes";
+import DashboardRoutes from "../screens/Tabs/Dashboard/routes/dashboard.routes";
+import MoreRoutes from "../screens/Tabs/More/routes/more.routes";
+import ContributeRoutes from "../screens/Tabs/Contribute/routes/contribute.routes";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
