@@ -3,18 +3,9 @@ import { THEME } from "../../../styles/theme";
 import { FlatList, StyleSheet } from "react-native";
 import { LatestVideos } from "./components/LatestVideos";
 import { VideoComponent } from "./components/VideoComponent";
+import { SearchVideosProps } from "../../../types/video-search";
 
-export type SearchProps = {
-  id:number,
-  videos:any[],
-  loading:boolean,
-  page:number,
-  hasMore:boolean,
-  category:string,
-  label:string,
-}
-
-const searchList:SearchProps[] = [
+const searchList:SearchVideosProps[] = [
   {
     id: 1,
     videos: [],
@@ -30,11 +21,20 @@ const searchList:SearchProps[] = [
     loading: false,
     page: 0,
     hasMore: true,
+    category: 'MILAGRES',
+    label: 'Milagres',
+  },
+  {
+    id: 3,
+    videos: [],
+    loading: false,
+    page: 0,
+    hasMore: true,
     category: 'PENTECOSTES',
     label: 'Pentecostes',
   },
   {
-    id: 3,
+    id: 4,
     videos: [],
     loading: false,
     page: 0,
@@ -43,7 +43,7 @@ const searchList:SearchProps[] = [
     label: 'Trilha de Maturidade',
   },
   {
-    id: 4,
+    id: 5,
     videos: [],
     loading: false,
     page: 0,

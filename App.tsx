@@ -19,6 +19,7 @@ export default function App() {
       'Non-serializable values were found in the navigation state',
       'Warning: TextInput.Icon: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.',
     ]);
+    cancelNotifications();
     registerForPushNotificationsAsync();
     scheduleDailyNotification();
   }, []);
@@ -49,6 +50,17 @@ export default function App() {
   );
 }
 
+async function cancelNotifications() {
+  try {
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    alert('Notificações canceladas com sucesso!');
+    console.log('Notificações canceladas com sucesso');
+  } catch (error) {
+    alert('Erro ao cancelar notificações');
+    console.error('Erro ao cancelar notificações:', error);
+  }
+}
+
 async function registerForPushNotificationsAsync() {
   const { status } = await Notifications.requestPermissionsAsync();
   if (status !== 'granted') {
@@ -65,8 +77,6 @@ async function registerForPushNotificationsAsync() {
 }
 
 async function scheduleDailyNotification() {
-  await Notifications.cancelAllScheduledNotificationsAsync();
-
   const daysOfWeek = [
     {
       title: 'Domingo Renascer',
