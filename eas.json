@@ -19,6 +19,12 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "tiagobarbosa02@outlook.com",
+        "ascAppId": "6737527027",
+        "appleTeamId": "865PTRC59W"
+      }
+    }
   }
 }
