@@ -16,7 +16,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.tiagodev002pro.renascerappmobile"
+      "bundleIdentifier": "com.tiagodev002pro.renascerappmobile",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
