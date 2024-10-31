@@ -19,6 +19,8 @@ export default function App() {
       'Non-serializable values were found in the navigation state',
       'Warning: TextInput.Icon: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.',
     ]);
+
+    requestNotificationPermission();
     cancelNotifications();
     registerForPushNotificationsAsync();
     scheduleDailyNotification();
@@ -50,24 +52,18 @@ export default function App() {
   );
 }
 
-async function cancelNotifications() {
-  try {
-    await Notifications.cancelAllScheduledNotificationsAsync();
-    alert('Notificações canceladas com sucesso!');
-    console.log('Notificações canceladas com sucesso');
-  } catch (error) {
-    alert('Erro ao cancelar notificações');
-    console.error('Erro ao cancelar notificações:', error);
+async function requestNotificationPermission() {
+  const { status } = await Notifications.requestPermissionsAsync();
+  if (status !== 'granted') {
+    alert('As permissões de notificação são necessárias para o funcionamento do aplicativo.');
   }
 }
 
-async function registerForPushNotificationsAsync() {
-  const { status } = await Notifications.requestPermissionsAsync();
-  if (status !== 'granted') {
-    alert('Falha ao obter permissões de notificação!');
-    return;
-  }
+async function cancelNotifications() {
+  await Notifications.cancelAllScheduledNotificationsAsync();
+}
 
+async function registerForPushNotificationsAsync() {
   if (Platform.OS == 'android') {
     Notifications.setNotificationChannelAsync('daily-reminder', {
       name: 'Lembretes semanais',
@@ -86,10 +82,17 @@ async function scheduleDailyNotification() {
       minute: 0
     },
     {
+      title: 'Reunião de oração',
+      body: 'Hoje às 20hs temos reunião de oração no templo!',
+      weekday: 2,
+      hour: 18,
+      minute: 0
+    },
+    {
       title: 'Estudo Conecte',
       body: 'Se você é jovem não perca a oportunidade de aprender mais do Senhor através das Suas escrituras, hoje 20hs.',
       weekday: 3,
-      hour: 16,
+      hour: 18,
       minute: 0
     },
     {

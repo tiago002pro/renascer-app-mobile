@@ -20,7 +20,8 @@
       "infoPlist": {
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
-        }
+        },
+        "UIBackgroundModes": ["fetch", "remote-notification"]
       }
     },
     "android": {
