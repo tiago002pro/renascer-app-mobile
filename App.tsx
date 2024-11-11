@@ -76,28 +76,28 @@ async function scheduleDailyNotification() {
   const daysOfWeek = [
     {
       title: 'Domingo Renascer',
-      body: 'Hoje continuamos com a série de mensagens MILAGRES ás 19hs. É o dia para você receber seu milagre!',
+      body: 'Comece sua semana no melhor lugar!\n\n\nNós te esperamos às 19h00.',
       weekday: 1,
       hour: 17,
       minute: 0
     },
     {
       title: 'Reunião de oração',
-      body: 'Hoje às 20hs temos reunião de oração no templo!',
+      body: 'Reunião de oração, 20h00.\n\n\nVamos?',
       weekday: 2,
       hour: 18,
       minute: 0
     },
     {
       title: 'Estudo Conecte',
-      body: 'Se você é jovem não perca a oportunidade de aprender mais do Senhor através das Suas escrituras, hoje 20hs.',
+      body: 'Se você é jovem não perca a oportunidade de aprender mais do Senhor através das Suas escrituras,\n\n\nHoje 20hs.',
       weekday: 3,
       hour: 18,
       minute: 0
     },
     {
       title: 'Quarta do Poder',
-      body: 'Se você quer ser impactado pelo Espírito Santo hoje é o dia! Quarta do Poder, hoje ás 20hs.',
+      body: 'Se você quer ser impactado pelo Espírito Santo hoje é o dia!\n\n\nHoje ás 20h00.',
       weekday: 4,
       hour: 18,
       minute: 0
