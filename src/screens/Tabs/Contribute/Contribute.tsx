@@ -45,7 +45,7 @@ export function Contribute() {
           style={styles.image}
         />
         <Text style={styles.text}>Cooperativa: 4340</Text>
-        <Text style={styles.text}>Conta Corrente: 155.246-5</Text>
+        <Text style={styles.text}>Conta Corrente: 359.214-6</Text>
       </Box>
     </View>
   );
