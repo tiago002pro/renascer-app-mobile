@@ -56,7 +56,7 @@
     "react-native-web": "~0.19.10",
     "react-native-webview": "13.8.6",
     "react-native-youtube-iframe": "^2.3.0",
-    "validator": "^13.12.0",
+    "validator": "^13.15.22",
     "expo-clipboard": "~6.0.3"
   },
   "devDependencies": {
